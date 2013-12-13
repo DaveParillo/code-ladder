@@ -10,12 +10,12 @@
 Public Class GameState
     Private Const SAVE_FILE_DEFAULT As String = "DefaultSavedGame.dat"
 
-    Private pScore As Integer
-    Private pPuzzle As Integer
-    Private pCodeBin As String
+    Private _Score As Integer
+    Private _Puzzle As Integer
+    Private _CodeBin As String
 
     'Private pFileName As String = Path.Combine(My.Computer.FileSystem.SpecialDirectories.MyDocuments, pFileDefault)
-    Private pFileName As String = SAVE_FILE_DEFAULT
+    Private _FileName As String = SAVE_FILE_DEFAULT
 
     Public Sub New()
         MyBase.New()
@@ -26,10 +26,10 @@ Public Class GameState
     ''' Saves the current game data
     ''' </summary>
     Public Sub SaveGame()
-        Using writer As BinaryWriter = New BinaryWriter(File.Open(pFileName, IO.FileMode.Create))
-            writer.Write(pScore)
-            writer.Write(pPuzzle)
-            writer.Write(pCodeBin)
+        Using writer As BinaryWriter = New BinaryWriter(File.Open(_FileName, IO.FileMode.Create))
+            writer.Write(_Score)
+            writer.Write(_Puzzle)
+            writer.Write(_CodeBin)
         End Using
     End Sub
 
@@ -37,26 +37,26 @@ Public Class GameState
     ''' Loads the current game data, if possible
     ''' </summary>
     Public Sub LoadGame()
-        If File.Exists(pFileName) Then
-            Using reader As BinaryReader = New BinaryReader(File.Open(pFileName, IO.FileMode.Open))
-                pScore = reader.ReadInt32()
-                pPuzzle = reader.ReadInt32()
-                pCodeBin = reader.ReadString()
+        If File.Exists(_FileName) Then
+            Using reader As BinaryReader = New BinaryReader(File.Open(_FileName, IO.FileMode.Open))
+                _Score = reader.ReadInt32()
+                _Puzzle = reader.ReadInt32()
+                _CodeBin = reader.ReadString()
             End Using
         Else
-            pScore = 0
-            pPuzzle = 0
-            pCodeBin = String.Empty
+            _Score = 0
+            _Puzzle = 0
+            _CodeBin = String.Empty
         End If
     End Sub
 
 #Region "Class Proprties"
     Public Property Score() As Integer
         Get
-            Return pScore
+            Return _Score
         End Get
         Set(ByVal value As Integer)
-            pScore = value
+            _Score = value
         End Set
     End Property
 
@@ -65,10 +65,10 @@ Public Class GameState
     ''' </summary>
     Public Property PuzzleId() As Integer
         Get
-            Return pPuzzle
+            Return _Puzzle
         End Get
         Set(ByVal value As Integer)
-            pPuzzle = value
+            _Puzzle = value
         End Set
     End Property
 
@@ -79,14 +79,20 @@ Public Class GameState
     ''' <returns>The saved code bin contents</returns>
     Public Property CodeBin() As String
         Get
-            Return pCodeBin
+            Return _CodeBin
         End Get
         Set(ByVal value As String)
-            pCodeBin = value
+            _CodeBin = value
         End Set
     End Property
 
 #End Region
+
+    Sub Delete()
+        If File.Exists(_FileName) Then
+            File.Delete(_FileName)
+        End If
+    End Sub
 
 
 End Class

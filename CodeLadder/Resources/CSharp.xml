@@ -1,0 +1,27 @@
+<GameML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:noNamespaceSchemaLocation="GameML.xsd"
+  version="1">
+  <game name="CodeLadder">
+    <language>CSharp</language>
+    <start>1</start>
+  </game>
+
+   <!--
+   CSharp Level 1
+   -->
+  <puzzle id="1" level="1">
+    <description>Fix the variable declaration in this broken function.</description>
+    <code entryPoint="Main">
+      static int Main()
+      {
+        int p1 = 3,
+        return p1;
+      }
+      </code>
+    <results>
+      <expected value="3" />
+    </results>
+  </puzzle>
+
+
+</GameML>

@@ -1,59 +1,60 @@
-﻿Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.Text
 Imports System.IO
 Imports System.Reflection
 Imports System.CodeDom.Compiler
 
 ''' <summary>
-''' Compiles and assembles the code written by users in the Codeing TextBox
+''' Compiles and assembles the code written by users in the Coding TextBox
 ''' </summary>
 ''' <remarks>CodeProvider is currently hard-coded to VBCodeProvider,
 ''' but this could be extended in the future.
 ''' </remarks>
-Public Class Compiler
-    Private pCompilerErrors As CompilerErrorCollection
+Public MustInherit Class Compiler
+    Private _CompilerErrors As CompilerErrorCollection
 
-    Private pProvider As Microsoft.VisualBasic.VBCodeProvider
-    Private pCompilerParams As New System.CodeDom.Compiler.CompilerParameters()
-    Private pCodeText As StringBuilder
-    Private pCommandText As String
-    Private pResults As System.CodeDom.Compiler.CompilerResults
-    Private pLinked As System.Reflection.Assembly
-    Private pInstance As Object
+    Private _CompilerParams As New System.CodeDom.Compiler.CompilerParameters()
+    Private _Code As StringBuilder
+    Private _CommandText As String
+    Private _Results As System.CodeDom.Compiler.CompilerResults
 
+    Private _Instance As Object
+
+    Protected Friend MustOverride ReadOnly Property Provider() As Object
+
+    ''' <summary>
+    ''' Allows the game to insert the user entered code into the generated code template
+    ''' </summary>
+    ''' <value>The code supplied by the user / game.</value>
+    ''' <returns>The entire set of code passed to the compiler</returns>
+    Public MustOverride Property Code As String
 
     Public Sub New()
         MyBase.New()
-        pCompilerErrors = New CompilerErrorCollection
-        pProvider = New VBCodeProvider
-        pCompilerParams = New System.CodeDom.Compiler.CompilerParameters()
-        pCodeText = New StringBuilder
+        _CompilerErrors = New CompilerErrorCollection
+        _CompilerParams = New System.CodeDom.Compiler.CompilerParameters()
 
         'References/Parameters.
-        pCompilerParams.ReferencedAssemblies.Clear()
-        pCompilerParams.ReferencedAssemblies.Add("System.dll")
-        pCompilerParams.ReferencedAssemblies.Add("System.Drawing.dll")
-        pCompilerParams.ReferencedAssemblies.Add("System.Windows.Forms.dll")
-        pCompilerParams.ReferencedAssemblies.Add("Microsoft.VisualBasic.dll")
+        _CompilerParams.ReferencedAssemblies.Clear()
+        _CompilerParams.ReferencedAssemblies.Add("System.dll")
 
         'Compiles in memory.
-        pCompilerParams.GenerateInMemory = True
+        _CompilerParams.GenerateInMemory = True
     End Sub
 
-    Public Property Errors As CompilerErrorCollection
+    Public Overridable Property Errors As CompilerErrorCollection
         Get
-            Return pCompilerErrors
+            Return _CompilerErrors
         End Get
         Set(ByVal value As CompilerErrorCollection)
-            pCompilerErrors = value
+            _CompilerErrors = value
         End Set
     End Property
 
-    Public Function WriteErrors() As String
+    Public Overridable Function WriteErrors() As String
         Dim e As CompilerError
         Dim sb As New StringBuilder
-        For Each e In pCompilerErrors
+        For Each e In _CompilerErrors
             sb.AppendLine("Line:    " & e.Line - 6)
             sb.AppendLine("Text:    " & e.ErrorText)
             sb.AppendLine(String.Empty)
@@ -61,62 +62,45 @@ Public Class Compiler
         Next
         Return sb.ToString
     End Function
-    Public Property Command As String
+    Public Overridable Property Command As String
         Get
-            Return pCommandText
+            Return _CommandText
         End Get
         Set(ByVal value As String)
-            pCommandText = Trim(value)
+            _CommandText = Trim(value)
         End Set
     End Property
 
-    ''' <summary>
-    ''' Allows the game to insert the user entered code into the generated code template
-    ''' </summary>
-    ''' <value>The code supplied by the user / game.</value>
-    ''' <returns>The entire set of code passed to the compiler</returns>
-    Public Property Text As String
+
+    Protected Friend Overridable ReadOnly Property CompilerParameters() As CompilerParameters
         Get
-            Return pCodeText.ToString
+            Return _CompilerParams
         End Get
-        Set(ByVal value As String)
-            pCodeText.AppendLine("Option Strict On")
-            pCodeText.AppendLine("Imports System.Windows.Forms")
-            pCodeText.AppendLine("Imports System.Drawing")
-            pCodeText.AppendLine("Imports Microsoft.VisualBasic.Constants")
-            pCodeText.AppendLine("Imports Microsoft.VisualBasic.Information")
-            pCodeText.AppendLine("Imports Microsoft.VisualBasic.Strings")
-            pCodeText.AppendLine("Imports System.Random")
-            pCodeText.AppendLine("Imports Microsoft.VisualBasic.VBMath")
-            pCodeText.AppendLine("Namespace GeneratedNamespace")
-            pCodeText.AppendLine("Class GeneratedMainClass")
-
-            pCodeText.AppendLine(value)
-
-            pCodeText.AppendLine("End Class")
-            pCodeText.AppendLine("End Namespace")
-        End Set
     End Property
+
 
     ''' <summary>
     ''' The Compile stage.
     ''' </summary>
     ''' <returns>True if Assembly was successful</returns>
     ''' <remarks>The results of compilation errors are promoted to the UI</remarks>
-    Private Function Compile() As Boolean
-        Dim retVal As Boolean = True
+    Protected Friend Overridable Function Compile() As Boolean
+        Dim retVal As Boolean = False
         Try
-            pResults = pProvider.CompileAssemblyFromSource(pCompilerParams, pCodeText.ToString)
+            If "CSharpCodeProvider" = TypeName(Provider) Then
+                _CompilerParams.GenerateExecutable = True
+            End If
+            _Results = Provider.CompileAssemblyFromSource(Me.CompilerParameters, Me.Code.ToString)
 
-            If pResults.Errors.HasErrors Then
-                Me.pCompilerErrors = pResults.Errors
-                retVal = False
+            If _Results.Errors.HasErrors Then
+                Me._CompilerErrors = _Results.Errors
+            Else
+                retVal = True
             End If
         Catch ex As Exception
-            MessageBox.Show("Compiler Error attempting to Compile!" _
+            MessageBox.Show("Program Compiler Error!" _
                                 & vbNewLine & vbNewLine _
                                 & ex.Message)
-            Stop
         End Try
         Return retVal
     End Function
@@ -125,15 +109,23 @@ Public Class Compiler
     ''' The Assembly stage.
     ''' </summary>
     ''' <returns>True if Assembly was successful</returns>
-    Private Function Link() As Boolean
-        Dim retVal As Boolean = True
-        pLinked = pResults.CompiledAssembly
+    Protected Friend Overridable Function Link() As Boolean
+        Dim retVal As Boolean = False
+        Dim assy As System.Reflection.Assembly
+        Try
+            assy = _Results.CompiledAssembly
+            _Instance = assy.CreateInstance("GeneratedNamespace.GeneratedMainClass")
+            If _Instance Is Nothing Then
+                MessageBox.Show("Can't load generated class...")
+            Else
+                retVal = True
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Program Assembly failure" _
+                                & vbNewLine & vbNewLine _
+                                & ex.Message)
+        End Try
 
-        pInstance = pLinked.CreateInstance("GeneratedNamespace.GeneratedMainClass")
-        If pInstance Is Nothing Then
-            MessageBox.Show("Can't load generated class...")
-            retVal = False
-        End If
         Return retVal
     End Function
 
@@ -143,7 +135,7 @@ Public Class Compiler
     ''' <param name="StartMethod">The function in the program to invoke</param>
     ''' <param name="Parameters">An array of parameters passed to StartMethod</param>
     ''' <returns>The return value from the called function</returns>
-    Public Function Eval(ByVal StartMethod As String, ByVal Parameters() As Object) As Object
+    Public Overridable Function Eval(ByVal StartMethod As String, ByVal Parameters() As Object) As Object
         Dim oType As Type
         Dim oInfo As MethodInfo
         Dim oRetVal As Object
@@ -152,9 +144,13 @@ Public Class Compiler
         If Me.Compile() AndAlso Me.Link() Then
             ''Excute assembled code
             Try
-                oType = pInstance.GetType
-                oInfo = oType.GetMethod(StartMethod)
-                oRetVal = oInfo.Invoke(pInstance, Parameters)
+                oType = _Instance.GetType
+                If "CSharpCodeProvider" = TypeName(Provider) Then
+                    oInfo = oType.GetMethod(StartMethod, BindingFlags.Static Or BindingFlags.NonPublic)
+                Else
+                    oInfo = oType.GetMethod(StartMethod)
+                End If
+                oRetVal = oInfo.Invoke(_Instance, Parameters)
             Catch ex As Exception
                 MessageBox.Show("Program Runtime failure" _
                                 & vbNewLine & vbNewLine _

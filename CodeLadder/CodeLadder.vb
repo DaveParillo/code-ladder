@@ -3,9 +3,9 @@
 ''' The main game controller
 ''' </summary>
 Public Class CodeLadder
-
-    Private game As New GameDAL
-    Private state As New GameState
+    Private _prefs As New PreferencesDialog
+    Private _game As GameDAL
+    Private _state As GameState
 
 
 #Region "Event Handlers"
@@ -15,12 +15,18 @@ Public Class CodeLadder
     ''' </summary>
     Private Sub btnEval_Click() Handles btnEval.Click
         Dim actual As Object
-        Dim c As New Compiler
         Dim isAnswerOK As Boolean
+        Dim c As Object
 
-        c.Text = Me.txtCode.Text
-        For Each r As Results In game.Expected
-            actual = c.Eval(game.EntryPoint, r.Parameters)
+        If _prefs.Language = PreferencesDialog.LANG.C_SHARP Then
+            c = New CompilerCSharp
+        Else
+            c = New CompilerVisualBasic
+        End If
+
+        c.Code = Me.txtCode.Text
+        For Each r As Results In _game.Expected
+            actual = c.Eval(_game.EntryPoint, r.Parameters)
             If c.Errors.HasErrors Then
                 lblTalk.Text = "Compiler errors: " & vbNewLine
                 lblTalk.Text = c.WriteErrors()
@@ -35,53 +41,115 @@ Public Class CodeLadder
         Next
         If isAnswerOK Then
             ShowYouPassed()
-            state.SaveGame()
+            _state.SaveGame()
         End If
 
         lblTalk.Refresh()
 
     End Sub
+
+#Region "Puzzle Navigation Button Event handlers"
+
     ''' <summary>
     ''' Load the next puzzle in the ladder
     ''' </summary>
     Private Sub btnNext_Click() Handles btnNext.Click
-        If game.NextPuzzle() Then
-            lblDescription.Text = "Problem #" & game.PuzzleId _
-                                & ": " & game.PuzzleDescription
+        If _game.NextPuzzle() Then
+            lblDescription.Text = "Problem #" & _game.PuzzleId _
+                                & ": " & _game.PuzzleDescription
 
-            txtCode.Text = game.PuzzleCode
+            txtCode.Text = _game.PuzzleCode
         Else
-            MessageBox.Show("You made it though every level!")
+            MessageBox.Show("You made it to the end!")
             txtCode.Clear()
             lblDescription.Text = String.Empty
         End If
         lblTalk.Text = String.Empty
     End Sub
 
+    Private Sub btnPrev_Click() Handles btnPrev.Click
+        If _game.PreviousPuzzle() Then
+            lblDescription.Text = "Problem #" & _game.PuzzleId _
+                                & ": " & _game.PuzzleDescription
+
+            txtCode.Text = _game.PuzzleCode
+        End If
+        lblTalk.Text = String.Empty
+    End Sub
+
+    Private Sub btnFirst_Click() Handles btnFirst.Click
+        If _game.FirstPuzzle() Then
+            lblDescription.Text = "Problem #" & _game.PuzzleId _
+                                & ": " & _game.PuzzleDescription
+
+            txtCode.Text = _game.PuzzleCode
+        End If
+        lblTalk.Text = String.Empty
+    End Sub
+
+    Private Sub btnLast_Click() Handles btnLast.Click
+        If _game.LastPuzzle() Then
+            lblDescription.Text = "Problem #" & _game.PuzzleId _
+                                & ": " & _game.PuzzleDescription
+
+            txtCode.Text = _game.PuzzleCode
+        End If
+        lblTalk.Text = String.Empty
+    End Sub
+#End Region
+
     ''' <summary>
     ''' Actions to take on Application Start
     ''' </summary>
     Private Sub CodeLadder_Load() Handles MyBase.Load
-        lblScore.Text = state.Score.ToString
-        game.LoadGame(state.PuzzleId)
-        txtCodeBin.Text = state.CodeBin
-
-        lblDescription.Text = "Problem #" & game.PuzzleId _
-                                & ": " & game.PuzzleDescription
+        _game = New GameDAL(_prefs.Language)
+        _state = New GameState
+        lblScore.Text = _state.Score.ToString
+        _game.LoadGame(_state.PuzzleId)
+        txtCodeBin.Text = _state.CodeBin
+        lblTotal.Text = _game.Count.ToString
+        lblDescription.Text = "Problem #" & _game.PuzzleId _
+                                & ": " & _game.PuzzleDescription
         lblTalk.Text = String.Empty
-        txtCode.Text = game.PuzzleCode
+        txtCode.Text = _game.PuzzleCode
 
     End Sub
 
+    ''' <summary>
+    ''' Edit preferences and update game with selections
+    ''' </summary>
+    Private Sub PreferencesToolStripMenuItem_Click() Handles PreferencesToolStripMenuItem.Click
+        Dim l As PreferencesDialog.LANG
+        l = _prefs.Language
+        _prefs.ShowDialog()
+        If _prefs.DialogResult = DialogResult.OK Then
+            If l <> _prefs.Language Then
+                _state.Delete()
+                CodeLadder_Load()
+            End If
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' Restart from the beginning
+    ''' </summary>
+    Private Sub NewGameToolStripMenuItem_Click() Handles NewGameToolStripMenuItem.Click
+        If vbYes = MessageBox.Show("Restart?" & vbNewLine & vbNewLine & _
+                                   "This will delete your saved results and restart from the beginning.", "Are you sure?", _
+                                   MessageBoxButtons.YesNo, MessageBoxIcon.Question) Then
+            _state.Delete()
+            CodeLadder_Load()
+        End If
+    End Sub
 
     ''' <summary>
     ''' Exit the application
     ''' </summary>
-    Private Sub btnClose_Click() Handles btnClose.Click
+    Private Sub ExitToolStripMenuItem_Click() Handles ExitToolStripMenuItem.Click
         Me.Close()
     End Sub
-#End Region
 
+#End Region
 
 #Region "Utility Functions"
     ''' <summary>
@@ -90,7 +158,6 @@ Public Class CodeLadder
     ''' </summary>
     ''' <param name="Expected">The expected results for a given set of inputs</param>
     Private Sub ShowExpected(ByVal Expected As Results)
-        Dim foo As New Button
         lblTalk.Text &= "Expected:" & vbNewLine
         If Not Expected.ObjectProperty Is Nothing AndAlso Expected.ObjectProperty.Length > 0 Then
             lblTalk.Text &= "Property: " & Expected.ObjectProperty & ", Value: " & Expected.Value & vbNewLine
@@ -110,15 +177,15 @@ Public Class CodeLadder
     Private Sub ShowYouPassed()
         lblTalk.Text = "You passed the challenge!" & vbNewLine
         ' Update the score
-        state.Score += 1
-        lblScore.Text = state.Score.ToString
+        _state.Score += 1
+        lblScore.Text = _state.Score.ToString
 
         'update puzzle id
-        state.PuzzleId = game.PuzzleId
+        _state.PuzzleId = _game.PuzzleId
 
         ' Update the code bin
         txtCodeBin.Text &= txtCode.Text
-        state.CodeBin = txtCodeBin.Text
+        _state.CodeBin = txtCodeBin.Text
     End Sub
 
     ''' <summary>
@@ -215,5 +282,6 @@ Public Class CodeLadder
     End Function
 
 #End Region
+
 
 End Class

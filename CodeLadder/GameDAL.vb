@@ -5,28 +5,30 @@ Imports System.Reflection
 ''' <summary>
 ''' A data access layer for the game puzzles and expected results
 ''' </summary>
-Public Class GameDAL
-    Private pDoc As XmlDocument
-    Private plevel As Integer
-    Private pPuzzle As XmlNode
-    Private pCode As XmlNode
-    Private pResults As XmlNode
-    Private pExpected As Collection
-    Private pEntryPoint As String
+Friend Class GameDAL
+    Private _Doc As XmlDocument
+    Private _Level As Integer
+    Private _Puzzle As XmlNode
+    Private _Code As XmlNode
+    Private _Results As XmlNode
+    Private _Expected As Collection
+    Private _EntryPoint As String
 
 
 #Region "Constructors"
+
     ''' <summary>
-    ''' Load the Game file on instance creation
+    ''' Load the Game file of the provided language
     ''' </summary>
-    Public Sub New()
+    Friend Sub New(ByVal InitialLanguage As PreferencesDialog.LANG)
+        _Doc = New XmlDocument
+        If InitialLanguage = PreferencesDialog.LANG.VISUAL_BASIC Then
+            _Doc.LoadXml(My.Resources.VisualBasic)
+        Else
+            _Doc.LoadXml(My.Resources.CSharp)
+        End If
 
-        pDoc = New XmlDocument
-
-        pDoc.LoadXml(My.Resources.CodeLadder)
-        plevel = 1
-
-
+        _Level = 1
     End Sub
 
 #End Region
@@ -41,7 +43,7 @@ Public Class GameDAL
         Dim c As New Collection
         Dim r As Results
 
-        e = pResults.ChildNodes.GetEnumerator
+        e = _Results.ChildNodes.GetEnumerator
         While e.MoveNext()
             If IsNodeName("expected", e) Then
                 Dim i As Integer
@@ -74,7 +76,7 @@ Public Class GameDAL
                 r = Nothing
             End If
         End While
-        pExpected = c
+        _Expected = c
     End Sub
 
     Private Function TryConvert(ByVal Value As String, ByVal Type As String, ByRef ObjectReference As Object) As Boolean
@@ -118,54 +120,119 @@ Public Class GameDAL
     ''' </summary>
     Public Sub LoadGame(Optional ByVal StartId As Integer = 0)
         If StartId > 0 Then
-            pPuzzle = pDoc.SelectSingleNode("//puzzle[@id='" _
+            _Puzzle = _Doc.SelectSingleNode("//puzzle[@id='" _
                                                   & StartId.ToString & "']")
             Me.NextPuzzle()
         Else
             LoadNewGame()
         End If
-        If pPuzzle Is Nothing Then
+        If _Puzzle Is Nothing Then
             MsgBox("Problem starting game", vbOKOnly + vbCritical)
         End If
     End Sub
 
+    ''' <summary>
+    ''' Start a new game at the id identified by the game/start tag or go to the first puzzle.
+    ''' </summary>
     Private Sub LoadNewGame()
         Dim e As IEnumerator
 
-        e = pDoc.FirstChild.ChildNodes.Item(0).GetEnumerator
+        e = _Doc.FirstChild.ChildNodes.Item(0).GetEnumerator
         While e.MoveNext()
             If IsNodeName("start", e) Then
-                pPuzzle = pDoc.SelectSingleNode("//puzzle[@id='" _
+                _Puzzle = _Doc.SelectSingleNode("//puzzle[@id='" _
                                                   & e.Current.InnerText & "']")
                 Me.CollectResults()
             End If
-
         End While
+        If _Puzzle Is Nothing Then
+            If Not Me.FirstPuzzle() Then
+                MessageBox.Show("Error starting game!")
+            End If
+        End If
     End Sub
 
+    ''' <summary>
+    ''' Process the expected values in the current puzzle XML
+    ''' </summary>
     Private Sub CollectResults()
         Dim e As IEnumerator
-        e = pPuzzle.ChildNodes.GetEnumerator
+        e = _Puzzle.ChildNodes.GetEnumerator
         While e.MoveNext()
             If IsNodeName("results", e) Then
-                pResults = e.Current
+                _Results = e.Current
             End If
         End While
         Me.SetExpected()
     End Sub
 
+    ''' <summary>
+    ''' Jump to the first puzzle
+    ''' </summary>
+    ''' <returns>True is we found the first puzzle</returns>
+    Public Function FirstPuzzle() As Boolean
+        _Puzzle = _Doc.SelectSingleNode("(//puzzle)[1]")
+        If _Puzzle IsNot Nothing Then
+            Me.CollectResults()
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 
-    ' Skip over any puzzle siblings not of type puzzle (i.e. comments)
+    ''' <summary>
+    ''' Jump to the last puzzle
+    ''' </summary>
+    ''' <returns>True is we found the last puzzle</returns>
+    Public Function LastPuzzle() As Boolean
+        _Puzzle = _Doc.SelectSingleNode("//puzzle[last()]")
+        If _Puzzle IsNot Nothing Then
+            Me.CollectResults()
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 
+    ''' <summary>
+    ''' Jump to the next puzzle, skiping over any puzzle siblings not of type puzzle (i.e. comments)
+    ''' </summary>
+    ''' <returns>True is we found a next puzzle</returns>
     Public Function NextPuzzle() As Boolean
+        Dim id As Integer = PuzzleId
+        If _Puzzle Is Nothing Then
+            Return False
+        End If
         Do
-            If Not pPuzzle.NextSibling Is Nothing Then
-                pPuzzle = pPuzzle.NextSibling
+            If Not _Puzzle.NextSibling Is Nothing Then
+                _Puzzle = _Puzzle.NextSibling
             End If
-        Loop Until pPuzzle.Name = "puzzle"
+        Loop Until _Puzzle.Name = "puzzle"
 
-        If pPuzzle IsNot Nothing Then
-            'pPuzzle = pPuzzle.NextSibling
+        If _Puzzle IsNot Nothing AndAlso PuzzleId > id Then
+            Me.CollectResults()
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    ''' <summary>
+    ''' Jump to the previous puzzle, skiping over any puzzle siblings not of type puzzle (i.e. comments)
+    ''' </summary>
+    ''' <returns>True is we found a previous puzzle</returns>
+    Public Function PreviousPuzzle() As Boolean
+        Dim id As Integer = PuzzleId
+        If _Puzzle Is Nothing Then
+            Return False
+        End If
+        Do
+            If Not _Puzzle.PreviousSibling Is Nothing Then
+                _Puzzle = _Puzzle.PreviousSibling
+            End If
+        Loop Until _Puzzle.Name = "puzzle"
+
+        If _Puzzle IsNot Nothing AndAlso PuzzleId < id Then
             Me.CollectResults()
             Return True
         Else
@@ -185,6 +252,22 @@ Public Class GameDAL
         Return (Name = e.Current.Name)
     End Function
 
+    ''' <summary>
+    ''' Counts the number of puzzles in the game XML document
+    ''' </summary>
+    ''' <returns>The number of 'puzzle' elements found</returns>
+    Function Count() As Integer
+        Dim e As IEnumerator
+        Dim i As Integer = 0
+
+        e = _Doc.DocumentElement.GetEnumerator
+        While e.MoveNext()
+            If IsNodeName("puzzle", e) Then
+                i += 1
+            End If
+        End While
+        Return i
+    End Function
 #End Region
 
 #Region "Class Proprties"
@@ -193,10 +276,10 @@ Public Class GameDAL
     Public ReadOnly Property PuzzleId() As Integer
         Get
             Dim i As Integer
-            If Integer.TryParse(pPuzzle.Attributes.GetNamedItem("id").Value, i) Then
+            If Integer.TryParse(_Puzzle.Attributes.GetNamedItem("id").Value, i) Then
                 Return i
             Else
-                MessageBox.Show("No puzzle with ID = " & pPuzzle.Attributes.GetNamedItem("id").Value)
+                MessageBox.Show("No puzzle with ID = " & _Puzzle.Attributes.GetNamedItem("id").Value)
             End If
             Return 0
         End Get
@@ -210,7 +293,7 @@ Public Class GameDAL
             Dim e As IEnumerator
             Dim desc As String = String.Empty
 
-            e = pPuzzle.ChildNodes.GetEnumerator
+            e = _Puzzle.ChildNodes.GetEnumerator
             While e.MoveNext()
                 If IsNodeName("description", e) Then
                     desc += e.Current.InnerText & vbNewLine & vbNewLine
@@ -221,41 +304,58 @@ Public Class GameDAL
         End Get
     End Property
 
-
+    ''' <summary>
+    ''' Grab all the puzzle code from the XML node
+    ''' </summary>
+    ''' <returns>The code</returns>
     Public ReadOnly Property PuzzleCode() As String
         Get
             Dim e As IEnumerator
             Dim code As String = String.Empty
 
-            e = pPuzzle.ChildNodes.GetEnumerator
+            e = _Puzzle.ChildNodes.GetEnumerator
             While e.MoveNext()
                 If IsNodeName("code", e) Then
                     code = e.Current.InnerText & vbNewLine & vbNewLine
-                    pCode = e.Current
+                    _Code = e.Current
                 End If
             End While
+            'In general we want our code to preservve whitespace, but we want to get rid of
+            ' the first bunch of spaces on each line.
             Return code.Replace("      ", "")
         End Get
     End Property
 
+    ''' <summary>
+    ''' The 'Entry Point' is the method in the compiled code where execution begins.
+    ''' In C#, this must be Main, but in VB, could be user or system generated code.
+    ''' </summary>
+    ''' <returns>The method name</returns>
     Public ReadOnly Property EntryPoint() As String
         Get
-            If pCode.Attributes.GetNamedItem("entryPoint") Is Nothing Then
+            If _Code.Attributes.GetNamedItem("entryPoint") Is Nothing Then
                 Return "Puzzle"
             Else
-                Return pCode.Attributes.GetNamedItem("entryPoint").Value
+                Return _Code.Attributes.GetNamedItem("entryPoint").Value
             End If
 
         End Get
     End Property
-
+    ''' <summary>
+    ''' The collection of expected values and their Types
+    ''' </summary>
+    ''' <returns>A collection of the expected results.</returns>
+    ''' <remarks>See the Results class for details.  
+    ''' This property is set in the private procedure SetExpected</remarks>
     Public ReadOnly Property Expected() As Collection
         Get
-            Return pExpected
+            Return _Expected
         End Get
     End Property
 
 #End Region
+
+
 
 
 

@@ -12,10 +12,19 @@
   <xs:element name="game">
     <xs:complexType>
       <xs:sequence>
+        <xs:element ref="language"/>
         <xs:element ref="start"/>
       </xs:sequence>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
     </xs:complexType>
+  </xs:element>
+  <xs:element name="language">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="CSharp" />
+        <xs:enumeration value="VisualBasic" />
+      </xs:restriction>
+    </xs:simpleType>
   </xs:element>
   <xs:element name="start" type="xs:integer"/>
   <xs:element name="puzzle">

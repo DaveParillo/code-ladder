@@ -65,24 +65,27 @@ Namespace My.Resources
         '''  xsi:noNamespaceSchemaLocation=&quot;GameML.xsd&quot;
         '''  version=&quot;1&quot;&gt;
         '''  &lt;game name=&quot;CodeLadder&quot;&gt;
-        '''    &lt;score&gt;0&lt;/score&gt; 
-        '''    &lt;codeBin&gt;
-        '''      &lt;![CDATA[
-        '''          Sub HelloWorld()
-        '''            MessageBox.Show(&quot;Hello, world!&quot;)
-        '''          End Sub
-        '''        ]]&gt;
-        '''    &lt;/codeBin&gt;   
+        '''    &lt;language&gt;CSharp&lt;/language&gt;
+        '''    &lt;start&gt;1&lt;/start&gt;
         '''  &lt;/game&gt;
-        '''  &lt;puzzle&gt;
-        '''    &lt;description&gt;This program should display the text &apos;Hello, World!&apos;&lt;/description&gt;
-        '''    &lt;code entryPoint=&quot;HelloWorld&quot;&gt;
-        '''      &lt;![CDATA[
-        '''        Public Su [rest of string was truncated]&quot;;.
+        '''
+        '''   &lt;!--
+        '''   CSharp Level 1
+        '''   --&gt;
+        '''  &lt;puzzle id=&quot;1&quot; level=&quot;1&quot;&gt;
+        '''    &lt;description&gt;Fix the variable declaration in this broken function.&lt;/description&gt;
+        '''    &lt;code entryPoint=&quot;Main&quot;&gt;
+        '''      static int Main()
+        '''      {
+        '''        int p1 = 3,
+        '''        return p1;
+        '''      }
+        '''      &lt;/code&gt;
+        '''    &lt;resul [rest of string was truncated]&quot;;.
         '''</summary>
-        Friend ReadOnly Property CodeLadder() As String
+        Friend ReadOnly Property CSharp() As String
             Get
-                Return ResourceManager.GetString("CodeLadder", resourceCulture)
+                Return ResourceManager.GetString("CSharp", resourceCulture)
             End Get
         End Property
         
@@ -101,11 +104,39 @@ Namespace My.Resources
         '''  &lt;xs:element name=&quot;game&quot;&gt;
         '''    &lt;xs:complexType&gt;
         '''      &lt;xs:sequence&gt;
-        '''        &lt;xs:element ref=&quot;scor [rest of string was truncated]&quot;;.
+        '''        &lt;xs:element ref=&quot;lang [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property GameML() As String
             Get
                 Return ResourceManager.GetString("GameML", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to &lt;GameML xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
+        '''  xsi:noNamespaceSchemaLocation=&quot;GameML.xsd&quot;
+        '''  version=&quot;1&quot;&gt;
+        '''  &lt;game name=&quot;CodeLadder&quot;&gt;
+        '''    &lt;start&gt;1&lt;/start&gt;   
+        '''  &lt;/game&gt;
+        '''
+        '''   &lt;!--
+        '''   VB Chapter 1
+        '''   --&gt;
+        '''  &lt;puzzle id=&quot;1&quot; level=&quot;1&quot;&gt;
+        '''    &lt;description&gt;Fix the variable declaration in this broken function.&lt;/description&gt;
+        '''    &lt;code&gt;
+        '''      Public Function Puzzle() As Integer
+        '''        Dim *intStrange As Integer = 3
+        '''        Return *intStrange
+        '''      End Function
+        '''    &lt;/code&gt;
+        '''    &lt;results&gt;
+        ''' [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property VisualBasic() As String
+            Get
+                Return ResourceManager.GetString("VisualBasic", resourceCulture)
             End Get
         End Property
     End Module
