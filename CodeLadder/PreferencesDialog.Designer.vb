@@ -28,6 +28,8 @@ Partial Class PreferencesDialog
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.radCSharp = New System.Windows.Forms.RadioButton()
         Me.radVisualBasic = New System.Windows.Forms.RadioButton()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtName = New System.Windows.Forms.TextBox()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -40,7 +42,7 @@ Partial Class PreferencesDialog
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.OK_Button, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Cancel_Button, 1, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(13, 128)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(73, 114)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
@@ -70,9 +72,9 @@ Partial Class PreferencesDialog
         '
         Me.GroupBox1.Controls.Add(Me.radCSharp)
         Me.GroupBox1.Controls.Add(Me.radVisualBasic)
-        Me.GroupBox1.Location = New System.Drawing.Point(33, 22)
+        Me.GroupBox1.Location = New System.Drawing.Point(15, 32)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(100, 86)
+        Me.GroupBox1.Size = New System.Drawing.Size(96, 74)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Language"
@@ -99,13 +101,32 @@ Partial Class PreferencesDialog
         Me.radVisualBasic.Text = "Visual Basic"
         Me.radVisualBasic.UseVisualStyleBackColor = True
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(12, 9)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(38, 13)
+        Me.Label1.TabIndex = 2
+        Me.Label1.Text = "Name:"
+        '
+        'txtName
+        '
+        Me.txtName.Location = New System.Drawing.Point(56, 6)
+        Me.txtName.MaxLength = 40
+        Me.txtName.Name = "txtName"
+        Me.txtName.Size = New System.Drawing.Size(217, 20)
+        Me.txtName.TabIndex = 3
+        '
         'PreferencesDialog
         '
         Me.AcceptButton = Me.OK_Button
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
-        Me.ClientSize = New System.Drawing.Size(171, 169)
+        Me.ClientSize = New System.Drawing.Size(286, 155)
+        Me.Controls.Add(Me.txtName)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
@@ -119,6 +140,7 @@ Partial Class PreferencesDialog
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
@@ -127,5 +149,7 @@ Partial Class PreferencesDialog
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents radCSharp As System.Windows.Forms.RadioButton
     Friend WithEvents radVisualBasic As System.Windows.Forms.RadioButton
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents txtName As System.Windows.Forms.TextBox
 
 End Class

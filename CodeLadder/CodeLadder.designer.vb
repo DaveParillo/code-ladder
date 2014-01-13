@@ -49,6 +49,8 @@ Partial Class CodeLadder
         Me.btnPrev = New System.Windows.Forms.Button()
         Me.btnFirst = New System.Windows.Forms.Button()
         Me.btnLast = New System.Windows.Forms.Button()
+        Me.ViewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HistoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tabCode.SuspendLayout()
         Me.tabLand.SuspendLayout()
         Me.tabMain.SuspendLayout()
@@ -97,7 +99,7 @@ Partial Class CodeLadder
         Me.txtCodeBin.Multiline = True
         Me.txtCodeBin.Name = "txtCodeBin"
         Me.txtCodeBin.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtCodeBin.Size = New System.Drawing.Size(746, 354)
+        Me.txtCodeBin.Size = New System.Drawing.Size(559, 546)
         Me.txtCodeBin.TabIndex = 2
         '
         'tabLand
@@ -230,7 +232,7 @@ Partial Class CodeLadder
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.EditToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.EditToolStripMenuItem, Me.ViewToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(614, 24)
@@ -247,13 +249,13 @@ Partial Class CodeLadder
         'NewGameToolStripMenuItem
         '
         Me.NewGameToolStripMenuItem.Name = "NewGameToolStripMenuItem"
-        Me.NewGameToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
+        Me.NewGameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.NewGameToolStripMenuItem.Text = "&New Game"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'EditToolStripMenuItem
@@ -301,6 +303,20 @@ Partial Class CodeLadder
         Me.btnLast.Text = ":"
         Me.ToolTip1.SetToolTip(Me.btnLast, "Skip to the last problem")
         Me.btnLast.UseVisualStyleBackColor = True
+        '
+        'ViewToolStripMenuItem
+        '
+        Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HistoryToolStripMenuItem})
+        Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
+        Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(41, 20)
+        Me.ViewToolStripMenuItem.Text = "&View"
+        Me.ViewToolStripMenuItem.Visible = False
+        '
+        'HistoryToolStripMenuItem
+        '
+        Me.HistoryToolStripMenuItem.Name = "HistoryToolStripMenuItem"
+        Me.HistoryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.HistoryToolStripMenuItem.Text = "History"
         '
         'CodeLadder
         '
@@ -358,4 +374,6 @@ Partial Class CodeLadder
     Friend WithEvents btnPrev As System.Windows.Forms.Button
     Friend WithEvents btnFirst As System.Windows.Forms.Button
     Friend WithEvents btnLast As System.Windows.Forms.Button
+    Friend WithEvents ViewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents HistoryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

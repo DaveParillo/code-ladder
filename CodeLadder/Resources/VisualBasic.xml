@@ -2,6 +2,7 @@
   xsi:noNamespaceSchemaLocation="GameML.xsd"
   version="1">
   <game name="CodeLadder">
+    <language>VisualBasic</language>
     <start>1</start>   
   </game>
 

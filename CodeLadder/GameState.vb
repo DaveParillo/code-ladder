@@ -1,4 +1,6 @@
 ﻿Imports System.IO
+Imports System.Runtime.Serialization
+Imports System.Text
 
 
 ''' <summary>
@@ -10,10 +12,17 @@
 Public Class GameState
     Private Const SAVE_FILE_DEFAULT As String = "DefaultSavedGame.dat"
 
-    Private _Score As Integer
-    Private _Puzzle As Integer
-    Private _CodeBin As String
+    <Serializable()> Private Structure _StateInfo
+        Dim score As Integer                      ' Current total score
+        Dim name As String                        ' Student name from the preferences dialog
+        Dim solved As List(Of Integer)            ' A list of Solved puzzle ID's
+        Dim puzzle As Integer                     ' Current unsolved puzzle
+        Dim codeBin As String                     ' compilation of all code the user has saved
+        Dim history As String                     ' timestamped snapshots of preferences and 'Evaluate!' changes 
+    End Structure
 
+    Private _state As _StateInfo
+    Private _history As New StringBuilder
     'Private pFileName As String = Path.Combine(My.Computer.FileSystem.SpecialDirectories.MyDocuments, pFileDefault)
     Private _FileName As String = SAVE_FILE_DEFAULT
 
@@ -26,11 +35,11 @@ Public Class GameState
     ''' Saves the current game data
     ''' </summary>
     Public Sub SaveGame()
-        Using writer As BinaryWriter = New BinaryWriter(File.Open(_FileName, IO.FileMode.Create))
-            writer.Write(_Score)
-            writer.Write(_Puzzle)
-            writer.Write(_CodeBin)
-        End Using
+        Dim formatter As New Formatters.Binary.BinaryFormatter
+        Dim ms As New MemoryStream
+        _state.history = _history.ToString
+        formatter.Serialize(ms, _state)
+        My.Computer.FileSystem.WriteAllBytes(_FileName, ms.GetBuffer, False)
     End Sub
 
     ''' <summary>
@@ -38,25 +47,31 @@ Public Class GameState
     ''' </summary>
     Public Sub LoadGame()
         If File.Exists(_FileName) Then
-            Using reader As BinaryReader = New BinaryReader(File.Open(_FileName, IO.FileMode.Open))
-                _Score = reader.ReadInt32()
-                _Puzzle = reader.ReadInt32()
-                _CodeBin = reader.ReadString()
-            End Using
+            Dim formatter As New Formatters.Binary.BinaryFormatter
+            Dim bytes As Byte() = My.Computer.FileSystem.ReadAllBytes(_FileName)
+            Dim sl As New List(Of String)
+
+            _state = DirectCast(formatter.Deserialize(New MemoryStream(bytes)), _StateInfo)
+            _history.Clear()
+            _history.Append(_state.history)
         Else
-            _Score = 0
-            _Puzzle = 0
-            _CodeBin = String.Empty
+            _state.score = 0
+            _state.name = String.Empty
+            _state.solved = New List(Of Integer)
+            _state.puzzle = 0
+            _state.codeBin = String.Empty
+            _state.history = String.Empty
         End If
+
     End Sub
 
 #Region "Class Proprties"
     Public Property Score() As Integer
         Get
-            Return _Score
+            Return _state.score
         End Get
         Set(ByVal value As Integer)
-            _Score = value
+            _state.score = value
         End Set
     End Property
 
@@ -65,10 +80,10 @@ Public Class GameState
     ''' </summary>
     Public Property PuzzleId() As Integer
         Get
-            Return _Puzzle
+            Return _state.puzzle
         End Get
         Set(ByVal value As Integer)
-            _Puzzle = value
+            _state.puzzle = value
         End Set
     End Property
 
@@ -79,10 +94,58 @@ Public Class GameState
     ''' <returns>The saved code bin contents</returns>
     Public Property CodeBin() As String
         Get
-            Return _CodeBin
+            Return _state.codeBin
         End Get
         Set(ByVal value As String)
-            _CodeBin = value
+            _state.codeBin = value
+        End Set
+    End Property
+
+    ''' <summary>
+    ''' The 'history' represents the incorrect code the user has previously supplied as answers to problems and other important items to archive
+    ''' </summary>
+    ''' <value>The text to save</value>
+    ''' <returns>The saved history contents</returns>
+    ''' <remarks>Each history item is time stamped.
+    '''          The history is not normally visible to regular users</remarks>
+    Public Property History() As String
+        Get
+            Return _history.ToString
+        End Get
+        Set(ByVal value As String)
+            _history.AppendLine(Now().ToString)
+            _history.AppendLine(value)
+        End Set
+    End Property
+
+    ''' <summary>
+    ''' The 'solved' property represents a list of all puzzles the user has already solved correctly.
+    ''' </summary>
+    ''' <returns>A list of puzzle ID's</returns>
+    Public ReadOnly Property Solved() As List(Of Integer)
+        Get
+            Return _state.solved
+        End Get
+    End Property
+
+    Public ReadOnly Property IsSolved(ByVal PuzzleID As Integer) As Boolean
+        Get
+            Return _state.solved.Contains(PuzzleID)
+        End Get
+    End Property
+
+    ''' <summary>
+    ''' The 'code bin' represents the valid code the user has previously supplied as answers to problems.
+    ''' </summary>
+    ''' <value>The text from the game code bin TextBox</value>
+    ''' <returns>The saved code bin contents</returns>
+    Public Property Name() As String
+        Get
+            Return _state.name
+        End Get
+        Set(ByVal value As String)
+            _state.name = value
+            Me.History = "Name set to " & value
         End Set
     End Property
 
@@ -91,6 +154,19 @@ Public Class GameState
     Sub Delete()
         If File.Exists(_FileName) Then
             File.Delete(_FileName)
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' Adds a puzzle ID to the list of solved puzzles
+    ''' </summary>
+    ''' <param name="puzzleID">The ID of the puzzle to add</param>
+    Sub AddSolvedPuzzle(ByVal puzzleID As Integer)
+        'If Not _solved.Contains(puzzleID) Then
+        '_solved.Add(puzzleID)
+        'End If
+        If Not _state.solved.Contains(puzzleID) Then
+            _state.solved.Add(puzzleID)
         End If
     End Sub
 

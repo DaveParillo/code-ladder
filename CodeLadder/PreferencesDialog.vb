@@ -8,6 +8,8 @@ Public Class PreferencesDialog
 
     Private _language As LANG
     Private _langNew As LANG
+    Private _name As String
+    Private Const MIN_NAME_LENGTH As Integer = 5
 
     Friend ReadOnly Property Language As LANG
         Get
@@ -20,8 +22,14 @@ Public Class PreferencesDialog
         If LanguageChanged() Then
             _language = _langNew
         End If
+        If txtName.Text.Length >= MIN_NAME_LENGTH Then
+            _name = txtName.Text
+            Me.Close()
+        Else
+            MessageBox.Show("Please enter at least " & MIN_NAME_LENGTH & " characters for your name.", _
+                            "Not enough letters in Name")
+        End If
 
-        Me.Close()
     End Sub
 
     Private Sub Cancel_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Cancel_Button.Click
@@ -31,6 +39,7 @@ Public Class PreferencesDialog
         Else
             radCSharp.Checked = True
         End If
+        txtName.Text = _name
         Me.Close()
     End Sub
 

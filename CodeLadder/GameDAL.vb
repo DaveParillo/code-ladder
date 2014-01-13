@@ -185,6 +185,8 @@ Friend Class GameDAL
     ''' </summary>
     ''' <returns>True is we found the last puzzle</returns>
     Public Function LastPuzzle() As Boolean
+        Dim foo As New Button With {.Name = "FOO"}
+
         _Puzzle = _Doc.SelectSingleNode("//puzzle[last()]")
         If _Puzzle IsNot Nothing Then
             Me.CollectResults()
@@ -200,16 +202,20 @@ Friend Class GameDAL
     ''' <returns>True is we found a next puzzle</returns>
     Public Function NextPuzzle() As Boolean
         Dim id As Integer = PuzzleId
+        Dim pTmp As System.Xml.XmlNode
+
         If _Puzzle Is Nothing Then
             Return False
         End If
+        pTmp = _Puzzle
         Do
-            If Not _Puzzle.NextSibling Is Nothing Then
-                _Puzzle = _Puzzle.NextSibling
+            If Not pTmp.NextSibling Is Nothing Then
+                pTmp = pTmp.NextSibling
             End If
-        Loop Until _Puzzle.Name = "puzzle"
+        Loop Until pTmp.Name = "puzzle" Or pTmp.NextSibling Is Nothing
 
-        If _Puzzle IsNot Nothing AndAlso PuzzleId > id Then
+        If pTmp.Name = "puzzle" AndAlso Not pTmp.Equals(_Puzzle) Then
+            _Puzzle = pTmp
             Me.CollectResults()
             Return True
         Else
@@ -223,23 +229,26 @@ Friend Class GameDAL
     ''' <returns>True is we found a previous puzzle</returns>
     Public Function PreviousPuzzle() As Boolean
         Dim id As Integer = PuzzleId
+        Dim pTmp As System.Xml.XmlNode
+
         If _Puzzle Is Nothing Then
             Return False
         End If
+        pTmp = _Puzzle
         Do
-            If Not _Puzzle.PreviousSibling Is Nothing Then
-                _Puzzle = _Puzzle.PreviousSibling
+            If Not pTmp.PreviousSibling Is Nothing Then
+                pTmp = pTmp.PreviousSibling
             End If
-        Loop Until _Puzzle.Name = "puzzle"
+        Loop Until pTmp.Name = "puzzle" Or pTmp.PreviousSibling Is Nothing
 
-        If _Puzzle IsNot Nothing AndAlso PuzzleId < id Then
+        If pTmp.Name = "puzzle" AndAlso Not pTmp.Equals(_Puzzle) Then
+            _Puzzle = pTmp
             Me.CollectResults()
             Return True
         Else
             Return False
         End If
     End Function
-
 
     ''' <summary>
     ''' Checks if the current node name matches a string

@@ -85,6 +85,12 @@
     <Compile Include="CompilerVisualBasic.vb" />
     <Compile Include="CompilerCSharp.vb" />
     <Compile Include="GameState.vb" />
+    <Compile Include="History.Designer.vb">
+      <DependentUpon>History.vb</DependentUpon>
+    </Compile>
+    <Compile Include="History.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="PreferencesDialog.Designer.vb">
       <DependentUpon>PreferencesDialog.vb</DependentUpon>
     </Compile>
@@ -119,6 +125,9 @@
   <ItemGroup>
     <EmbeddedResource Include="CodeLadder.resx">
       <DependentUpon>CodeLadder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="History.resx">
+      <DependentUpon>History.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

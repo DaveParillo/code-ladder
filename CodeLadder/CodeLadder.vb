@@ -3,9 +3,10 @@
 ''' The main game controller
 ''' </summary>
 Public Class CodeLadder
+    Private Const GAME_NAME As String = "Code Ladder"
     Private _prefs As New PreferencesDialog
     Private _game As GameDAL
-    Private _state As GameState
+    Private _state As New GameState
 
 
 #Region "Event Handlers"
@@ -32,6 +33,7 @@ Public Class CodeLadder
                 lblTalk.Text = c.WriteErrors()
             Else
                 isAnswerOK = Evaluate(actual, r)
+                _state.History = Me.txtCode.Text
                 ' Stop evaluating on the first unexpected result
                 If Not isAnswerOK Then
                     ShowYouFailed(actual, r)
@@ -57,44 +59,57 @@ Public Class CodeLadder
         If _game.NextPuzzle() Then
             lblDescription.Text = "Problem #" & _game.PuzzleId _
                                 & ": " & _game.PuzzleDescription
-
+            _state.History = "Move to puzzle #" & _game.PuzzleId
             txtCode.Text = _game.PuzzleCode
         Else
             MessageBox.Show("You made it to the end!")
-            txtCode.Clear()
-            lblDescription.Text = String.Empty
         End If
-        lblTalk.Text = String.Empty
+        UpdateTalkText()
+
     End Sub
 
+    ''' <summary>
+    ''' Load the previous puzzle in the ladder
+    ''' </summary>
     Private Sub btnPrev_Click() Handles btnPrev.Click
         If _game.PreviousPuzzle() Then
             lblDescription.Text = "Problem #" & _game.PuzzleId _
                                 & ": " & _game.PuzzleDescription
-
+            _state.History = "Move to puzzle #" & _game.PuzzleId
             txtCode.Text = _game.PuzzleCode
+        Else
+            MessageBox.Show("Can't navigate before the first puzzle set.")
         End If
-        lblTalk.Text = String.Empty
+        UpdateTalkText()
     End Sub
 
     Private Sub btnFirst_Click() Handles btnFirst.Click
         If _game.FirstPuzzle() Then
             lblDescription.Text = "Problem #" & _game.PuzzleId _
                                 & ": " & _game.PuzzleDescription
-
+            _state.History = "Move to puzzle #" & _game.PuzzleId
             txtCode.Text = _game.PuzzleCode
         End If
-        lblTalk.Text = String.Empty
+        UpdateTalkText()
     End Sub
 
     Private Sub btnLast_Click() Handles btnLast.Click
         If _game.LastPuzzle() Then
             lblDescription.Text = "Problem #" & _game.PuzzleId _
                                 & ": " & _game.PuzzleDescription
-
+            _state.History = "Move to puzzle #" & _game.PuzzleId
             txtCode.Text = _game.PuzzleCode
         End If
-        lblTalk.Text = String.Empty
+        UpdateTalkText()
+    End Sub
+
+    ' Let the user know they have already solved this one.
+    Private Sub UpdateTalkText()
+        If _state.Solved.Contains(_game.PuzzleId) Then
+            lblTalk.Text = "You solved this already."
+        Else
+            lblTalk.Text = String.Empty
+        End If
     End Sub
 #End Region
 
@@ -103,8 +118,9 @@ Public Class CodeLadder
     ''' </summary>
     Private Sub CodeLadder_Load() Handles MyBase.Load
         _game = New GameDAL(_prefs.Language)
-        _state = New GameState
         lblScore.Text = _state.Score.ToString
+        _prefs.txtName.Text = _state.Name
+        Me.Text = GAME_NAME & ": " & _state.Name
         _game.LoadGame(_state.PuzzleId)
         txtCodeBin.Text = _state.CodeBin
         lblTotal.Text = _game.Count.ToString
@@ -114,6 +130,7 @@ Public Class CodeLadder
         txtCode.Text = _game.PuzzleCode
 
     End Sub
+#Region "Toolstrip Menu Items"
 
     ''' <summary>
     ''' Edit preferences and update game with selections
@@ -125,8 +142,10 @@ Public Class CodeLadder
         If _prefs.DialogResult = DialogResult.OK Then
             If l <> _prefs.Language Then
                 _state.Delete()
-                CodeLadder_Load()
             End If
+            _state.Name = _prefs.txtName.Text
+            CodeLadder_Load()
+            _state.SaveGame()
         End If
     End Sub
 
@@ -148,6 +167,17 @@ Public Class CodeLadder
     Private Sub ExitToolStripMenuItem_Click() Handles ExitToolStripMenuItem.Click
         Me.Close()
     End Sub
+
+    ''' <summary>
+    ''' Display the saved game state history
+    ''' </summary>
+    Private Sub HistoryToolStripMenuItem_Click() Handles HistoryToolStripMenuItem.Click
+        Dim h As New History
+        h.UpdateHistory(_state.History)
+        h.ShowDialog()
+    End Sub
+
+#End Region
 
 #End Region
 
@@ -176,9 +206,12 @@ Public Class CodeLadder
     ''' </summary>
     Private Sub ShowYouPassed()
         lblTalk.Text = "You passed the challenge!" & vbNewLine
-        ' Update the score
-        _state.Score += 1
-        lblScore.Text = _state.Score.ToString
+        ' Update the score, if unsolved
+        If Not _state.Solved.Contains(_game.PuzzleId) Then
+            _state.Score += 1
+            lblScore.Text = _state.Score.ToString
+            _state.AddSolvedPuzzle(_game.PuzzleId)
+        End If
 
         'update puzzle id
         _state.PuzzleId = _game.PuzzleId
@@ -256,6 +289,8 @@ Public Class CodeLadder
     Private Function EvaluateControlProperty(ByVal Actual As Object, ByVal Expected As Results) As Boolean
         Dim isAnswerOK As Boolean = False
         Select Case Expected.ObjectProperty
+            Case "Checked"
+                isAnswerOK = (Expected.Value = Actual.Checked)
             Case "Text"
                 isAnswerOK = (Expected.Value = Actual.Text)
             Case "Tag"
@@ -282,6 +317,5 @@ Public Class CodeLadder
     End Function
 
 #End Region
-
 
 End Class
