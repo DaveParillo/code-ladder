@@ -66,6 +66,11 @@ Public Class GameState
     End Sub
 
 #Region "Class Proprties"
+    ''' <summary>
+    ''' Total score. Essentially a progress indicator.
+    ''' </summary>
+    ''' <value>The new score</value>
+    ''' <returns>The score</returns>
     Public Property Score() As Integer
         Get
             Return _state.score
@@ -113,8 +118,7 @@ Public Class GameState
             Return _history.ToString
         End Get
         Set(ByVal value As String)
-            _history.AppendLine(Now().ToString)
-            _history.AppendLine(value)
+            _history.AppendLine(Now().ToString & vbTab & value)
         End Set
     End Property
 
@@ -128,6 +132,12 @@ Public Class GameState
         End Get
     End Property
 
+    ''' <summary>
+    ''' Check if a particular puzzle is in the list of already solved problems
+    ''' </summary>
+    ''' <param name="PuzzleID">The puzzle to search for</param>
+    ''' <value></value>
+    ''' <returns>True if PuzzleID is in the list of solved problems</returns>
     Public ReadOnly Property IsSolved(ByVal PuzzleID As Integer) As Boolean
         Get
             Return _state.solved.Contains(PuzzleID)
@@ -151,10 +161,15 @@ Public Class GameState
 
 #End Region
 
+    ''' <summary>
+    ''' Delete the saved game file and initialize state info.
+    ''' </summary>
     Sub Delete()
         If File.Exists(_FileName) Then
             File.Delete(_FileName)
         End If
+        Me.LoadGame()
+
     End Sub
 
     ''' <summary>
