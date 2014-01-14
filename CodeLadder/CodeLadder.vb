@@ -126,6 +126,7 @@ Public Class CodeLadder
         lblTotal.Text = _game.Count.ToString
         lblDescription.Text = "Problem #" & _game.PuzzleId _
                                 & ": " & _game.PuzzleDescription
+        _state.History = "Load at puzzle #" & _game.PuzzleId
         lblTalk.Text = String.Empty
         txtCode.Text = _game.PuzzleCode
 
@@ -157,6 +158,7 @@ Public Class CodeLadder
                                    "This will delete your saved results and restart from the beginning.", "Are you sure?", _
                                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) Then
             _state.Delete()
+            _state.History = "User initiated new game."
             CodeLadder_Load()
         End If
     End Sub
@@ -165,6 +167,7 @@ Public Class CodeLadder
     ''' Exit the application
     ''' </summary>
     Private Sub ExitToolStripMenuItem_Click() Handles ExitToolStripMenuItem.Click
+        _state.History = "Exit."
         Me.Close()
     End Sub
 
