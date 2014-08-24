@@ -51,6 +51,7 @@ Public Class CompilerVisualBasic : Inherits Compiler
             _Code.AppendLine("Option Strict On")
             _Code.AppendLine("Imports System.Windows.Forms")
             _Code.AppendLine("Imports System.Drawing")
+            _Code.AppendLine("Imports Microsoft.VisualBasic")
             _Code.AppendLine("Imports Microsoft.VisualBasic.Constants")
             _Code.AppendLine("Imports Microsoft.VisualBasic.Information")
             _Code.AppendLine("Imports Microsoft.VisualBasic.Strings")

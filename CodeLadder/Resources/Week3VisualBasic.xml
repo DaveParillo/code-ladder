@@ -1,0 +1,478 @@
+<GameML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:noNamespaceSchemaLocation="GameML.xsd"
+  version="1">
+  <game name="CodeLadder">
+    <language>VisualBasic</language>
+    <level>3</level>   
+    <start>1</start>   
+  </game>
+
+  <!--
+   VB Chapter 3
+   -->
+  <puzzle>
+    <description>This function should return the value of 'HelloName' plus a mystery String</description>
+    <code entryPoint="HelloWorld">
+      Public Function HelloWorld(ByVal HelloName As String) As String
+      End Function
+    </code>
+    <results>
+      <expected value="Hello, Bob!">
+        <parameter value="Bob" type="String" />
+      </expected>
+      <expected value="Hello, Everyone!">
+        <parameter value="Everyone" type="String" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>This function should return the value of HelloName plus a mystery String</description>
+    <code entryPoint="ShowGreeting">
+      Public Function ShowGreeting (ByVal HelloName As String) As String
+      End Function
+    </code>
+    <results>
+      <expected value="Hello Becky.">
+        <parameter value="Becky" type="String" />
+      </expected>
+      <expected value="Hello Charlie.">
+        <parameter value="Charlie" type="String" />
+      </expected>
+      <expected value="Hello Everyone.">
+        <parameter value="Everyone" type="String" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>This function should concatenate its arguments to show a date string</description>
+    <code entryPoint="ShowDate">
+      Public Function ShowDate (ByVal DayOfWeek As String, ByVal Month As String, ByVal Day As String, ByVal Year As String) As String
+      End Function
+    </code>
+    <results>
+      <expected value="December 3, 2010 was a Friday." >
+        <parameter value="Friday" type="String" />
+        <parameter value="December" type="String" />
+        <parameter value="3" type="String" />
+        <parameter value="2010" type="String" />
+      </expected>
+      <expected value="January 1, 1970 was a Thursday." >
+        <parameter value="Thursday" type="String" />
+        <parameter value="January" type="String" />
+        <parameter value="1" type="String" />
+        <parameter value="1970" type="String" />
+      </expected>
+      <expected value="December 10, 1815 was a Sunday." >
+        <parameter value="Sunday" type="String" />
+        <parameter value="December" type="String" />
+        <parameter value="10" type="String" />
+        <parameter value="1815" type="String" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>This function should return a button, Show Date, with a keyboard shortcut defined</description>
+    <code entryPoint="MakeShortcut">
+      Public Function MakeShortcut() As Button
+      End Function
+    </code>
+    <results>
+      <expected property="Text" value="Show &amp;Date" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Fix this broken function</description>
+    <code entryPoint="GetTwentyFive">
+      Public Function GetTwentyFive() As Integer
+        Dim intValue As Integer = -1
+        Dim intValue As Integer = 25
+        Return intValue
+      End Function
+    </code>
+    <results>
+      <expected value="25"  type="Integer"/>
+    </results>
+  </puzzle>
+  
+  <puzzle>
+    <description>Create a function that negates a provided value</description>
+    <code>
+      Public Function Puzzle(ByVal intValue As Integer) As Integer
+      End Function
+    </code>
+    <results>
+      <expected value="-1" type="Integer">
+        <parameter value="1" type="Integer" />
+      </expected>
+      <expected value="3" type="Integer">
+        <parameter value="-3" type="Integer" />
+      </expected>
+      <expected value="-17" type="Integer">
+        <parameter value="17" type="Integer" />
+      </expected>
+      <expected value="65656" type="Integer">
+        <parameter value="-65656" type="Integer" />
+      </expected>
+      <expected value="8192" type="Integer">
+        <parameter value="-8192" type="Integer" />
+      </expected>
+    </results>
+  </puzzle>
+  
+  <puzzle>
+    <description>Create a function that returns the sum of two values</description>
+    <code>
+      Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Integer
+      End Function
+    </code>
+    <results>
+      <expected value="0" type="Integer">
+        <parameter value="1" type="Integer" />
+        <parameter value="-1" type="Integer" />
+      </expected>
+      <expected value="40" type="Integer">
+        <parameter value="17" type="Integer" />
+        <parameter value="23" type="Integer" />
+      </expected>
+      <expected value="6" type="Integer">
+        <parameter value="-17" type="Integer" />
+        <parameter value="23" type="Integer" />
+      </expected>
+      <expected value="-5" type="Integer">
+        <parameter value="-3" type="Integer" />
+        <parameter value="-2" type="Integer" />
+      </expected>
+      <expected value="131312" type="Integer">
+        <parameter value="65656" type="Integer" />
+        <parameter value="65656" type="Integer" />
+      </expected>
+      <expected value="1040384" type="Integer">
+        <parameter value="1048576" type="Integer" />
+        <parameter value="-8192" type="Integer" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Create a function that returns the product of two values</description>
+    <code>
+      Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Long
+      End Function
+    </code>
+    <results>
+      <expected value="-1" type="Long">
+        <parameter value="1" type="Integer" />
+        <parameter value="-1" type="Integer" />
+      </expected>
+      <expected value="391" type="Long">
+        <parameter value="17" type="Integer" />
+        <parameter value="23" type="Integer" />
+      </expected>
+      <expected value="-391" type="Long">
+        <parameter value="-17" type="Integer" />
+        <parameter value="23" type="Integer" />
+      </expected>
+      <expected value="6" type="Long">
+        <parameter value="-3" type="Integer" />
+        <parameter value="-2" type="Integer" />
+      </expected>
+      <expected value="277422336" type="Long">
+        <parameter value="16656" type="Integer" />
+        <parameter value="16656" type="Integer" />
+      </expected>
+      <expected value="-8388608" type="Long">
+        <parameter value="1024" type="Integer" />
+        <parameter value="-8192" type="Integer" />
+      </expected>
+      
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Create a function that returns the quotient of two values</description>
+    <code>
+      Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Double
+      End Function
+    </code>
+    <results>
+      <expected value="-1" type="Double">
+        <parameter value="1" type="Integer" />
+        <parameter value="-1" type="Integer" />
+      </expected>
+      <expected value="60" type="Double">
+        <parameter value="3600" type="Integer" />
+        <parameter value="60" type="Integer" />
+      </expected>
+      <expected value="2.5" type="Double">
+        <parameter value="25" type="Integer" />
+        <parameter value="10" type="Integer" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Create a function that returns the remainder of a division operation</description>
+    <code>
+      Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Integer
+      End Function
+    </code>
+    <results>
+      <expected value="0" type="Integer">
+        <parameter value="1" type="Integer" />
+        <parameter value="-1" type="Integer" />
+      </expected>
+      <expected value="10" type="Integer">
+        <parameter value="3610" type="Integer" />
+        <parameter value="60" type="Integer" />
+      </expected>
+      <expected value="60" type="Integer">
+        <parameter value="60" type="Integer" />
+        <parameter value="3600" type="Integer" />
+      </expected>
+      <expected value="4" type="Integer">
+        <parameter value="667612" type="Integer" />
+        <parameter value="-12" type="Integer" />
+      </expected>
+      <expected value="54"  type="Integer">
+        <parameter value="174" type="Integer" />
+        <parameter value="60" type="Integer" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Create a function that returns the quotient of an integer division operation</description>
+    <code>
+      Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Integer
+      End Function
+    </code>
+    <results>
+      <expected value="2" type="Integer">
+        <parameter value="174" type="Integer" />
+        <parameter value="60" type="Integer" />
+      </expected>
+      <expected value="15"  type="Integer">
+        <parameter value="900" type="Integer" />
+        <parameter value="60" type="Integer" />
+      </expected>
+      <expected value="42"  type="Integer">
+        <parameter value="900" type="Integer" />
+        <parameter value="21" type="Integer" />
+      </expected>
+      <expected value="-5"  type="Integer">
+        <parameter value="-42" type="Integer" />
+        <parameter value="8" type="Integer" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Create a function that returns the results of exponentiation operations</description>
+    <code>
+      Public Function Puzzle(ByVal Base As Integer, ByVal Exponent As Integer) As Double
+      End Function
+    </code>
+    <results>
+      <expected value="8" type="Double">
+        <parameter value="2" type="Integer" />
+        <parameter value="3" type="Integer" />
+      </expected>
+      <expected value="1024" type="Double">
+        <parameter value="2" type="Integer" />
+        <parameter value="10" type="Integer" />
+      </expected>
+      <expected value="256" type="Double">
+        <parameter value="-4" type="Integer" />
+        <parameter value="4" type="Integer" />
+      </expected>
+      <expected value="-64" type="Double">
+        <parameter value="-4" type="Integer" />
+        <parameter value="3" type="Integer" />
+      </expected>
+      <expected value="1" type="Double">
+        <parameter value="3" type="Integer" />
+        <parameter value="0" type="Integer" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Create a function that first adds 'X' and 'Base', then raises the sum to an exponent and returns the results</description>
+    <code>
+      Public Function Puzzle(ByVal X As Integer, ByVal Base As Integer, ByVal Exponent As Integer) As Double
+      End Function
+    </code>
+    <results>
+      <expected value="27" type="Double">
+        <parameter value="1" type="Integer" />
+        <parameter value="2" type="Integer" />
+        <parameter value="3" type="Integer" />
+      </expected>
+      <expected value="-8" type="Double">
+        <parameter value="4" type="Integer" />
+        <parameter value="-6" type="Integer" />
+        <parameter value="3" type="Integer" />
+      </expected>
+      <expected value="1024" type="Double">
+        <parameter value="16" type="Integer" />
+        <parameter value="16" type="Integer" />
+        <parameter value="2" type="Integer" />
+      </expected>
+      <expected value="1024" type="Double">
+        <parameter value="-10" type="Integer" />
+        <parameter value="8" type="Integer" />
+        <parameter value="10" type="Integer" />
+      </expected>
+      <expected value="-1024" type="Double">
+        <parameter value="-10" type="Integer" />
+        <parameter value="6" type="Integer" />
+        <parameter value="5" type="Integer" />
+      </expected>
+    </results>
+  </puzzle>
+  
+  <puzzle>
+    <description>Create a function that converts a string to a number and returns the results</description>
+    <code>
+      Public Function Puzzle(ByVal X As String) As Integer
+      End Function
+    </code>
+    <results>
+      <expected value="2" type="Integer">
+        <parameter value="2" type="String" />
+      </expected>
+      <expected value="-42" type="Integer">
+        <parameter value="-42.0" type="String" />
+      </expected>
+      <expected value="1776" type="Integer">
+        <parameter value="$1,776" type="String" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Create a function that converts a string to a number and returns the results</description>
+    <code>
+      Public Function Puzzle(ByVal X As String) As Decimal
+      End Function
+    </code>
+    <results>
+      <expected value="2.123456" type="Decimal">
+        <parameter value="2.123456" type="String" />
+      </expected>
+      <expected value="-42" type="Decimal">
+        <parameter value="-42.0" type="String" />
+      </expected>
+      <expected value="1812" type="Decimal">
+        <parameter value="$1,812" type="String" />
+      </expected>
+    </results>
+  </puzzle>
+  
+  <puzzle>
+    <description>Create a function that converts a number to a string and returns the results</description>
+    <code>
+      Public Function Puzzle(ByVal X As Integer) As String
+      End Function
+    </code>
+    <results>
+      <expected value="2" type="String">
+        <parameter value="2" type="Integer" />
+      </expected>
+      <expected value="-11" type="String">
+        <parameter value="-11" type="Integer" />
+      </expected>
+      <expected value="1776" type="String">
+        <parameter value="1776" type="Integer" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Create a function that converts a number to a string and returns results in currency format</description>
+    <code>
+      Public Function Puzzle(ByVal X As Decimal) As String
+      End Function
+    </code>
+    <results>
+      <expected value="$2,345.67" type="String">
+        <parameter value="2345.67" type="Decimal" />
+      </expected>
+      <expected value="($6,543.20)" type="String">
+        <parameter value="-6543.2" type="Decimal" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Create a function that converts a number to a string and returns results in percent format</description>
+    <code>
+      Public Function Puzzle(ByVal X As Decimal) As String
+      End Function
+    </code>
+    <results>
+      <expected value="23.40 %" type="String">
+        <parameter value=".234" type="Decimal" />
+      </expected>
+      <expected value="-65.43 %" type="String">
+        <parameter value="-.6543" type="Decimal" />
+      </expected>
+      <expected value="177,600.00 %" type="String">
+        <parameter value="1776" type="Decimal" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Create a function that converts a number to a string and returns results in exponential format to 3 places.</description>
+    <code>
+      Public Function Puzzle(ByVal X As Double) As String
+      End Function
+    </code>
+    <results>
+      <expected value="2.340e-001" type="String">
+        <parameter value="0.234" type="Double" />
+      </expected>
+      <expected value="1.235e+005" type="String">
+        <parameter value="123456" type="Double" />
+      </expected>
+    </results>
+  </puzzle>
+  <puzzle>
+    <description>Create a function that converts a number to a string and returns formatted results</description>
+    <code>
+      Public Function Puzzle(ByVal X As Date) As String
+      End Function
+    </code>
+    <results>
+      <expected value="Friday, December 03, 2010" type="String">
+        <parameter value="#12/3/2010#" type="Date" />
+      </expected>
+      <expected value="Thursday, July 04, 1776" type="String">
+        <parameter value="#7/4/1776#" type="Date" />
+      </expected>
+      <expected value="Sunday, December 10, 1815" type="String">
+        <parameter value="#12/10/1815#" type="Date" />
+      </expected>  
+    </results>
+  </puzzle>
+
+  <!--
+  
+  TODO:
+    
+    text boxes
+    exception handling
+    group boxes
+    load event
+    variable scope  - class level variables
+  
+  
+  -->
+
+
+</GameML>

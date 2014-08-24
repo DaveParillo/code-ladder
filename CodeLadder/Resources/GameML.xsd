@@ -13,6 +13,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="language"/>
+        <xs:element ref="level"/>
         <xs:element ref="start"/>
       </xs:sequence>
       <xs:attribute name="name" use="required" type="xs:NCName"/>
@@ -27,6 +28,7 @@
     </xs:simpleType>
   </xs:element>
   <xs:element name="start" type="xs:integer"/>
+  <xs:element name="level" type="xs:integer"/>
   <xs:element name="puzzle">
     <xs:complexType>
       <xs:sequence>
@@ -34,7 +36,6 @@
         <xs:element ref="code"/>
         <xs:element ref="results"/>
       </xs:sequence>
-      <xs:attribute name="id" use="required" type="xs:integer"/>
       <xs:attribute name="level" use="optional" type="xs:integer"/>
     </xs:complexType>
   </xs:element>

@@ -7,7 +7,7 @@ Imports System.Reflection
 ''' </summary>
 Friend Class GameDAL
     Private _Doc As XmlDocument
-    Private _Level As Integer
+    Private _Location As Integer
     Private _Puzzle As XmlNode
     Private _Code As XmlNode
     Private _Results As XmlNode
@@ -20,15 +20,27 @@ Friend Class GameDAL
     ''' <summary>
     ''' Load the Game file of the provided language
     ''' </summary>
-    Friend Sub New(ByVal InitialLanguage As PreferencesDialog.LANG)
+    Friend Sub New(ByVal InitialLanguage As PreferencesDialog.LANG, ByVal InitialLevel As PreferencesDialog.LEVEL)
         _Doc = New XmlDocument
         If InitialLanguage = PreferencesDialog.LANG.VISUAL_BASIC Then
-            _Doc.LoadXml(My.Resources.VisualBasic)
+            Select Case InitialLevel
+                Case PreferencesDialog.LEVEL.LEVEL_1
+                    _Doc.LoadXml(My.Resources.Week1VisualBasic)
+                Case PreferencesDialog.LEVEL.LEVEL_2
+                    _Doc.LoadXml(My.Resources.Week2VisualBasic)
+                Case PreferencesDialog.LEVEL.LEVEL_3
+                    _Doc.LoadXml(My.Resources.Week3VisualBasic)
+                Case PreferencesDialog.LEVEL.LEVEL_4
+                    _Doc.LoadXml(My.Resources.Week4VisualBasic)
+                Case PreferencesDialog.LEVEL.LEVEL_5
+                    _Doc.LoadXml(My.Resources.Week5VisualBasic)
+                Case Else
+                    _Doc.LoadXml(My.Resources.Week1VisualBasic)
+            End Select
+
         Else
             _Doc.LoadXml(My.Resources.CSharp)
         End If
-
-        _Level = 1
     End Sub
 
 #End Region
@@ -118,11 +130,14 @@ Friend Class GameDAL
     ''' Used to initialize a new game.
     ''' Reads in default or saved data from the "game" element
     ''' </summary>
-    Public Sub LoadGame(Optional ByVal StartId As Integer = 0)
-        If StartId > 0 Then
-            _Puzzle = _Doc.SelectSingleNode("//puzzle[@id='" _
-                                                  & StartId.ToString & "']")
-            Me.NextPuzzle()
+    Public Sub LoadGame(Optional ByVal WhichPuzzle As Integer = 0)
+        If WhichPuzzle > 0 Then
+            _Puzzle = _Doc.SelectSingleNode("/GameML/puzzle[position()=" _
+                                                  & WhichPuzzle.ToString & "]")
+            If Not _Puzzle Is Nothing Then
+                _Location = Val(WhichPuzzle)
+                Me.NextPuzzle()
+            End If
         Else
             LoadNewGame()
         End If
@@ -140,15 +155,17 @@ Friend Class GameDAL
         e = _Doc.FirstChild.ChildNodes.Item(0).GetEnumerator
         While e.MoveNext()
             If IsNodeName("start", e) Then
-                _Puzzle = _Doc.SelectSingleNode("//puzzle[@id='" _
-                                                  & e.Current.InnerText & "']")
-                Me.CollectResults()
+                _Location = Val(e.Current.InnerText)
+                _Puzzle = _Doc.SelectSingleNode("/GameML/puzzle[position()=" _
+                                                  & e.Current.InnerText & "]")
             End If
         End While
         If _Puzzle Is Nothing Then
             If Not Me.FirstPuzzle() Then
                 MessageBox.Show("Error starting game!")
             End If
+        Else
+            Me.CollectResults()
         End If
     End Sub
 
@@ -173,6 +190,7 @@ Friend Class GameDAL
     Public Function FirstPuzzle() As Boolean
         _Puzzle = _Doc.SelectSingleNode("(//puzzle)[1]")
         If _Puzzle IsNot Nothing Then
+            _Location = 1
             Me.CollectResults()
             Return True
         Else
@@ -185,10 +203,9 @@ Friend Class GameDAL
     ''' </summary>
     ''' <returns>True is we found the last puzzle</returns>
     Public Function LastPuzzle() As Boolean
-        Dim foo As New Button With {.Name = "FOO"}
-
         _Puzzle = _Doc.SelectSingleNode("//puzzle[last()]")
         If _Puzzle IsNot Nothing Then
+            _Location = Me.Count
             Me.CollectResults()
             Return True
         Else
@@ -201,7 +218,7 @@ Friend Class GameDAL
     ''' </summary>
     ''' <returns>True is we found a next puzzle</returns>
     Public Function NextPuzzle() As Boolean
-        Dim id As Integer = PuzzleId
+        Dim id As Integer = Location
         Dim pTmp As System.Xml.XmlNode
 
         If _Puzzle Is Nothing Then
@@ -216,6 +233,7 @@ Friend Class GameDAL
 
         If pTmp.Name = "puzzle" AndAlso Not pTmp.Equals(_Puzzle) Then
             _Puzzle = pTmp
+            _Location += 1
             Me.CollectResults()
             Return True
         Else
@@ -228,7 +246,7 @@ Friend Class GameDAL
     ''' </summary>
     ''' <returns>True is we found a previous puzzle</returns>
     Public Function PreviousPuzzle() As Boolean
-        Dim id As Integer = PuzzleId
+        Dim id As Integer = Location
         Dim pTmp As System.Xml.XmlNode
 
         If _Puzzle Is Nothing Then
@@ -243,6 +261,7 @@ Friend Class GameDAL
 
         If pTmp.Name = "puzzle" AndAlso Not pTmp.Equals(_Puzzle) Then
             _Puzzle = pTmp
+            _Location -= 1
             Me.CollectResults()
             Return True
         Else
@@ -282,15 +301,9 @@ Friend Class GameDAL
 #Region "Class Proprties"
 
 
-    Public ReadOnly Property PuzzleId() As Integer
+    Public ReadOnly Property Location() As Integer
         Get
-            Dim i As Integer
-            If Integer.TryParse(_Puzzle.Attributes.GetNamedItem("id").Value, i) Then
-                Return i
-            Else
-                MessageBox.Show("No puzzle with ID = " & _Puzzle.Attributes.GetNamedItem("id").Value)
-            End If
-            Return 0
+            Return _Location
         End Get
     End Property
 
@@ -305,10 +318,10 @@ Friend Class GameDAL
             e = _Puzzle.ChildNodes.GetEnumerator
             While e.MoveNext()
                 If IsNodeName("description", e) Then
-                    desc += e.Current.InnerText & vbNewLine & vbNewLine
+                    desc &= e.Current.InnerText
                 End If
             End While
-
+            desc = Replace(Replace(desc, vbNewLine, String.Empty), "  ", String.Empty)
             Return desc
         End Get
     End Property
@@ -325,7 +338,7 @@ Friend Class GameDAL
             e = _Puzzle.ChildNodes.GetEnumerator
             While e.MoveNext()
                 If IsNodeName("code", e) Then
-                    code = e.Current.InnerText & vbNewLine & vbNewLine
+                    code = Replace(e.Current.InnerText, vbNewLine, String.Empty, 1, 1)
                     _Code = e.Current
                 End If
             End While

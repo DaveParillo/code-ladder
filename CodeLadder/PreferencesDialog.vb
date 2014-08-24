@@ -6,10 +6,21 @@ Public Class PreferencesDialog
         C_SHARP
     End Enum
 
+    Friend Enum LEVEL As Integer
+        LEVEL_1
+        LEVEL_2
+        LEVEL_3
+        LEVEL_4
+        LEVEL_5
+    End Enum
+
     Private _language As LANG
     Private _langNew As LANG
     Private _name As String
-    Private Const MIN_NAME_LENGTH As Integer = 5
+    Private _level As LEVEL
+    Private _levelNew As LEVEL
+
+    Private Const MIN_NAME_LENGTH As Integer = 4
 
     Friend ReadOnly Property Language As LANG
         Get
@@ -17,11 +28,25 @@ Public Class PreferencesDialog
         End Get
     End Property
 
+    Friend Property Difficulty As LEVEL
+        Get
+            If cboLevel.SelectedIndex < 0 Then
+                cboLevel.SelectedIndex = _level
+            End If
+            Return _level
+        End Get
+        Set(value As LEVEL)
+            _level = value
+            cboLevel.SelectedIndex = _level
+        End Set
+    End Property
+
     Private Sub OK_Button_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK_Button.Click
         Me.DialogResult = System.Windows.Forms.DialogResult.OK
         If LanguageChanged() Then
             _language = _langNew
         End If
+        _level = cboLevel.SelectedIndex
         If txtName.Text.Length >= MIN_NAME_LENGTH Then
             _name = txtName.Text
             Me.Close()
@@ -39,6 +64,7 @@ Public Class PreferencesDialog
         Else
             radCSharp.Checked = True
         End If
+        cboLevel.SelectedIndex = _level
         txtName.Text = _name
         Me.Close()
     End Sub

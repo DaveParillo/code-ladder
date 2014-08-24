@@ -117,6 +117,7 @@ Namespace My.Resources
         '''  xsi:noNamespaceSchemaLocation=&quot;GameML.xsd&quot;
         '''  version=&quot;1&quot;&gt;
         '''  &lt;game name=&quot;CodeLadder&quot;&gt;
+        '''    &lt;language&gt;VisualBasic&lt;/language&gt;
         '''    &lt;start&gt;1&lt;/start&gt;   
         '''  &lt;/game&gt;
         '''
@@ -129,14 +130,137 @@ Namespace My.Resources
         '''      Public Function Puzzle() As Integer
         '''        Dim *intStrange As Integer = 3
         '''        Return *intStrange
-        '''      End Function
-        '''    &lt;/code&gt;
-        '''    &lt;results&gt;
-        ''' [rest of string was truncated]&quot;;.
+        '''      End  [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property VisualBasic() As String
             Get
                 Return ResourceManager.GetString("VisualBasic", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to &lt;GameML xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+        '''  xsi:noNamespaceSchemaLocation=&quot;GameML.xsd&quot;
+        '''  version=&quot;1&quot;&gt;
+        '''  &lt;game name=&quot;CodeLadder&quot;&gt;
+        '''    &lt;language&gt;VisualBasic&lt;/language&gt;
+        '''    &lt;start&gt;1&lt;/start&gt;
+        '''  &lt;/game&gt;
+        '''
+        '''  &lt;!--
+        '''   VB Chapter 1
+        '''   --&gt;
+        '''  &lt;puzzle id=&quot;1&quot; level=&quot;1&quot;&gt;
+        '''    &lt;description&gt;Fix the variable declaration in this broken function.&lt;/description&gt;
+        '''    &lt;code&gt;
+        '''      Public Function Puzzle() As Integer
+        '''        Dim *intStrange As Integer = 3
+        '''        Return *intStrange
+        '''      End Funct [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property Week1VisualBasic() As String
+            Get
+                Return ResourceManager.GetString("Week1VisualBasic", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to &lt;GameML xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
+        '''  xsi:noNamespaceSchemaLocation=&quot;GameML.xsd&quot;
+        '''  version=&quot;1&quot;&gt;
+        '''  &lt;game name=&quot;CodeLadder&quot;&gt;
+        '''    &lt;language&gt;VisualBasic&lt;/language&gt;
+        '''    &lt;start&gt;1&lt;/start&gt;   
+        '''  &lt;/game&gt;
+        '''
+        '''  &lt;puzzle id=&quot;1&quot; level=&quot;2&quot;&gt;
+        '''    &lt;description&gt;Create a function which returns a TextBox with it&apos;s text property set to a mystery value.&lt;/description&gt;
+        '''    &lt;code&gt;
+        '''      Public Function Puzzle() As TextBox
+        '''        Dim txtSample As New TextBox
+        '''      End Function
+        '''    &lt;/code&gt;
+        '''    &lt; [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property Week2VisualBasic() As String
+            Get
+                Return ResourceManager.GetString("Week2VisualBasic", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to &lt;GameML xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
+        '''  xsi:noNamespaceSchemaLocation=&quot;GameML.xsd&quot;
+        '''  version=&quot;1&quot;&gt;
+        '''  &lt;game name=&quot;CodeLadder&quot;&gt;
+        '''    &lt;language&gt;VisualBasic&lt;/language&gt;
+        '''    &lt;start&gt;1&lt;/start&gt;   
+        '''  &lt;/game&gt;
+        '''
+        '''  &lt;!--
+        '''   VB Chapter 3
+        '''   --&gt;
+        '''  &lt;puzzle id=&quot;300&quot; level=&quot;3&quot;&gt;
+        '''    &lt;description&gt;This function should return the name plus a mystery String&lt;/description&gt;
+        '''    &lt;code entryPoint=&quot;HelloWorld&quot;&gt;
+        '''      Public Function HelloWorld(ByVal HelloName As String) As String
+        '''      End Function
+        ''' [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property Week3VisualBasic() As String
+            Get
+                Return ResourceManager.GetString("Week3VisualBasic", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to &lt;GameML xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
+        '''  xsi:noNamespaceSchemaLocation=&quot;GameML.xsd&quot;
+        '''  version=&quot;1&quot;&gt;
+        '''  &lt;game name=&quot;CodeLadder&quot;&gt;
+        '''    &lt;language&gt;VisualBasic&lt;/language&gt;
+        '''    &lt;start&gt;1&lt;/start&gt;   
+        '''  &lt;/game&gt;
+        '''
+        '''  &lt;!--
+        '''   VB Chapter 4
+        '''   --&gt;
+        '''  &lt;puzzle id=&quot;400&quot; level=&quot;4&quot;&gt;
+        '''    &lt;description&gt;Create a function that returns &quot;It&apos;s cold&quot; if intTemp is less than 40&lt;/description&gt;
+        '''    &lt;code&gt;
+        '''      Public Function Puzzle(ByVal intTemp As Integer) As String
+        '''      End Function
+        '''    &lt;/code&gt;
+        '''    &lt; [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property Week4VisualBasic() As String
+            Get
+                Return ResourceManager.GetString("Week4VisualBasic", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to &lt;GameML xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
+        '''  xsi:noNamespaceSchemaLocation=&quot;GameML.xsd&quot;
+        '''  version=&quot;1&quot;&gt;
+        '''  &lt;game name=&quot;CodeLadder&quot;&gt;
+        '''    &lt;language&gt;VisualBasic&lt;/language&gt;
+        '''    &lt;start&gt;1&lt;/start&gt;   
+        '''  &lt;/game&gt;
+        '''
+        '''  &lt;!--
+        '''   VB Chapter 5
+        '''   --&gt;
+        '''  &lt;puzzle id=&quot;500&quot; level=&quot;5&quot;&gt;
+        '''    &lt;description&gt;Create a function that sums the numbers from 1 to &apos;Limit&apos; and returns the results.&lt;/description&gt;
+        '''    &lt;code&gt;
+        '''      Public Function Puzzle(ByVal Limit As Integer) As Long
+        '''      End Function
+        '''    &lt;/cod [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property Week5VisualBasic() As String
+            Get
+                Return ResourceManager.GetString("Week5VisualBasic", resourceCulture)
             End Get
         End Property
     End Module

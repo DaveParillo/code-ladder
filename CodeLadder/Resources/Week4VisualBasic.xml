@@ -1,0 +1,335 @@
+<GameML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:noNamespaceSchemaLocation="GameML.xsd"
+  version="1">
+  <game name="CodeLadder">
+    <language>VisualBasic</language>
+    <level>4</level>   
+    <start>1</start>   
+  </game>
+
+  <!--
+   VB Chapter 4
+   -->
+  <puzzle>
+    <description>Create a function that returns "It's cold" if intTemp is less than 40
+    </description>
+    <code entryPoint="Example">
+      Public Function Example (ByVal intTemp As Integer) As String
+        Dim strResult As String
+        ' There are two possible outcomes in this function:
+        '  1. The function returns the string "It's cold"
+        '  2. The function returns an empty string
+
+        If what?
+          strResult = It's cold
+        End If
+
+        Return strResult
+      End Function
+    </code>
+    <results>
+      <expected value="It's cold" type="String">
+        <parameter value="39" type="Integer" />
+      </expected>
+      <expected value="" type="String">
+        <parameter value="40" type="Integer" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Create a function that returns "It's cold, no?" if intTemp is less than 32 
+      and "Nice weather we're having!" otherwise.
+    </description>
+    <code entryPoint="Example">
+      Public Function Example (ByVal intTemp As Integer) As String
+        Dim strResult As String
+        ' There are two possible outcomes in this function:
+        '  1. The function returns the string "It's cold"
+        '  2. The function returns the string "Nice weather ..."
+
+        If what?
+          strResult = "It's cold, no?"
+          strResult = "Nice weather we're having!"
+        End If
+
+        Return strResult
+      End Function
+    </code>
+    <results>
+      <expected value="It's cold, no?" type="String">
+        <parameter value="31" type="Integer" />
+      </expected>
+      <expected value="It's cold, no?" type="String">
+        <parameter value="-5" type="Integer" />
+      </expected>
+      <expected value="Nice weather we're having!" type="String">
+        <parameter value="32" type="Integer" />
+      </expected>
+      <expected value="Nice weather we're having!" type="String">
+        <parameter value="89" type="Integer" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Create a function that returns letter grades: A (90+), B(80+), C, D, F, given a numeric GPA</description>
+    <code entryPoint="Example">
+      Public Function Example (ByVal GPA As Single) As String
+          Dim strGrade As String
+
+          If 60 Then
+          ElseIf 70 Then
+          ElseIf 80 Then
+          ElseIf 90 Then
+          ElseIf 100 Then
+          Else
+          End If
+
+          Return strGrade
+      End Function
+    </code>
+    <results>
+      <expected value="A" type="String">
+        <parameter value="97" type="Single" />
+      </expected>
+      <expected value="A" type="String">
+        <parameter value="90" type="Single" />
+      </expected>
+      <expected value="B" type="String">
+        <parameter value="89.9" type="Single" />
+      </expected>
+      <expected value="B" type="String">
+        <parameter value="80" type="Single" />
+      </expected>
+      <expected value="C" type="String">
+        <parameter value="79.9" type="Single" />
+      </expected>
+      <expected value="C" type="String">
+        <parameter value="70" type="Single" />
+      </expected>
+      <expected value="D" type="String">
+        <parameter value="69.9" type="Single" />
+      </expected>
+      <expected value="D" type="String">
+        <parameter value="60" type="Single" />
+      </expected>
+      <expected value="F" type="String">
+        <parameter value="59.9" type="Single" />
+      </expected>
+      <expected value="F" type="String">
+        <parameter value="50" type="Single" />
+      </expected>
+    </results>
+  </puzzle>
+
+
+  <puzzle>
+    <description>Create a function that returns the length of a string</description>
+    <code entryPoint="Example">
+      Public Function Example (ByVal X As String) As Integer
+      End Function
+    </code>
+    <results>
+      <expected value="16" type="Integer">
+        <parameter value="Fat ed is not up" type="String" />
+      </expected>
+      <expected value="44" type="Integer">
+        <parameter value="The rain in spain falls mainly on the plain." type="String" />
+      </expected>
+      <expected value="2" type="Integer">
+        <parameter value="hi" type="String" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Create a function that replaces the occurences of a character in a string 
+      with nothing and returns the result
+    </description>
+    <code entryPoint="Example">
+      Public Function Example (ByVal Phrase As String, ByVal Ch As Char) As String
+      End Function
+    </code>
+    <results>
+      <expected value="Peter Pier icked a eck of Pickled Peers" type="String">
+        <parameter value="Peter Piper picked a peck of Pickled Peppers" type="String" />
+        <parameter value="p" type="Char" />
+      </expected>
+      <expected value="The rai i spai falls maily o the plai" type="String">
+        <parameter value="The rain in spain falls mainly on the plain" type="String" />
+        <parameter value="n" type="Char" />
+      </expected>
+      <expected value="The quick brwn fx jumped ver the lazy dgs" type="String">
+        <parameter value="The quick brown fox jumped over the lazy dogs" type="String" />
+        <parameter value="o" type="Char" />
+      </expected>
+    </results>
+  </puzzle>
+
+    <puzzle>
+    <description>
+      Create a function that computes gross pay given hours worked and pay rate.  
+      Display numeric results in curreny format.
+      Ensure your code includes input validation.</description>
+    <code entryPoint="Example">
+      Public Function Example (ByVal HoursWorked As String, ByVal PayRate As String) As String
+        Dim intHours As Integer
+        Dim decPayRate As Decimal
+        Dim decGrossPay As Decimal
+        Dim strResult As String
+
+        ' Get the hours worked
+        If Integer.TryParse (HoursWorked, intHours) Then
+          ' If true then we know intHours has a value and we can proceed
+
+          If Decimal.TryParse() Then
+            ' If true then decPayRate has a value &amp; too
+
+            ' Calulate gross pay
+
+          Else
+            ' Pay rate is not a number.
+          End If
+        Else
+          ' Hours worked is not a number.
+        End If
+
+        Return
+      End Function
+    </code>
+    <results>
+      <expected value="$150.00" type="String">
+        <parameter value="10" type="String" />
+        <parameter value="15" type="String" />
+      </expected>
+      <expected value="$0.00" type="String">
+        <parameter value="0" type="String" />
+        <parameter value="15.5" type="String" />
+      </expected>
+      <expected value="Hours worked is not a number." type="String">
+        <parameter value="foo" type="String" />
+        <parameter value="75.5" type="String" />
+      </expected>
+      <expected value="Pay rate is not a number." type="String">
+        <parameter value="40" type="String" />
+        <parameter value="bar" type="String" />
+      </expected>
+    </results>
+  </puzzle>
+
+
+
+  <puzzle>
+    <description>Create a function that returns True if Savings are greater than or equal to Goal</description>
+    <code>
+      Public Function Puzzle(ByVal Savings As Decimal, ByVal Goal As Decimal) As Boolean
+      End Function
+    </code>
+    <results>
+      <expected value="False" type="Boolean">
+        <parameter value="35000" type="Decimal" />
+        <parameter value="50000" type="Decimal" />
+      </expected>
+      <expected value="True" type="Boolean">
+        <parameter value="154000" type="Decimal" />
+        <parameter value="99000" type="Decimal" />
+      </expected>
+      <expected value="True" type="Boolean">
+        <parameter value="178950.50" type="Decimal" />
+        <parameter value="178950.50" type="Decimal" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Create a function that returns "'X' is a number." if X is a number 
+      and "'X' is not a number." otherwise
+    </description>
+    <code>
+      Public Function Puzzle(ByVal X As String) As String
+      End Function
+    </code>
+    <results>
+      <expected value="'39' is a number." type="String">
+        <parameter value="39" type="String" />
+      </expected>
+      <expected value="'$14.92' is a number." type="String">
+        <parameter value="$14.92" type="String" />
+      </expected>
+      <expected value="'foo42' is not a number." type="String">
+        <parameter value="foo42" type="String" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Create a function that compares two numeric strings and determines which is larger.  
+      Ensure your code includes input validation.</description>
+    <code>
+      Public Function Puzzle(ByVal A As String, ByVal B as String) As String
+      End Function
+    </code>
+    <results>
+      <expected value="A is larger than B." type="String">
+        <parameter value="39" type="String" />
+        <parameter value="-3" type="String" />
+      </expected>
+      <expected value="B is larger than A." type="String">
+        <parameter value="14.92" type="String" />
+        <parameter value="99.54" type="String" />
+      </expected>
+      <expected value="A and B are the same." type="String">
+        <parameter value="3.14159" type="String" />
+        <parameter value="3.14159" type="String" />
+      </expected>
+      <expected value="A is not a number." type="String">
+        <parameter value="foo" type="String" />
+        <parameter value="2.71828" type="String" />
+      </expected>
+      <expected value="B is not a number." type="String">
+        <parameter value="2.71828" type="String" />
+        <parameter value="bar" type="String" />
+      </expected>
+    </results>
+  </puzzle>
+
+
+  <puzzle>
+    <description>Create a function that counts the occurences of a character in a string</description>
+    <code>
+      Public Function Puzzle(ByVal Phrase As String, ByVal Ch as Char) As Integer
+      End Function
+    </code>
+    <results>
+      <expected value="1" type="Integer">
+        <parameter value="Fat Ed is not up" type="String" />
+        <parameter value="d" type="Char" />
+      </expected>
+      <expected value="6" type="Integer">
+        <parameter value="The rain in spain falls mainly on the plain" type="String" />
+        <parameter value="n" type="Char" />
+      </expected>
+      <expected value="4" type="Integer">
+        <parameter value="The quick brown fox jumped over the lazy dogs" type="String" />
+        <parameter value="o" type="Char" />
+      </expected>
+    </results>
+  </puzzle>
+
+
+  <!--
+  TODO:
+  String manipluation and String functions
+  More with Message boxes
+  Input Validation
+  Radio & Checkboxes
+
+  -->
+
+
+</GameML>

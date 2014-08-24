@@ -1,0 +1,248 @@
+<GameML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:noNamespaceSchemaLocation="GameML.xsd"
+  version="1">
+  <game name="CodeLadder">
+    <language>VisualBasic</language>
+    <level>2</level>
+    <start>1</start>   
+  </game>
+
+  <puzzle>
+    <description>
+      Create a function which returns a TextBox with it's text property set to "Canada".
+    </description>
+    <code>
+      Public Function Puzzle() As TextBox
+        
+      End Function
+    </code>
+    <results>
+      <expected property="Text" value="Canada" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Fix this broken function by changing as few characters as possible.
+    </description>
+    <code entryPoint="ShowMessage">
+      Public Function ShowMessage() As DialogResult
+        Dim retVal As DialogResult
+        retVal =  MassageBoxShow("Hello, World!)
+        Return retVal
+      End Function
+    </code>
+    <results>
+      <expected  value="OK" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Create a function which returns a Label with it's text alignment property set to the upper left hand corner of the control.
+    </description>
+    <code entryPoint="Alignment">
+      Public Function Alignment() As Label
+        Dim lblTest As New Label
+        lblTest.Align = ContentAlignment
+        Return lblTest
+      End Function
+    </code>
+    <results>
+      <expected property="TextAlign" value="TopLeft" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Create a function which assigns the parameter 'value' to the text property
+      of a new Label Control and returns the control.
+    </description>
+    <code>
+      Public Function Puzzle(ByVal value as String) As Label
+        Dim lblExample As New Label
+        lblExample.Text = value
+        Return value
+      End Function
+    </code>
+    <results>
+      <expected property= "Text" value="Sample" >
+        <parameter type="String" value="Sample" />
+      </expected>
+      <expected property= "Text" value="Foo" >
+        <parameter type="String" value="Foo" />
+      </expected>
+      <expected property= "Text" value="Entry" >
+        <parameter type="String" value="Entry" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Create a function which returns a Label with it's tag property set to 'VA'.
+    </description>
+    <code>
+      Public Function Puzzle() As Label
+        Dim lblState As New Label
+      End Function
+    </code>
+    <results>
+      <expected property="Tag" value="VA" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Create a function which returns a TextBox with it's visible property set to True.
+    </description>
+    <code>
+      Public Function Puzzle() As TextBox
+      End Function
+    </code>
+    <results>
+      <expected property="Visible" value="True" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Create a function which returns a Label with it's text property set to 'To be or not to be?'.
+    </description>
+    <code>
+      Public Function Puzzle() As Label
+      End Function
+    </code>
+    <results>
+      <expected property="Text" value="To be or not to be?" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Create a function which returns a Label with it's text alignment property set to 
+      middle vertical alignment and centered horizontally.
+    </description>
+    <code>
+      Public Function Puzzle() As Label
+      End Function
+    </code>
+    <results>
+      <expected property="TextAlign" value="MiddleCenter" />
+    </results>
+  </puzzle>
+
+
+  <puzzle>
+    <description>
+      Create a function that turns on the auto size property for a label control.
+    </description>
+    <code>
+      Public Function Puzzle() As Label
+      End Function
+    </code>
+    <results>
+      <expected property="AutoSize" value="True" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Create a function which returns a Label with it's visible property set so that the Label Control is visible.
+    </description>
+    <code>
+      Public Function Puzzle() As Label
+      End Function
+    </code>
+    <results>
+      <expected property="Visible" value="True" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Fix this broken function by changing as few characters as possible.
+    </description>
+    <code entryPoint="ShowUselessMessage">
+      Public Function ShowUselessMessage() As DialogResult
+        Dim retVal As DialogResult
+        intRetVal =  MessagBox("This is a message in a message box.)
+        Return retVal
+      End Function
+    </code>
+    <results>
+      <expected  value="OK" />
+    </results>
+  </puzzle>
+  
+  <puzzle>
+    <description>
+      Fix this broken function by changing as few characters as possible.
+    </description>
+    <code entryPoint="ShowFancyMessage">
+      Public Function ShowFancyMessage() As DialogResult
+        Dim vbAnswer As DialogResult
+        vbAnswer =  MessageBox.Show("Press the 'Yes' Button in this message box to finish.", _
+                                   A two button Message Box", _
+                                   MessageBoxButtons.YesNo, MessageBoxIcon.Question) 
+        Return vbAnswer
+      End Function
+    </code>
+    <results>
+      <expected  value="Yes" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Create a function which returns a Label with it's text alignment property set to 
+      middle vertical alignment and aligned right horizontally.
+    </description>
+    <code>
+      Public Function Puzzle() As Label
+      End Function
+    </code>
+    <results>
+      <expected property="TextAlign" value="MiddleRight" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Create a function which returns a button with it's name property set to 'btnExit'
+    </description>
+    <code>
+      Public Function Puzzle() As Button
+      End Function
+    </code>
+    <results>
+      <expected property="Name" value="btnExit" />
+    </results>
+  </puzzle>
+
+  
+ <puzzle>
+    <description>
+      Create a function which assigns the parameter 'value' to the text property 
+      of a new TextBox Control and returns the control.
+    </description>
+    <code>
+      Public Function Puzzle (ByVal value As String) As TextBox
+      End Function
+    </code>
+    <results>
+      <expected property= "Text" value="$29.99" >
+        <parameter type="String" value="$29.99" />
+      </expected>
+      <expected property= "Text" value="password is not a great password" >
+        <parameter type="String" value="password is not a great password" />
+      </expected>
+      <expected property= "Text" value="Ramerstat" >
+        <parameter type="String" value="Ramerstat" />
+      </expected>
+    </results>
+  </puzzle>
+
+
+</GameML>
+

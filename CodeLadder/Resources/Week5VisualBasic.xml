@@ -1,0 +1,273 @@
+<GameML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:noNamespaceSchemaLocation="GameML.xsd"
+  version="1">
+  <game name="CodeLadder">
+    <language>VisualBasic</language>
+    <level>5</level>   
+    <start>1</start>   
+  </game>
+
+  <!--
+   VB Chapter 5
+   -->
+  <puzzle>
+    <description>
+      Create a function that adds a NewItem to a ListBox control and return the ListBox
+    </description>
+    <code entryPoint="Example">
+      Public Function Example (ByVal NewItem As String) As ListBox
+      End Function
+    </code>
+    <results>
+      <expected property="Items.Count" value="1" >
+        <parameter  type="String"      value="Value not important" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Create a function that loops to add a number to a ListBox control 'HowMany' times and return the ListBox
+    </description>
+    <code entryPoint="Example">
+      Public Function Example (ByVal HowMany As Integer) As ListBox
+      End Function
+    </code>
+    <results>
+      <expected property="Items.Count" value="1" >
+        <parameter  type="Integer"     value="1" />
+      </expected>
+      <expected property="Items.Count" value="10" >
+        <parameter  type="Integer"     value="10" />
+      </expected>
+      <expected property="Items.Count" value="100" >
+        <parameter  type="Integer"     value="100" />
+      </expected>
+    </results>
+  </puzzle>
+
+
+  <puzzle>
+    <description>Create a function that sums the numbers from 1 to 'Limit' and returns the results.</description>
+    <code entryPoint="Example">
+      Public Function Example (ByVal Limit As Integer) As Long
+      End Function
+    </code>
+    <results>
+      <expected value="55" type="Long">
+        <parameter value="10" type="Integer" />
+      </expected>
+      <expected value="4950" type="Long">
+        <parameter value="99" type="Integer" />
+      </expected>
+      <expected value="1577976" type="Long">
+        <parameter value="1776" type="Integer" />
+      </expected>
+    </results>
+  </puzzle>
+
+ 
+  <puzzle>
+    <description>Create a function that sums every odd number from 1 to 'Limit' and returns the results.</description>
+    <code entryPoint="Example">
+      Public Function Example (ByVal Limit As Integer) As Long
+      End Function
+    </code>
+    <results>
+      <expected value="25" type="Long">
+        <parameter value="10" type="Integer" />
+      </expected>
+      <expected value="2500" type="Long">
+        <parameter value="99" type="Integer" />
+      </expected>
+      <expected value="788544" type="Long">
+        <parameter value="1776" type="Integer" />
+      </expected>
+    </results>
+  </puzzle>
+
+
+  <puzzle>
+    <description>
+      Create a function that converts the characters in the input phrase to their character code equivalent, 
+      concatentates all the codes together and returns the results.
+    </description>
+    <code entryPoint="Example">
+      Public Function Example (ByVal Phrase As String) As String
+      End Function
+    </code>
+    <results>
+      <expected value="97" type="String">
+        <parameter value="a" type="String" />
+      </expected>
+      <expected value="973297" type="String">
+        <parameter value="a a" type="String" />
+      </expected>
+      <expected value="8410410132829710511032105110328311297105110321029710810811546" type="String">
+        <parameter value="The Rain in Spain falls." type="String" />
+      </expected>
+    </results>
+  </puzzle>
+
+
+  <puzzle>
+    <description>
+      Create a function that returns every number from 'Start' to 0 in reverse order.  
+      Separate each number with a single space.
+    </description>
+    <code>
+      Public Function Puzzle (ByVal Start As Integer) As String
+      End Function
+    </code>
+    <results>
+      <expected value="10 9 8 7 6 5 4 3 2 1 0" type="String">
+        <parameter value="10" type="Integer" />
+      </expected>
+      <expected value="6 5 4 3 2 1 0" type="String">
+        <parameter value="6" type="Integer" />
+      </expected>
+      <expected value="25 24 23 22 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0" type="String">
+        <parameter value="25" type="Integer" />
+      </expected>
+    </results>
+  </puzzle>
+
+
+  <puzzle>
+    <description>
+      Create a function that sums every number from 'Start' to 'Finish' and returns the results.
+    </description>
+    <code>
+      Public Function Puzzle (ByVal Start As Integer, ByVal Finish As Integer) As Long
+      End Function
+    </code>
+    <results>
+      <expected value="55" type="Long">
+        <parameter value="1" type="Integer" />
+        <parameter value="10" type="Integer" />
+      </expected>
+      <expected value="4950" type="Long">
+        <parameter value="1" type="Integer" />
+        <parameter value="99" type="Integer" />
+      </expected>
+      <expected value="1379" type="Long">
+        <parameter value="92" type="Integer" />
+        <parameter value="105" type="Integer" />
+      </expected>
+      <expected value="0" type="Long">
+        <parameter value="-10" type="Integer" />
+        <parameter value="10" type="Integer" />
+      </expected>
+    </results>
+  </puzzle>
+
+
+
+  <puzzle>
+    <description>
+      Create a function that sums the numbers from 1 to 'Limit', but stops once the sum is at least as large as 
+      the sum and returns - read carefully - the last number used to compute the sum.
+  </description>
+    <code>
+      Public Function Puzzle (ByVal Limit As Integer) As Integer
+      End Function
+    </code>
+    <results>
+      <expected value="2" type="Long">
+        <parameter value="2" type="Integer" />
+      </expected>
+      <expected value="4" type="Long">
+        <parameter value="10" type="Integer" />
+      </expected>
+      <expected value="14" type="Long">
+        <parameter value="99" type="Integer" />
+      </expected>
+      <expected value="60" type="Long">
+        <parameter value="1776" type="Integer" />
+      </expected>
+    </results>
+  </puzzle>
+
+
+
+  <puzzle>
+    <description>
+      Create a function that returns the monthly payment for a loan, given 
+      the interest rate, number of periods, and the loan amount. 
+      Return the results as a string in currency format.
+    </description>
+    <code>
+      Public Function Puzzle (ByVal AnnualInterestRate As Double, NumberOfPeriods As Integer, LoanAmount As Double) As String
+      End Function
+    </code>
+    <results>
+      <expected value="$293.49" type="String">
+        <parameter value="0.065" type="Double" />
+        <parameter value="60" type="Integer" />
+        <parameter value="15000" type="Double" />
+      </expected>
+      <expected value="$228.03" type="String">
+        <parameter value="0.045" type="Double" />
+        <parameter value="48" type="Integer" />
+        <parameter value="10000" type="Double" />
+      </expected>
+      <expected value="$144.31" type="String">
+        <parameter value="0.025" type="Double" />
+        <parameter value="36" type="Integer" />
+        <parameter value="5000" type="Double" />
+      </expected>
+      <expected value="$41.88" type="String">
+        <parameter value="0.005" type="Double" />
+        <parameter value="24" type="Integer" />
+        <parameter value="1000" type="Double" />
+      </expected>
+    </results>
+  </puzzle>
+
+  
+  
+  <puzzle>
+    <description>
+      Create a function that returns the total payments made over the life of a loan, given 
+      the interest rate, number of periods, and the loan amount. 
+      Return the results as a string in currency format.
+    </description>
+    <code>
+      Public Function Puzzle (ByVal AnnualInterestRate As Double, NumberOfPeriods As Integer, LoanAmount As Double) As String
+      End Function
+    </code>
+    <results>
+      <expected value="$17,609.53" type="String">
+        <parameter value="0.065" type="Double" />
+        <parameter value="60" type="Integer" />
+        <parameter value="15000" type="Double" />
+      </expected>
+      <expected value="$10,945.67" type="String">
+        <parameter value="0.045" type="Double" />
+        <parameter value="48" type="Integer" />
+        <parameter value="10000" type="Double" />
+      </expected>
+      <expected value="$5,195.05" type="String">
+        <parameter value="0.025" type="Double" />
+        <parameter value="36" type="Integer" />
+        <parameter value="5000" type="Double" />
+      </expected>
+      <expected value="$1,005.22" type="String">
+        <parameter value="0.005" type="Double" />
+        <parameter value="24" type="Integer" />
+        <parameter value="1000" type="Double" />
+      </expected>
+    </results>
+  </puzzle>
+
+<!--
+  TODO:
+    List box
+    Payment functions
+    Random numbers
+    Tooltips
+    Input boxes
+  -->
+
+
+</GameML>

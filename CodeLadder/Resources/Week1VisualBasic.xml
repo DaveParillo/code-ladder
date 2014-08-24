@@ -1,0 +1,276 @@
+<GameML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="GameML.xsd"
+  version="1">
+  <game name="CodeLadder">
+    <language>VisualBasic</language>
+    <level>1</level>
+    <start>1</start>
+  </game>
+
+  <!--
+   VB Chapter 1
+   -->
+  <puzzle>
+    <description>Fix the variable declaration in this broken function.
+    </description>
+    <code>
+      Public Function Puzzle() As Integer
+        Dim *intStrange As Integer = 3
+        Return *intStrange
+      End Function
+    </code>
+    <results>
+      <expected type="Integer" value="3" />
+    </results>
+  </puzzle>
+
+
+  <puzzle>
+    <description>Create a function which returns the text 'Hello, World!'</description>
+    <code entryPoint="Howdy">
+      Public Function Howdy() As String
+      End Function
+    </code>
+    <results>
+      <expected value="Hello, World!" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Fix the variable declaration in this broken function by changing as few characters as possible.</description>
+    <code>
+      Public Function Puzzle() As Decimal
+        Dim dec Cost As Decimal
+          dec Cost = 35.987654d
+        Return dec Cost
+      End Function
+    </code>
+    <results>
+      <expected type="Decimal" value="35.987654" />
+    </results>
+  </puzzle>
+
+
+  <puzzle>
+    <description>Ensure this function returns 34.56 by adding an approriate assignment.</description>
+    <code>
+      Public Function Puzzle() As Single
+        Dim sngMileage As Single
+
+        Return sngMileage
+      End Function
+    </code>
+    <results>
+      <expected type="Single" value="34.56" />
+    </results>
+  </puzzle>
+
+
+  <puzzle>
+    <description>Fix the variable declaration in this broken function.</description>
+    <code>
+      Public Function Puzzle() As Double
+        Dim dbl/Strange As Double = 45.6R
+        Return dbl/Strange
+      End Function
+    </code>
+    <results>
+      <expected type="Double" value="45.6" />
+    </results>
+  </puzzle>
+
+
+
+
+  <puzzle>
+    <description>Fix the control declaration in this broken function by changing as few characters as possible.</description>
+    <code>
+      Public Function Puzzle() As Button
+        Dim btnClose x As New Button
+
+        btnClose x.Text = "Close"
+
+        Return btnClose x
+      End Function
+    </code>
+    <results>
+      <expected property="Text" value="Close" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Fix the control declaration in this broken function by removing as few characters as possible.</description>
+    <code>
+      Public Function Puzzle() As Label
+        Dim 2lblStart As New Label
+
+        2lblStart.Name = "2lblStart"
+        2lblStart.Text = "Start"
+
+        Return 1lblStart
+      End Function
+    </code>
+    <results>
+      <expected property="Name" value="lblStart" />
+      <expected property="Text" value="Start" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Fix the control declaration in this broken function by removing as few characters as possible.</description>
+    <code>
+      Public Function Puzzle() As TextBox
+        Dim txtName/Address As New TextBox
+
+        txtName/Address.Text = "Jane Doe"
+        txtName/Address.Name = "txtName/Address"
+
+        Return txtName/Address
+      End Function
+    </code>
+    <results>
+      <expected property="Name" value="txtNameAddress" />
+      <expected property="Text" value="Jane Doe" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Fix the variable declaration in this broken function.</description>
+    <code>
+      Public Function Puzzle() As Long
+        Dim .lngSum As Long = -334455
+        Return .lngSum
+      End Function
+    </code>
+    <results>
+      <expected type="Long" value="-334455" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Create a function which returns a boolean value, with it's return value NOT false</description>
+    <code entryPoint="IsValid">
+      Public Function IsValid() As Boolean
+      End Function
+    </code>
+    <results>
+      <expected type="Boolean" value="True" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Create a function which returns the number 7.</description>
+    <code>
+      Public Function Puzzle() As Integer
+      End Function
+    </code>
+    <results>
+      <expected type="Integer" value="7" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Create a function which returns the value "$34.99".</description>
+    <code>
+      Public Function Puzzle() As String
+      End Function
+    </code>
+    <results>
+      <expected type="String" value="$34.99" />
+    </results>
+  </puzzle>
+  
+  <puzzle>
+    <description>Fix the control property assignment.</description>
+    <code>
+      Public Function Puzzle() As Label
+        Dim lblNext As New Label
+
+        lblNext.Name
+
+        Return lblNext
+      End Function
+    </code>
+    <results>
+      <expected property="Name" value="lblNext" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Create a function which returns a Button with it's Text property set to 'Close'.</description>
+    <code>
+      Public Function Puzzle() As Button
+      End Function
+    </code>
+    <results>
+      <expected property="Text" value="Close" />
+    </results>
+  </puzzle>
+
+
+  <puzzle>
+    <description>Create a function which returns a CheckBox with it's Text property set to 'Check Me'.</description>
+    <code>
+      Public Function Puzzle() As CheckBox
+      End Function
+    </code>
+    <results>
+      <expected property="Text" value="Check Me" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Create a function which returns a Label with it's Name property set to 'lblGrossPay'.</description>
+    <code>
+      Public Function Puzzle() As Label
+      End Function
+    </code>
+    <results>
+      <expected property="Name" value="lblGrossPay" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Fix the control property assignments. Ensure the name matches the variable name and the checkbox is checked.</description>
+    <code>
+      Public Function Puzzle() As CheckBox
+        Dim chkTax As New CheckBox
+
+        chkTax.Name
+        chkTax.Checked
+
+        Return chkTax
+      End Function
+    </code>
+    <results>
+      <expected property="Name" value="chkTax" />
+      <expected property="Checked" value="True" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Create a function which returns the value "two".</description>
+    <code>
+      Public Function Puzzle() As String
+      End Function
+    </code>
+    <results>
+      <expected type="String" value="two" />
+    </results>
+  </puzzle>
+  
+  <puzzle>
+    <description>Create a function which returns the number 34.99.</description>
+    <code>
+      Public Function Puzzle() As Double
+      End Function
+    </code>
+    <results>
+      <expected type="Double" value="34.99" />
+    </results>
+  </puzzle>
+  
+  
+</GameML>
+
+

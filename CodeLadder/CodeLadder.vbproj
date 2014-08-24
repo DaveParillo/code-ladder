@@ -157,6 +157,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="code-ladder.ico" />
+    <None Include="Resources\Week5VisualBasic.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\Week4VisualBasic.xml" />
+    <None Include="Resources\Week3VisualBasic.xml" />
+    <None Include="Resources\Week2VisualBasic.xml" />
     <None Include="Resources\CSharp.xml">
       <SubType>Designer</SubType>
     </None>

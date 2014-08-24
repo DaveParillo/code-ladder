@@ -127,4 +127,19 @@
   <data name="VisualBasic" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\VisualBasic.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="Week1VisualBasic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Week1VisualBasic.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Week2VisualBasic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Week2VisualBasic.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Week3VisualBasic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Week3VisualBasic.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Week4VisualBasic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Week4VisualBasic.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="Week5VisualBasic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Week5VisualBasic.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
 </root>

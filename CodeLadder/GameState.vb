@@ -16,7 +16,7 @@ Public Class GameState
         Dim score As Integer                      ' Current total score
         Dim name As String                        ' Student name from the preferences dialog
         Dim solved As List(Of Integer)            ' A list of Solved puzzle ID's
-        Dim puzzle As Integer                     ' Current unsolved puzzle
+        Dim location As Integer                   ' Current location in the list of problems
         Dim codeBin As String                     ' compilation of all code the user has saved
         Dim history As String                     ' timestamped snapshots of preferences and 'Evaluate!' changes 
     End Structure
@@ -24,10 +24,11 @@ Public Class GameState
     Private _state As _StateInfo
     Private _history As New StringBuilder
     'Private pFileName As String = Path.Combine(My.Computer.FileSystem.SpecialDirectories.MyDocuments, pFileDefault)
-    Private _FileName As String = SAVE_FILE_DEFAULT
+    Private _FileName As String
 
-    Public Sub New()
+    Public Sub New(Optional ByVal FileName As String = SAVE_FILE_DEFAULT)
         MyBase.New()
+        _FileName = FileName
         LoadGame()
     End Sub
 
@@ -58,7 +59,7 @@ Public Class GameState
             _state.score = 0
             _state.name = String.Empty
             _state.solved = New List(Of Integer)
-            _state.puzzle = 0
+            _state.location = 0
             _state.codeBin = String.Empty
             _state.history = String.Empty
         End If
@@ -80,15 +81,16 @@ Public Class GameState
         End Set
     End Property
 
+
     ''' <summary>
     ''' The last puzzle actually completed is saved
     ''' </summary>
-    Public Property PuzzleId() As Integer
+    Public Property Location() As Integer
         Get
-            Return _state.puzzle
+            Return _state.location
         End Get
         Set(ByVal value As Integer)
-            _state.puzzle = value
+            _state.location = value
         End Set
     End Property
 
@@ -145,10 +147,10 @@ Public Class GameState
     End Property
 
     ''' <summary>
-    ''' The 'code bin' represents the valid code the user has previously supplied as answers to problems.
+    ''' Property representing the user name.
     ''' </summary>
-    ''' <value>The text from the game code bin TextBox</value>
-    ''' <returns>The saved code bin contents</returns>
+    ''' <value>The users name</value>
+    ''' <returns>The users name</returns>
     Public Property Name() As String
         Get
             Return _state.name
@@ -157,6 +159,17 @@ Public Class GameState
             _state.name = value
             Me.History = "Name set to " & value
         End Set
+    End Property
+
+    ''' <summary>
+    ''' Returns the current save file name.
+    ''' </summary>
+    ''' <returns>The save file location</returns>
+    Public ReadOnly Property FileName() As String
+        Get
+            Return _FileName
+        End Get
+
     End Property
 
 #End Region
@@ -177,9 +190,6 @@ Public Class GameState
     ''' </summary>
     ''' <param name="puzzleID">The ID of the puzzle to add</param>
     Sub AddSolvedPuzzle(ByVal puzzleID As Integer)
-        'If Not _solved.Contains(puzzleID) Then
-        '_solved.Add(puzzleID)
-        'End If
         If Not _state.solved.Contains(puzzleID) Then
             _state.solved.Add(puzzleID)
         End If

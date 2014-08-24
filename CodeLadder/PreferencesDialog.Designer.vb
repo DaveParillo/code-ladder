@@ -30,6 +30,8 @@ Partial Class PreferencesDialog
         Me.radVisualBasic = New System.Windows.Forms.RadioButton()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtName = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.cboLevel = New System.Windows.Forms.ComboBox()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -42,7 +44,7 @@ Partial Class PreferencesDialog
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.Controls.Add(Me.OK_Button, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Cancel_Button, 1, 0)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(73, 114)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(86, 114)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 1
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
@@ -115,8 +117,26 @@ Partial Class PreferencesDialog
         Me.txtName.Location = New System.Drawing.Point(56, 6)
         Me.txtName.MaxLength = 40
         Me.txtName.Name = "txtName"
-        Me.txtName.Size = New System.Drawing.Size(217, 20)
+        Me.txtName.Size = New System.Drawing.Size(224, 20)
         Me.txtName.TabIndex = 3
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(143, 52)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(36, 13)
+        Me.Label2.TabIndex = 4
+        Me.Label2.Text = "Level:"
+        '
+        'cboLevel
+        '
+        Me.cboLevel.FormattingEnabled = True
+        Me.cboLevel.Items.AddRange(New Object() {"Week 1", "Week 2", "Week 3", "Week 4", "Week 5"})
+        Me.cboLevel.Location = New System.Drawing.Point(185, 49)
+        Me.cboLevel.Name = "cboLevel"
+        Me.cboLevel.Size = New System.Drawing.Size(95, 21)
+        Me.cboLevel.TabIndex = 5
         '
         'PreferencesDialog
         '
@@ -124,7 +144,9 @@ Partial Class PreferencesDialog
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
-        Me.ClientSize = New System.Drawing.Size(286, 155)
+        Me.ClientSize = New System.Drawing.Size(299, 155)
+        Me.Controls.Add(Me.cboLevel)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtName)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.GroupBox1)
@@ -151,5 +173,7 @@ Partial Class PreferencesDialog
     Friend WithEvents radVisualBasic As System.Windows.Forms.RadioButton
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents txtName As System.Windows.Forms.TextBox
+    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents cboLevel As System.Windows.Forms.ComboBox
 
 End Class

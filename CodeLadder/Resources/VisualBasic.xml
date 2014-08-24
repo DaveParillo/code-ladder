@@ -3,13 +3,14 @@
   version="1">
   <game name="CodeLadder">
     <language>VisualBasic</language>
+    <level>1</level>   
     <start>1</start>   
   </game>
 
    <!--
    VB Chapter 1
    -->
-  <puzzle id="1" level="1">
+  <puzzle level="1">
     <description>Fix the variable declaration in this broken function.</description>
     <code>
       Public Function Puzzle() As Integer
@@ -22,7 +23,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="2" level="1">
+  <puzzle level="1">
     <description>Fix the control declaration in this broken function.</description>
     <code>
       Public Function Puzzle() As Button
@@ -35,7 +36,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="3" level="1">
+  <puzzle level="1">
     <description>Fix the control declaration in this broken function.</description>
     <code>
       Public Function Puzzle() As Label
@@ -48,7 +49,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="4" level="1">
+  <puzzle level="1">
     <description>Fix the control declaration in this broken function.</description>
     <code>
       Public Function Puzzle() As TextBox
@@ -61,7 +62,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="10" level="1">
+  <puzzle level="1">
     <description>Create a function which returns the text 'Hello, World!'</description>
     <code entryPoint="HelloWorld">
       Public Function HelloWorld() As String
@@ -72,7 +73,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="200" level="2">
+  <puzzle level="2">
     <description>Set the property which prevents a label control from resizing to its contents.</description>
     <code>
       Public Function Puzzle() As Control
@@ -88,7 +89,7 @@
   <!--
    VB Chapter 2
    -->
-  <puzzle id="205" level="2">
+  <puzzle level="2">
     <description>Create a function which returns a TextBox with it's text property set to a mystery value.</description>
     <code>
       Public Function Puzzle() As TextBox
@@ -100,7 +101,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="220" level="2">
+  <puzzle level="2">
     <description>Create a function which returns a Label with it's tag property set to a mystery value.</description>
     <code>
       Public Function Puzzle() As Label
@@ -112,7 +113,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="230" level="2">
+  <puzzle level="2">
     <description>Create a function which returns a TextBox with it's visible property set to a mystery value.</description>
     <code>
       Public Function Puzzle() As TextBox
@@ -123,7 +124,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="240" level="2">
+  <puzzle level="2">
     <description>Create a function which returns a Label with it's text property set to a mystery value.</description>
     <code>
       Public Function Puzzle() As Label
@@ -134,7 +135,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="242" level="2">
+  <puzzle level="2">
     <description>Create a function which returns a Label with it's text alignment property set to a mystery value.</description>
     <code>
       Public Function Puzzle() As Label
@@ -144,7 +145,7 @@
       <expected property="TextAlign" value="TopCenter" />
     </results>
   </puzzle>
-  <puzzle id="246" level="2">
+  <puzzle level="2">
     <description>Fix this broken function</description>
     <code>
       Public Function Puzzle() As Integer
@@ -158,7 +159,7 @@
     </results>
   </puzzle>
   
-  <puzzle id="248" level="2">
+  <puzzle level="2">
     <description>Create a function which returns a Label with it's text alignment property set to a mystery value.</description>
     <code>
       Public Function Puzzle() As Label
@@ -169,7 +170,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="250" level="2">
+  <puzzle level="2">
     <description>Fix this broken function</description>
     <code>
       Public Function Puzzle() As Integer
@@ -185,7 +186,7 @@
   <!--
    VB Chapter 3
    -->
-  <puzzle id="300" level="3">
+  <puzzle level="3">
     <description>This function should return the name plus a mystery String</description>
     <code entryPoint="HelloWorld">
       Public Function HelloWorld(ByVal HelloName As String) As String
@@ -201,7 +202,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="302" level="3">
+  <puzzle level="3">
     <description>This function should return the name plus a mystery String</description>
     <code entryPoint="btn_ShowGreeting_Click">
       Public Function btn_ShowGreeting_Click(ByVal HelloName As String) As String
@@ -220,7 +221,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="305" level="3">
+  <puzzle level="3">
     <description>This function should concatenate its arguments to show a date string</description>
     <code entryPoint="btn_ShowDate_Click">
       Public Function btn_ShowDate_Click(ByVal DayOfWeek As String, ByVal Month As String, ByVal Day As String, ByVal Year As String) As String
@@ -248,7 +249,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="307" level="3">
+  <puzzle level="3">
     <description>This function should return a button, Show Date, with a keyboard shortcut defined</description>
     <code entryPoint="MakeShortcut">
       Public Function MakeShortcut() As Button
@@ -259,7 +260,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="310" level="3">
+  <puzzle level="3">
     <description>Fix this broken function</description>
     <code entryPoint="GetTwentyFive">
       Public Function GetTwentyFive() As Integer
@@ -273,7 +274,7 @@
     </results>
   </puzzle>
   
-  <puzzle id="315" level="3">
+  <puzzle level="3">
     <description>Create a function that negates a provided value</description>
     <code>
       Public Function Puzzle(ByVal intValue As Integer) As Integer
@@ -298,7 +299,7 @@
     </results>
   </puzzle>
   
-  <puzzle id="317" level="3">
+  <puzzle level="3">
     <description>Create a function that returns the sum of two values</description>
     <code>
       Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Integer
@@ -332,7 +333,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="320" level="3">
+  <puzzle level="3">
     <description>Create a function that returns the product of two values</description>
     <code>
       Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Long
@@ -367,7 +368,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="322" level="3">
+  <puzzle level="3">
     <description>Create a function that returns the quotient of two values</description>
     <code>
       Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Double
@@ -389,7 +390,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="324" level="3">
+  <puzzle level="3">
     <description>Create a function that returns the remainder of a division operation</description>
     <code>
       Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Integer
@@ -419,7 +420,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="326" level="3">
+  <puzzle level="3">
     <description>Create a function that returns the quotient of an integer division operation</description>
     <code>
       Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Integer
@@ -445,7 +446,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="328" level="3">
+  <puzzle level="3">
     <description>Create a function that returns the results of exponentiation operations</description>
     <code>
       Public Function Puzzle(ByVal Base As Integer, ByVal Exponent As Integer) As Double
@@ -475,7 +476,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="330" level="3">
+  <puzzle level="3">
     <description>Create a function that first adds 'x' and 'base', then raises the sum to an exponent and returns the results</description>
     <code>
       Public Function Puzzle(ByVal X As Integer, ByVal Base As Integer, ByVal Exponent As Integer) As Double
@@ -510,7 +511,7 @@
     </results>
   </puzzle>
   
-  <puzzle id="332" level="3">
+  <puzzle level="3">
     <description>Create a function that converts a string to a number and returns the results</description>
     <code>
       Public Function Puzzle(ByVal X As String) As Integer
@@ -529,7 +530,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="334" level="3">
+  <puzzle level="3">
     <description>Create a function that converts a string to a number and returns the results</description>
     <code>
       Public Function Puzzle(ByVal X As String) As Decimal
@@ -548,7 +549,7 @@
     </results>
   </puzzle>
   
-  <puzzle id="340" level="3">
+  <puzzle level="3">
     <description>Create a function that converts a number to a string and returns the results</description>
     <code>
       Public Function Puzzle(ByVal X As Integer) As String
@@ -567,7 +568,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="342" level="3">
+  <puzzle level="3">
     <description>Create a function that converts a number to a string and returns the results</description>
     <code>
       Public Function Puzzle(ByVal X As Integer) As String
@@ -586,7 +587,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="344" level="3">
+  <puzzle level="3">
     <description>Create a function that converts a number to a string and returns the results</description>
     <code>
       Public Function Puzzle(ByVal X As Decimal) As String
@@ -602,7 +603,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="346" level="3">
+  <puzzle level="3">
     <description>Create a function that converts a number to a string and returns the results</description>
     <code>
       Public Function Puzzle(ByVal X As Decimal) As String
@@ -621,7 +622,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="348" level="3">
+  <puzzle level="3">
     <description>Create a function that converts a number to a string and returns the results</description>
     <code>
       Public Function Puzzle(ByVal X As Double) As String
@@ -636,7 +637,7 @@
       </expected>
     </results>
   </puzzle>
-  <puzzle id="350" level="3">
+  <puzzle level="3">
     <description>Create a function that converts a number to a string and returns the results</description>
     <code>
       Public Function Puzzle(ByVal X As Date) As String
@@ -655,7 +656,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="360" level="3">
+  <puzzle level="3">
     <description>Create a function which returns a Label with it's forground color property set to a red.</description>
     <code>
       Public Function Puzzle() As Label
@@ -676,7 +677,7 @@
   <!--
    VB Chapter 4
    -->
-  <puzzle id="400" level="4">
+  <puzzle level="4">
     <description>Create a function that returns "It's cold" if intTemp is less than 40</description>
     <code>
       Public Function Puzzle(ByVal intTemp As Integer) As String
@@ -692,7 +693,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="405" level="4">
+  <puzzle level="4">
     <description>Create a function that returns True if Savings are greater than or equal to Goal</description>
     <code>
       Public Function Puzzle(ByVal Savings As Decimal, ByVal Goal As Decimal) As Boolean
@@ -714,7 +715,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="407" level="4">
+  <puzzle level="4">
     <description>Create a function that returns "It's cold" if intTemp is less than or equal to 40 and "Nice weather" otherwise</description>
     <code>
       Public Function Puzzle(ByVal intTemp As Integer) As String
@@ -733,7 +734,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="410" level="4">
+  <puzzle level="4">
     <description>Create a function that returns letter grades: A (90+), B(80+), C, D, F, given a numeric GPA</description>
     <code>
       Public Function Puzzle(ByVal GPA As Single) As String
@@ -773,7 +774,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="415" level="4">
+  <puzzle level="4">
     <description>Create a function that returns "'X' is a number." if X is a number and "'X' is not a number." otherwise</description>
     <code>
       Public Function Puzzle(ByVal X As String) As String
@@ -792,7 +793,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="417" level="4">
+  <puzzle level="4">
     <description>Create a function that returns the length of a string</description>
     <code>
       Public Function Puzzle(ByVal X As String) As Integer
@@ -811,7 +812,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="425" level="4">
+  <puzzle level="4">
     <description>Create a function that compares two numeric strings and determines which is larger.  
     Ensure your code includes error handling.</description>
     <code>
@@ -843,7 +844,7 @@
   </puzzle>
 
 
-  <puzzle id="430" level="4">
+  <puzzle level="4">
     <description>Create a function that counts the occurences of a character in a string</description>
     <code>
       Public Function Puzzle(ByVal Phrase As String, ByVal Ch as Char) As Integer
@@ -868,7 +869,7 @@
   <!--
    VB Chapter 5
    -->
-  <puzzle id="500" level="5">
+  <puzzle level="5">
     <description>Create a function that sums the numbers from 1 to 'Limit' and returns the results.</description>
     <code>
       Public Function Puzzle(ByVal Limit As Integer) As Long
@@ -887,7 +888,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="505" level="5">
+  <puzzle level="5">
     <description>Create a function that sums every odd number from 1 to 'Limit' and returns the results.</description>
     <code>
       Public Function Puzzle(ByVal Limit As Integer) As Long
@@ -906,7 +907,7 @@
     </results>
   </puzzle>
 
-  <puzzle id="510" level="5">
+  <puzzle level="5">
     <description>Create a function that converts the characters in the input phrase to their character code equivalent,
     concatentates all the codes together and returns the results.</description>
     <code>
@@ -927,7 +928,7 @@
   </puzzle>
 
 
-  <puzzle id="520" level="5">
+  <puzzle level="5">
     <description>Create a function that sums the numbers from 1 to 'Limit', but stops once the sum is at least as large as 
     the sum and returns - read carefully - the last number used to compute the sum.</description>
     <code>
@@ -950,7 +951,7 @@
     </results>
   </puzzle>
   
-  <puzzle id="600" level="6">
+  <puzzle level="6">
     <description>Set the font size of a label to 12.</description>
     <code>
       Public Function Puzzle() As Label

@@ -28,10 +28,12 @@ Partial Class CodeLadder
         Me.lblScore = New System.Windows.Forms.Label()
         Me.tabCode = New System.Windows.Forms.TabPage()
         Me.txtCodeBin = New System.Windows.Forms.TextBox()
-        Me.tabLand = New System.Windows.Forms.TabPage()
-        Me.lblDescription = New System.Windows.Forms.Label()
+        Me.pagePuzzle = New System.Windows.Forms.TabPage()
         Me.txtCode = New System.Windows.Forms.TextBox()
-        Me.lblTalk = New System.Windows.Forms.Label()
+        Me.txtDescription = New System.Windows.Forms.TextBox()
+        Me.txtTalk = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lblLineNumbers = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.lblTitle = New System.Windows.Forms.Label()
         Me.btnEval = New System.Windows.Forms.Button()
@@ -51,8 +53,11 @@ Partial Class CodeLadder
         Me.btnPrev = New System.Windows.Forms.Button()
         Me.btnFirst = New System.Windows.Forms.Button()
         Me.btnLast = New System.Windows.Forms.Button()
+        Me.btnTextBigger = New System.Windows.Forms.Button()
+        Me.btnTextSmaller = New System.Windows.Forms.Button()
+        Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.tabCode.SuspendLayout()
-        Me.tabLand.SuspendLayout()
+        Me.pagePuzzle.SuspendLayout()
         Me.tabMain.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -62,7 +67,7 @@ Partial Class CodeLadder
         Me.Label5.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(443, 24)
+        Me.Label5.Location = New System.Drawing.Point(513, 24)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(55, 17)
         Me.Label5.TabIndex = 21
@@ -73,7 +78,7 @@ Partial Class CodeLadder
         Me.lblScore.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblScore.AutoSize = True
         Me.lblScore.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblScore.Location = New System.Drawing.Point(504, 24)
+        Me.lblScore.Location = New System.Drawing.Point(574, 24)
         Me.lblScore.Name = "lblScore"
         Me.lblScore.Size = New System.Drawing.Size(35, 17)
         Me.lblScore.TabIndex = 22
@@ -82,81 +87,113 @@ Partial Class CodeLadder
         'tabCode
         '
         Me.tabCode.Controls.Add(Me.txtCodeBin)
-        Me.tabCode.Location = New System.Drawing.Point(4, 22)
+        Me.tabCode.Location = New System.Drawing.Point(4, 25)
         Me.tabCode.Name = "tabCode"
-        Me.tabCode.Size = New System.Drawing.Size(583, 561)
+        Me.tabCode.Size = New System.Drawing.Size(653, 457)
         Me.tabCode.TabIndex = 2
         Me.tabCode.Text = "My Code Bin"
         Me.tabCode.UseVisualStyleBackColor = True
         '
         'txtCodeBin
         '
-        Me.txtCodeBin.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtCodeBin.Font = New System.Drawing.Font("Courier New", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCodeBin.Location = New System.Drawing.Point(12, 12)
+        Me.txtCodeBin.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtCodeBin.Font = New System.Drawing.Font("Courier New", 10.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCodeBin.Location = New System.Drawing.Point(0, 0)
         Me.txtCodeBin.Multiline = True
         Me.txtCodeBin.Name = "txtCodeBin"
         Me.txtCodeBin.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtCodeBin.Size = New System.Drawing.Size(559, 546)
+        Me.txtCodeBin.Size = New System.Drawing.Size(653, 457)
         Me.txtCodeBin.TabIndex = 2
         '
-        'tabLand
+        'pagePuzzle
         '
-        Me.tabLand.Controls.Add(Me.lblDescription)
-        Me.tabLand.Controls.Add(Me.txtCode)
-        Me.tabLand.Controls.Add(Me.lblTalk)
-        Me.tabLand.Controls.Add(Me.Label3)
-        Me.tabLand.Controls.Add(Me.lblTitle)
-        Me.tabLand.Location = New System.Drawing.Point(4, 22)
-        Me.tabLand.Name = "tabLand"
-        Me.tabLand.Padding = New System.Windows.Forms.Padding(3)
-        Me.tabLand.Size = New System.Drawing.Size(583, 561)
-        Me.tabLand.TabIndex = 0
-        Me.tabLand.Text = "Puzzles"
-        Me.tabLand.UseVisualStyleBackColor = True
-        '
-        'lblDescription
-        '
-        Me.lblDescription.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblDescription.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDescription.Location = New System.Drawing.Point(10, 7)
-        Me.lblDescription.Name = "lblDescription"
-        Me.lblDescription.Size = New System.Drawing.Size(561, 40)
-        Me.lblDescription.TabIndex = 16
-        Me.lblDescription.Text = "Problem description"
+        Me.pagePuzzle.Controls.Add(Me.txtCode)
+        Me.pagePuzzle.Controls.Add(Me.txtDescription)
+        Me.pagePuzzle.Controls.Add(Me.txtTalk)
+        Me.pagePuzzle.Controls.Add(Me.Label4)
+        Me.pagePuzzle.Controls.Add(Me.lblLineNumbers)
+        Me.pagePuzzle.Controls.Add(Me.Label3)
+        Me.pagePuzzle.Controls.Add(Me.lblTitle)
+        Me.pagePuzzle.Location = New System.Drawing.Point(4, 25)
+        Me.pagePuzzle.Name = "pagePuzzle"
+        Me.pagePuzzle.Padding = New System.Windows.Forms.Padding(3)
+        Me.pagePuzzle.Size = New System.Drawing.Size(653, 457)
+        Me.pagePuzzle.TabIndex = 0
+        Me.pagePuzzle.Text = "Puzzles"
+        Me.pagePuzzle.UseVisualStyleBackColor = True
         '
         'txtCode
         '
         Me.txtCode.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtCode.Font = New System.Drawing.Font("Courier New", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCode.Location = New System.Drawing.Point(13, 67)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtCode.Font = New System.Drawing.Font("Courier New", 11.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCode.Location = New System.Drawing.Point(40, 95)
         Me.txtCode.Multiline = True
         Me.txtCode.Name = "txtCode"
         Me.txtCode.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.txtCode.Size = New System.Drawing.Size(558, 317)
-        Me.txtCode.TabIndex = 0
+        Me.txtCode.Size = New System.Drawing.Size(600, 185)
+        Me.txtCode.TabIndex = 21
         '
-        'lblTalk
+        'txtDescription
         '
-        Me.lblTalk.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.lblTalk.Font = New System.Drawing.Font("Courier New", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTalk.Location = New System.Drawing.Point(13, 404)
-        Me.lblTalk.Name = "lblTalk"
-        Me.lblTalk.Size = New System.Drawing.Size(554, 154)
-        Me.lblTalk.TabIndex = 11
-        Me.lblTalk.Text = "Hello"
+        Me.txtDescription.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtDescription.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtDescription.Location = New System.Drawing.Point(11, 6)
+        Me.txtDescription.Multiline = True
+        Me.txtDescription.Name = "txtDescription"
+        Me.txtDescription.ReadOnly = True
+        Me.txtDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtDescription.Size = New System.Drawing.Size(630, 66)
+        Me.txtDescription.TabIndex = 20
+        '
+        'txtTalk
+        '
+        Me.txtTalk.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtTalk.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.txtTalk.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtTalk.Location = New System.Drawing.Point(13, 305)
+        Me.txtTalk.Multiline = True
+        Me.txtTalk.Name = "txtTalk"
+        Me.txtTalk.ReadOnly = True
+        Me.txtTalk.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtTalk.Size = New System.Drawing.Size(627, 142)
+        Me.txtTalk.TabIndex = 19
+        '
+        'Label4
+        '
+        Me.Label4.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label4.AutoSize = True
+        Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.Location = New System.Drawing.Point(9, 75)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(17, 17)
+        Me.Label4.TabIndex = 18
+        Me.Label4.Text = "#"
+        '
+        'lblLineNumbers
+        '
+        Me.lblLineNumbers.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.lblLineNumbers.Font = New System.Drawing.Font("Courier New", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblLineNumbers.Location = New System.Drawing.Point(8, 98)
+        Me.lblLineNumbers.Name = "lblLineNumbers"
+        Me.lblLineNumbers.Size = New System.Drawing.Size(62, 173)
+        Me.lblLineNumbers.TabIndex = 17
+        Me.lblLineNumbers.Text = "5" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "6" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "7" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "8" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "9" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "10" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "11" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "12" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "13" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "14" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "15" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "16" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "17" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "18" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "19" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "20" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "21" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "22" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "23" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "24" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "25" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "26" & _
+    "" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "27" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "28" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "29" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "30"
         '
         'Label3
         '
+        Me.Label3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(10, 47)
+        Me.Label3.Location = New System.Drawing.Point(37, 75)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(45, 17)
         Me.Label3.TabIndex = 10
@@ -167,7 +204,7 @@ Partial Class CodeLadder
         Me.lblTitle.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblTitle.AutoSize = True
         Me.lblTitle.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTitle.Location = New System.Drawing.Point(10, 387)
+        Me.lblTitle.Location = New System.Drawing.Point(8, 283)
         Me.lblTitle.Name = "lblTitle"
         Me.lblTitle.Size = New System.Drawing.Size(62, 17)
         Me.lblTitle.TabIndex = 6
@@ -198,14 +235,15 @@ Partial Class CodeLadder
         'tabMain
         '
         Me.tabMain.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-                    Or System.Windows.Forms.AnchorStyles.Left) _
-                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tabMain.Controls.Add(Me.tabLand)
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.tabMain.Controls.Add(Me.pagePuzzle)
         Me.tabMain.Controls.Add(Me.tabCode)
+        Me.tabMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabMain.Location = New System.Drawing.Point(12, 63)
         Me.tabMain.Name = "tabMain"
         Me.tabMain.SelectedIndex = 0
-        Me.tabMain.Size = New System.Drawing.Size(591, 587)
+        Me.tabMain.Size = New System.Drawing.Size(661, 486)
         Me.tabMain.TabIndex = 5
         '
         'Label1
@@ -213,7 +251,7 @@ Partial Class CodeLadder
         Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(545, 24)
+        Me.Label1.Location = New System.Drawing.Point(615, 24)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(22, 17)
         Me.Label1.TabIndex = 24
@@ -224,7 +262,7 @@ Partial Class CodeLadder
         Me.lblTotal.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblTotal.AutoSize = True
         Me.lblTotal.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotal.Location = New System.Drawing.Point(573, 24)
+        Me.lblTotal.Location = New System.Drawing.Point(643, 24)
         Me.lblTotal.Name = "lblTotal"
         Me.lblTotal.Size = New System.Drawing.Size(35, 17)
         Me.lblTotal.TabIndex = 25
@@ -235,54 +273,53 @@ Partial Class CodeLadder
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.EditToolStripMenuItem, Me.ViewToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(614, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(684, 24)
         Me.MenuStrip1.TabIndex = 26
         Me.MenuStrip1.Text = "MenuStrip1"
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewGameToolStripMenuItem, Me.ExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewGameToolStripMenuItem, Me.SaveToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
-        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(35, 20)
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "&File"
         '
         'NewGameToolStripMenuItem
         '
         Me.NewGameToolStripMenuItem.Name = "NewGameToolStripMenuItem"
-        Me.NewGameToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
+        Me.NewGameToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.NewGameToolStripMenuItem.Text = "&New Game"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(136, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'EditToolStripMenuItem
         '
         Me.EditToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PreferencesToolStripMenuItem})
         Me.EditToolStripMenuItem.Name = "EditToolStripMenuItem"
-        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
+        Me.EditToolStripMenuItem.Size = New System.Drawing.Size(39, 20)
         Me.EditToolStripMenuItem.Text = "&Edit"
         '
         'PreferencesToolStripMenuItem
         '
         Me.PreferencesToolStripMenuItem.Name = "PreferencesToolStripMenuItem"
-        Me.PreferencesToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
+        Me.PreferencesToolStripMenuItem.Size = New System.Drawing.Size(135, 22)
         Me.PreferencesToolStripMenuItem.Text = "&Preferences"
         '
         'ViewToolStripMenuItem
         '
         Me.ViewToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.HistoryToolStripMenuItem})
         Me.ViewToolStripMenuItem.Name = "ViewToolStripMenuItem"
-        Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(41, 20)
+        Me.ViewToolStripMenuItem.Size = New System.Drawing.Size(44, 20)
         Me.ViewToolStripMenuItem.Text = "&View"
-        Me.ViewToolStripMenuItem.Visible = False
         '
         'HistoryToolStripMenuItem
         '
         Me.HistoryToolStripMenuItem.Name = "HistoryToolStripMenuItem"
-        Me.HistoryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.HistoryToolStripMenuItem.Size = New System.Drawing.Size(112, 22)
         Me.HistoryToolStripMenuItem.Text = "History"
         '
         'btnPrev
@@ -318,12 +355,43 @@ Partial Class CodeLadder
         Me.ToolTip1.SetToolTip(Me.btnLast, "Skip to the last problem")
         Me.btnLast.UseVisualStyleBackColor = True
         '
+        'btnTextBigger
+        '
+        Me.btnTextBigger.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnTextBigger.Location = New System.Drawing.Point(246, 27)
+        Me.btnTextBigger.Name = "btnTextBigger"
+        Me.btnTextBigger.Size = New System.Drawing.Size(30, 30)
+        Me.btnTextBigger.TabIndex = 19
+        Me.btnTextBigger.Tag = "+1"
+        Me.btnTextBigger.Text = "A"
+        Me.btnTextBigger.UseVisualStyleBackColor = True
+        '
+        'btnTextSmaller
+        '
+        Me.btnTextSmaller.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnTextSmaller.Location = New System.Drawing.Point(281, 27)
+        Me.btnTextSmaller.Name = "btnTextSmaller"
+        Me.btnTextSmaller.Size = New System.Drawing.Size(30, 30)
+        Me.btnTextSmaller.TabIndex = 20
+        Me.btnTextSmaller.Tag = "-1"
+        Me.btnTextSmaller.Text = "A"
+        Me.btnTextSmaller.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnTextSmaller.UseVisualStyleBackColor = True
+        '
+        'SaveToolStripMenuItem
+        '
+        Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SaveToolStripMenuItem.Text = "&Save"
+        '
         'CodeLadder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(614, 662)
+        Me.ClientSize = New System.Drawing.Size(684, 561)
+        Me.Controls.Add(Me.btnTextSmaller)
         Me.Controls.Add(Me.btnLast)
+        Me.Controls.Add(Me.btnTextBigger)
         Me.Controls.Add(Me.btnFirst)
         Me.Controls.Add(Me.btnPrev)
         Me.Controls.Add(Me.btnEval)
@@ -336,12 +404,13 @@ Partial Class CodeLadder
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
+        Me.MinimumSize = New System.Drawing.Size(500, 39)
         Me.Name = "CodeLadder"
         Me.Text = "Code Ladder"
         Me.tabCode.ResumeLayout(False)
         Me.tabCode.PerformLayout()
-        Me.tabLand.ResumeLayout(False)
-        Me.tabLand.PerformLayout()
+        Me.pagePuzzle.ResumeLayout(False)
+        Me.pagePuzzle.PerformLayout()
         Me.tabMain.ResumeLayout(False)
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
@@ -353,14 +422,11 @@ Partial Class CodeLadder
     Friend WithEvents lblScore As System.Windows.Forms.Label
     Friend WithEvents tabCode As System.Windows.Forms.TabPage
     Friend WithEvents txtCodeBin As System.Windows.Forms.TextBox
-    Friend WithEvents tabLand As System.Windows.Forms.TabPage
-    Friend WithEvents txtCode As System.Windows.Forms.TextBox
-    Friend WithEvents lblTalk As System.Windows.Forms.Label
+    Friend WithEvents pagePuzzle As System.Windows.Forms.TabPage
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents lblTitle As System.Windows.Forms.Label
     Friend WithEvents btnEval As System.Windows.Forms.Button
     Friend WithEvents tabMain As System.Windows.Forms.TabControl
-    Friend WithEvents lblDescription As System.Windows.Forms.Label
     Friend WithEvents btnNext As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents lblTotal As System.Windows.Forms.Label
@@ -376,4 +442,12 @@ Partial Class CodeLadder
     Friend WithEvents btnLast As System.Windows.Forms.Button
     Friend WithEvents ViewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HistoryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents lblLineNumbers As System.Windows.Forms.Label
+    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents btnTextBigger As System.Windows.Forms.Button
+    Friend WithEvents btnTextSmaller As System.Windows.Forms.Button
+    Friend WithEvents txtTalk As System.Windows.Forms.TextBox
+    Friend WithEvents txtDescription As System.Windows.Forms.TextBox
+    Friend WithEvents txtCode As System.Windows.Forms.TextBox
+    Friend WithEvents SaveToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class
