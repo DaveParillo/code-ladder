@@ -11,6 +11,9 @@ Imports System.CodeDom.Compiler
 ''' but this could be extended in the future.
 ''' </remarks>
 Public MustInherit Class Compiler
+    Implements IDisposable
+
+    Protected disposed As Boolean = False   '  For IDisposable to detect redundant calls
     Private _CompilerErrors As CompilerErrorCollection
 
     Private _CompilerParams As New System.CodeDom.Compiler.CompilerParameters()
@@ -86,6 +89,7 @@ Public MustInherit Class Compiler
     ''' <remarks>The results of compilation errors are promoted to the UI</remarks>
     Protected Friend Overridable Function Compile() As Boolean
         Dim retVal As Boolean = False
+        ClassDisposed()
         Try
             If "CSharpCodeProvider" = TypeName(Provider) Then
                 _CompilerParams.GenerateExecutable = True
@@ -112,6 +116,7 @@ Public MustInherit Class Compiler
     Protected Friend Overridable Function Link() As Boolean
         Dim retVal As Boolean = False
         Dim assy As System.Reflection.Assembly
+        ClassDisposed()
         Try
             assy = _Results.CompiledAssembly
             _Instance = assy.CreateInstance("GeneratedNamespace.GeneratedMainClass")
@@ -141,6 +146,7 @@ Public MustInherit Class Compiler
         Dim oRetVal As Object
 
         oRetVal = Nothing
+        ClassDisposed()
         If Me.Compile() AndAlso Me.Link() Then
             ''Excute assembled code
             Try
@@ -161,5 +167,43 @@ Public MustInherit Class Compiler
         End If
         Return oRetVal
     End Function
+
+#Region "IDisposable Support"
+
+    ' IDisposable
+    Protected Overridable Sub Dispose(isDisposing As Boolean)
+        If Not Me.disposed Then
+            If isDisposing Then
+                ' All the managed resources are in subclasses
+            End If
+            _CompilerErrors = Nothing
+            _CompilerParams = Nothing
+            _Code = Nothing
+            _CommandText = Nothing
+            _Results = Nothing
+            _Instance = Nothing
+        End If
+        Me.disposed = True
+    End Sub
+
+    ' Note: override Finalize() only if Dispose(ByVal disposing As Boolean) above has code to free unmanaged resources.
+    Protected Overrides Sub Finalize()
+        Dispose(False)
+        MyBase.Finalize()
+    End Sub
+
+    Public Sub Dispose() Implements IDisposable.Dispose
+        Dispose(True)
+        GC.SuppressFinalize(Me)
+    End Sub
+
+    Public Sub ClassDisposed()
+        If Me.disposed Then
+            Throw New ObjectDisposedException(Me.GetType().ToString, "This object has been disposed.")
+        End If
+    End Sub
+
+
+#End Region
 
 End Class

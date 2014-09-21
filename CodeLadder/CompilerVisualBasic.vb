@@ -11,6 +11,7 @@ Public Class CompilerVisualBasic : Inherits Compiler
 
     Private _Provider As Microsoft.VisualBasic.VBCodeProvider
     Private _Code As StringBuilder
+    Shadows disposed As Boolean = False
 
     Public Sub New()
         MyBase.New()
@@ -33,6 +34,7 @@ Public Class CompilerVisualBasic : Inherits Compiler
     ''' <remarks>This property must be implemented by classes derived from Compiler</remarks>
     Protected Friend Overrides ReadOnly Property Provider() As Object
         Get
+            ClassDisposed()
             Return _Provider
         End Get
     End Property
@@ -66,6 +68,23 @@ Public Class CompilerVisualBasic : Inherits Compiler
             _Code.AppendLine("End Namespace")
         End Set
     End Property
+
+
+#Region "IDisposable Methods"
+    Protected Overridable Overloads Sub Dispose(ByVal isDisposing As Boolean)
+        If Not Me.disposed Then
+            If isDisposing Then
+                MyBase.Dispose(isDisposing)
+                If _Provider IsNot Nothing Then
+                    _Provider.Dispose()
+                End If
+            End If
+            _Code = Nothing
+        End If
+        Me.disposed = True
+    End Sub
+
+#End Region
 
 
 End Class
