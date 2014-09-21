@@ -10,7 +10,6 @@ Public Class CodeLadder
     Private _game As GameDAL
     Private _state As GameState
 
-
 #Region "Event Handlers"
 
     ''' <summary>
@@ -65,7 +64,7 @@ Public Class CodeLadder
         ChangeFontSizeOf(txtCode, amt)
         ChangeFontSizeOf(txtTalk, amt)
         ChangeFontSizeOf(txtDescription, amt)
-        ChangeFontSizeOf(lblLineNumbers, amt)
+        'ChangeFontSizeOf(lblLineNumbers, amt)
         ChangeFontSizeOf(txtCodeBin, amt)
     End Sub
 
@@ -124,6 +123,7 @@ Public Class CodeLadder
     ''' </summary>
     Private Sub CodeLadder_Load() Handles MyBase.Load
         _state = LoadLatestWeek()
+        txtCode.LineNumberStartValue = 5
 
         _game = New GameDAL(_prefs.Language, _prefs.Difficulty)
 
@@ -149,7 +149,15 @@ Public Class CodeLadder
     Private Sub PreferencesToolStripMenuItem_Click() Handles PreferencesToolStripMenuItem.Click
         Dim l As PreferencesDialog.LANG
         l = _prefs.Language
+        If _state.Name.Length >= PreferencesDialog.MIN_NAME_LENGTH Then
+            _prefs.txtName.Text = _state.Name
+        End If
         _prefs.ShowDialog()
+        If _prefs.Language = PreferencesDialog.LANG.C_SHARP Then
+            txtCode.Language = FastColoredTextBoxNS.Language.CSharp
+        Else
+            txtCode.Language = FastColoredTextBoxNS.Language.VB
+        End If
         If _prefs.DialogResult = DialogResult.OK Then
             If l <> _prefs.Language Then
                 _state.Delete()
@@ -406,6 +414,7 @@ Public Class CodeLadder
     Private Function LoadLatestWeek() As GameState
         Dim s As GameState
         Dim prefix As String
+        s = Nothing
 
         Const postfix As String = "SavedGame.dat"
         If _prefs.cboLevel.SelectedIndex > -1 Then

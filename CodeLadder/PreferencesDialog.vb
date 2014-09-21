@@ -20,7 +20,7 @@ Public Class PreferencesDialog
     Private _level As LEVEL
     Private _levelNew As LEVEL
 
-    Private Const MIN_NAME_LENGTH As Integer = 4
+    Friend Const MIN_NAME_LENGTH As Integer = 4
 
     Friend ReadOnly Property Language As LANG
         Get
