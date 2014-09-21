@@ -15,8 +15,8 @@
     </description>
     <code>
       Public Function Puzzle() As Integer
-        Dim *intStrange As Integer = 3
-        Return *intStrange
+          Dim *intStrange As Integer = 3
+          Return *intStrange
       End Function
     </code>
     <results>
@@ -40,9 +40,9 @@
     <description>Fix the variable declaration in this broken function by changing as few characters as possible.</description>
     <code>
       Public Function Puzzle() As Decimal
-        Dim dec Cost As Decimal
-          dec Cost = 35.987654d
-        Return dec Cost
+          Dim dec Cost As Decimal
+            dec Cost = 35.987654d
+          Return dec Cost
       End Function
     </code>
     <results>
@@ -55,9 +55,9 @@
     <description>Ensure this function returns 34.56 by adding an approriate assignment.</description>
     <code>
       Public Function Puzzle() As Single
-        Dim sngMileage As Single
+          Dim sngMileage As Single
 
-        Return sngMileage
+          Return sngMileage
       End Function
     </code>
     <results>
@@ -70,8 +70,8 @@
     <description>Fix the variable declaration in this broken function.</description>
     <code>
       Public Function Puzzle() As Double
-        Dim dbl/Strange As Double = 45.6R
-        Return dbl/Strange
+          Dim dbl/Strange As Double = 45.6R
+          Return dbl/Strange
       End Function
     </code>
     <results>
@@ -86,11 +86,11 @@
     <description>Fix the control declaration in this broken function by changing as few characters as possible.</description>
     <code>
       Public Function Puzzle() As Button
-        Dim btnClose x As New Button
+          Dim btnClose x As New Button
 
-        btnClose x.Text = "Close"
+          btnClose x.Text = "Close"
 
-        Return btnClose x
+          Return btnClose x
       End Function
     </code>
     <results>
@@ -102,12 +102,12 @@
     <description>Fix the control declaration in this broken function by removing as few characters as possible.</description>
     <code>
       Public Function Puzzle() As Label
-        Dim 2lblStart As New Label
+          Dim 2lblStart As New Label
 
-        2lblStart.Name = "2lblStart"
-        2lblStart.Text = "Start"
+          2lblStart.Name = "2lblStart"
+          2lblStart.Text = "Start"
 
-        Return 1lblStart
+          Return 2lblStart
       End Function
     </code>
     <results>
@@ -120,16 +120,14 @@
     <description>Fix the control declaration in this broken function by removing as few characters as possible.</description>
     <code>
       Public Function Puzzle() As TextBox
-        Dim txtName/Address As New TextBox
+          Dim txtName/Address As New TextBox
 
-        txtName/Address.Text = "Jane Doe"
-        txtName/Address.Name = "txtName/Address"
+          txtName/Address.Text = "Jane Doe"
 
-        Return txtName/Address
+          Return txtName/Address
       End Function
     </code>
     <results>
-      <expected property="Name" value="txtNameAddress" />
       <expected property="Text" value="Jane Doe" />
     </results>
   </puzzle>
@@ -138,8 +136,8 @@
     <description>Fix the variable declaration in this broken function.</description>
     <code>
       Public Function Puzzle() As Long
-        Dim .lngSum As Long = -334455
-        Return .lngSum
+          Dim .lngSum As Long = -334455
+          Return .lngSum
       End Function
     </code>
     <results>
@@ -148,7 +146,7 @@
   </puzzle>
 
   <puzzle>
-    <description>Create a function which returns a boolean value, with it's return value NOT false</description>
+    <description>Create a function which returns a boolean value, with its return value NOT false</description>
     <code entryPoint="IsValid">
       Public Function IsValid() As Boolean
       End Function
@@ -184,11 +182,11 @@
     <description>Fix the control property assignment.</description>
     <code>
       Public Function Puzzle() As Label
-        Dim lblNext As New Label
+          Dim lblNext As New Label
 
-        lblNext.Name
+          lblNext.Name
 
-        Return lblNext
+          Return lblNext
       End Function
     </code>
     <results>
@@ -197,7 +195,7 @@
   </puzzle>
 
   <puzzle>
-    <description>Create a function which returns a Button with it's Text property set to 'Close'.</description>
+    <description>Create a function which returns a Button with its Text property set to 'Close'.</description>
     <code>
       Public Function Puzzle() As Button
       End Function
@@ -209,7 +207,7 @@
 
 
   <puzzle>
-    <description>Create a function which returns a CheckBox with it's Text property set to 'Check Me'.</description>
+    <description>Create a function which returns a CheckBox with its Text property set to 'Check Me'.</description>
     <code>
       Public Function Puzzle() As CheckBox
       End Function
@@ -220,7 +218,7 @@
   </puzzle>
 
   <puzzle>
-    <description>Create a function which returns a Label with it's Name property set to 'lblGrossPay'.</description>
+    <description>Create a function which returns a Label with its Name property set to 'lblGrossPay'.</description>
     <code>
       Public Function Puzzle() As Label
       End Function
@@ -234,12 +232,12 @@
     <description>Fix the control property assignments. Ensure the name matches the variable name and the checkbox is checked.</description>
     <code>
       Public Function Puzzle() As CheckBox
-        Dim chkTax As New CheckBox
+          Dim chkTax As New CheckBox
 
-        chkTax.Name
-        chkTax.Checked
+          chkTax.Name
+          chkTax.Checked
 
-        Return chkTax
+          Return chkTax
       End Function
     </code>
     <results>

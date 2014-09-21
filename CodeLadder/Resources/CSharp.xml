@@ -9,7 +9,7 @@
    <!--
    CSharp Level 1
    -->
-  <puzzle id="1" level="1">
+  <puzzle>
     <description>Fix the variable declaration in this broken function.</description>
     <code entryPoint="Main">
       static int Main()

@@ -9,9 +9,9 @@
 
   <puzzle>
     <description>
-      Create a function which returns a TextBox with it's text property set to "Canada".
+      Create a function which returns a TextBox with its text property set to "Canada".
     </description>
-    <code>
+    <code entryPoint="Example">
       Public Function Puzzle() As TextBox
         
       End Function
@@ -27,9 +27,9 @@
     </description>
     <code entryPoint="ShowMessage">
       Public Function ShowMessage() As DialogResult
-        Dim retVal As DialogResult
-        retVal =  MassageBoxShow("Hello, World!)
-        Return retVal
+          Dim retVal As DialogResult
+          retVal =  MassageBoxShow("Hello, World!)
+          Return retVal
       End Function
     </code>
     <results>
@@ -37,15 +37,36 @@
     </results>
   </puzzle>
 
+    
   <puzzle>
     <description>
-      Create a function which returns a Label with it's text alignment property set to the upper left hand corner of the control.
+      Fix this broken function by changing as few characters as possible.
+    </description>
+    <code entryPoint="ShowFancyMessage">
+      Public Function ShowFancyMessage() As DialogResult
+          Dim vbAnswer As DialogResult
+          vbAnswer =  MessageBox.Show("Press the 'Yes' Button in this message box to finish.", _
+                                       A two button Message Box", _
+                                       MessageBoxButtons.YesNo, _
+                                       MessageBoxIcon.Question) 
+          Return vbAnswer
+      End Function
+    </code>
+    <results>
+      <expected  value="Yes" />
+    </results>
+  </puzzle>
+
+
+  <puzzle>
+    <description>
+      Create a function which returns a Label with its text alignment property set to the upper left hand corner of the control.
     </description>
     <code entryPoint="Alignment">
       Public Function Alignment() As Label
-        Dim lblTest As New Label
-        lblTest.Align = ContentAlignment
-        Return lblTest
+          Dim lblTest As New Label
+          lblTest.Align = ContentAlignment
+          Return lblTest
       End Function
     </code>
     <results>
@@ -58,11 +79,11 @@
       Create a function which assigns the parameter 'value' to the text property
       of a new Label Control and returns the control.
     </description>
-    <code>
-      Public Function Puzzle(ByVal value as String) As Label
-        Dim lblExample As New Label
-        lblExample.Text = value
-        Return value
+    <code exntryPoint="Example">
+      Public Function Example(ByVal value as String) As Label
+          Dim lblExample As New Label
+          lblExample.Text = value
+          Return value
       End Function
     </code>
     <results>
@@ -80,11 +101,11 @@
 
   <puzzle>
     <description>
-      Create a function which returns a Label with it's tag property set to 'VA'.
+      Create a function which returns a Label with its tag property set to 'VA'.
     </description>
     <code>
       Public Function Puzzle() As Label
-        Dim lblState As New Label
+          Dim lblState As New Label
       End Function
     </code>
     <results>
@@ -94,7 +115,7 @@
 
   <puzzle>
     <description>
-      Create a function which returns a TextBox with it's visible property set to True.
+      Create a function which returns a TextBox with its visible property set to True.
     </description>
     <code>
       Public Function Puzzle() As TextBox
@@ -107,7 +128,7 @@
 
   <puzzle>
     <description>
-      Create a function which returns a Label with it's text property set to 'To be or not to be?'.
+      Create a function which returns a Label with its text property set to 'To be or not to be?'.
     </description>
     <code>
       Public Function Puzzle() As Label
@@ -120,7 +141,7 @@
 
   <puzzle>
     <description>
-      Create a function which returns a Label with it's text alignment property set to 
+      Create a function which returns a Label with its text alignment property set to 
       middle vertical alignment and centered horizontally.
     </description>
     <code>
@@ -148,7 +169,7 @@
 
   <puzzle>
     <description>
-      Create a function which returns a Label with it's visible property set so that the Label Control is visible.
+      Create a function which returns a Label with its visible property set so that the Label Control is visible.
     </description>
     <code>
       Public Function Puzzle() As Label
@@ -165,37 +186,19 @@
     </description>
     <code entryPoint="ShowUselessMessage">
       Public Function ShowUselessMessage() As DialogResult
-        Dim retVal As DialogResult
-        intRetVal =  MessagBox("This is a message in a message box.)
-        Return retVal
+          Dim retVal As DialogResult
+          intRetVal =  MessagBox("This is a message in a message box.)
+          Return retVal
       End Function
     </code>
     <results>
       <expected  value="OK" />
     </results>
   </puzzle>
-  
-  <puzzle>
-    <description>
-      Fix this broken function by changing as few characters as possible.
-    </description>
-    <code entryPoint="ShowFancyMessage">
-      Public Function ShowFancyMessage() As DialogResult
-        Dim vbAnswer As DialogResult
-        vbAnswer =  MessageBox.Show("Press the 'Yes' Button in this message box to finish.", _
-                                   A two button Message Box", _
-                                   MessageBoxButtons.YesNo, MessageBoxIcon.Question) 
-        Return vbAnswer
-      End Function
-    </code>
-    <results>
-      <expected  value="Yes" />
-    </results>
-  </puzzle>
 
   <puzzle>
     <description>
-      Create a function which returns a Label with it's text alignment property set to 
+      Create a function which returns a Label with its text alignment property set to 
       middle vertical alignment and aligned right horizontally.
     </description>
     <code>
@@ -209,7 +212,7 @@
 
   <puzzle>
     <description>
-      Create a function which returns a button with it's name property set to 'btnExit'
+      Create a function which returns a button with its name property set to 'btnExit'
     </description>
     <code>
       Public Function Puzzle() As Button

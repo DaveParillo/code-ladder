@@ -10,9 +10,10 @@
   <!--
    VB Chapter 5
    -->
+
   <puzzle>
     <description>
-      Create a function that adds a NewItem to a ListBox control and return the ListBox
+      Create a function that adds a NewItem to a ListBox control and returns the ListBox
     </description>
     <code entryPoint="Example">
       Public Function Example (ByVal NewItem As String) As ListBox
@@ -27,7 +28,41 @@
 
   <puzzle>
     <description>
-      Create a function that loops to add a number to a ListBox control 'HowMany' times and return the ListBox
+      Create a function that returns the monthly payment for a loan, given 
+      the interest rate, number of periods, and the loan amount. 
+      Return the results as a string in currency format.
+    </description>
+    <code>
+      Public Function Puzzle (ByVal AnnualInterestRate As Double, NumberOfPeriods As Integer, LoanAmount As Double) As String
+      End Function
+    </code>
+    <results>
+      <expected value="$293.49" type="String">
+        <parameter value="0.065" type="Double" />
+        <parameter value="60" type="Integer" />
+        <parameter value="15000" type="Double" />
+      </expected>
+      <expected value="$228.03" type="String">
+        <parameter value="0.045" type="Double" />
+        <parameter value="48" type="Integer" />
+        <parameter value="10000" type="Double" />
+      </expected>
+      <expected value="$144.31" type="String">
+        <parameter value="0.025" type="Double" />
+        <parameter value="36" type="Integer" />
+        <parameter value="5000" type="Double" />
+      </expected>
+      <expected value="$41.88" type="String">
+        <parameter value="0.005" type="Double" />
+        <parameter value="24" type="Integer" />
+        <parameter value="1000" type="Double" />
+      </expected>
+    </results>
+  </puzzle>
+  
+  <puzzle>
+    <description>
+      Create a function that loops to add a number to a ListBox control 'HowMany' times and returns the ListBox
     </description>
     <code entryPoint="Example">
       Public Function Example (ByVal HowMany As Integer) As ListBox
@@ -166,7 +201,7 @@
   <puzzle>
     <description>
       Create a function that sums the numbers from 1 to 'Limit', but stops once the sum is at least as large as 
-      the sum and returns - read carefully - the last number used to compute the sum.
+      'Limit' and returns - read carefully - the last number used to compute the sum.
   </description>
     <code>
       Public Function Puzzle (ByVal Limit As Integer) As Integer
@@ -188,11 +223,9 @@
     </results>
   </puzzle>
 
-
-
-  <puzzle>
+    <puzzle>
     <description>
-      Create a function that returns the monthly payment for a loan, given 
+      Create a function that returns the total interest paid over the life of a loan, given 
       the interest rate, number of periods, and the loan amount. 
       Return the results as a string in currency format.
     </description>
@@ -201,22 +234,22 @@
       End Function
     </code>
     <results>
-      <expected value="$293.49" type="String">
+      <expected value="$2,609.53" type="String">
         <parameter value="0.065" type="Double" />
         <parameter value="60" type="Integer" />
         <parameter value="15000" type="Double" />
       </expected>
-      <expected value="$228.03" type="String">
+      <expected value="$945.67" type="String">
         <parameter value="0.045" type="Double" />
         <parameter value="48" type="Integer" />
         <parameter value="10000" type="Double" />
       </expected>
-      <expected value="$144.31" type="String">
+      <expected value="$195.05" type="String">
         <parameter value="0.025" type="Double" />
         <parameter value="36" type="Integer" />
         <parameter value="5000" type="Double" />
       </expected>
-      <expected value="$41.88" type="String">
+      <expected value="$5.22" type="String">
         <parameter value="0.005" type="Double" />
         <parameter value="24" type="Integer" />
         <parameter value="1000" type="Double" />
@@ -224,46 +257,10 @@
     </results>
   </puzzle>
 
-  
-  
-  <puzzle>
-    <description>
-      Create a function that returns the total payments made over the life of a loan, given 
-      the interest rate, number of periods, and the loan amount. 
-      Return the results as a string in currency format.
-    </description>
-    <code>
-      Public Function Puzzle (ByVal AnnualInterestRate As Double, NumberOfPeriods As Integer, LoanAmount As Double) As String
-      End Function
-    </code>
-    <results>
-      <expected value="$17,609.53" type="String">
-        <parameter value="0.065" type="Double" />
-        <parameter value="60" type="Integer" />
-        <parameter value="15000" type="Double" />
-      </expected>
-      <expected value="$10,945.67" type="String">
-        <parameter value="0.045" type="Double" />
-        <parameter value="48" type="Integer" />
-        <parameter value="10000" type="Double" />
-      </expected>
-      <expected value="$5,195.05" type="String">
-        <parameter value="0.025" type="Double" />
-        <parameter value="36" type="Integer" />
-        <parameter value="5000" type="Double" />
-      </expected>
-      <expected value="$1,005.22" type="String">
-        <parameter value="0.005" type="Double" />
-        <parameter value="24" type="Integer" />
-        <parameter value="1000" type="Double" />
-      </expected>
-    </results>
-  </puzzle>
 
 <!--
   TODO:
     List box
-    Payment functions
     Random numbers
     Tooltips
     Input boxes

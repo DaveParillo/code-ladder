@@ -15,16 +15,16 @@
     </description>
     <code entryPoint="Example">
       Public Function Example (ByVal intTemp As Integer) As String
-        Dim strResult As String
-        ' There are two possible outcomes in this function:
-        '  1. The function returns the string "It's cold"
-        '  2. The function returns an empty string
+          Dim strResult As String
+          ' There are two possible outcomes in this function:
+          '  1. The function returns the string "It's cold"
+          '  2. The function returns an empty string
 
-        If what?
-          strResult = It's cold
-        End If
+          If what?
+              strResult = It's cold
+          End If
 
-        Return strResult
+          Return strResult
       End Function
     </code>
     <results>
@@ -44,17 +44,17 @@
     </description>
     <code entryPoint="Example">
       Public Function Example (ByVal intTemp As Integer) As String
-        Dim strResult As String
-        ' There are two possible outcomes in this function:
-        '  1. The function returns the string "It's cold"
-        '  2. The function returns the string "Nice weather ..."
+          Dim strResult As String
+          ' There are two possible outcomes in this function:
+          '  1. The function returns the string "It's cold"
+          '  2. The function returns the string "Nice weather ..."
 
-        If what?
-          strResult = "It's cold, no?"
-          strResult = "Nice weather we're having!"
-        End If
+          If what?
+              strResult = "It's cold, no?"
+              strResult = "Nice weather we're having!"
+          End If
 
-        Return strResult
+          Return strResult
       End Function
     </code>
     <results>
@@ -92,7 +92,7 @@
     </code>
     <results>
       <expected value="A" type="String">
-        <parameter value="97" type="Single" />
+        <parameter value="100" type="Single" />
       </expected>
       <expected value="A" type="String">
         <parameter value="90" type="Single" />
@@ -120,6 +120,9 @@
       </expected>
       <expected value="F" type="String">
         <parameter value="50" type="Single" />
+      </expected>
+      <expected value="Not a valid grade." type="String">
+        <parameter value="101" type="Single" />
       </expected>
     </results>
   </puzzle>
@@ -171,33 +174,33 @@
 
     <puzzle>
     <description>
-      Create a function that computes gross pay given hours worked and pay rate.  
-      Display numeric results in curreny format.
-      Ensure your code includes input validation.</description>
+      Create a function that computes gross pay given hours worked and pay rate.  Display numeric 
+      results in curreny format.  Ensure your code includes input validation.
+    </description>
     <code entryPoint="Example">
       Public Function Example (ByVal HoursWorked As String, ByVal PayRate As String) As String
-        Dim intHours As Integer
-        Dim decPayRate As Decimal
-        Dim decGrossPay As Decimal
-        Dim strResult As String
+          Dim intHours As Integer
+          Dim decPayRate As Decimal
+          Dim decGrossPay As Decimal
+          Dim strResult As String
 
-        ' Get the hours worked
-        If Integer.TryParse (HoursWorked, intHours) Then
-          ' If true then we know intHours has a value and we can proceed
+          ' Get the hours worked
+          If Integer.TryParse (HoursWorked, intHours) Then
+              ' If true then we know intHours has a value and we can proceed
 
-          If Decimal.TryParse() Then
-            ' If true then decPayRate has a value &amp; too
+              If Decimal.TryParse() Then
+                  ' If true then decPayRate has a value &amp; too
 
-            ' Calulate gross pay
+                  ' Calulate gross pay
 
+              Else
+                  ' Pay rate is not a number.
+              End If
           Else
-            ' Pay rate is not a number.
+              ' Hours worked is not a number.
           End If
-        Else
-          ' Hours worked is not a number.
-        End If
 
-        Return
+          Return
       End Function
     </code>
     <results>
@@ -268,8 +271,8 @@
 
   <puzzle>
     <description>
-      Create a function that compares two numeric strings and determines which is larger.  
-      Ensure your code includes input validation.</description>
+      Create a function that compares two numeric strings and determines which is larger.  Ensure your 
+      code includes input validation.</description>
     <code>
       Public Function Puzzle(ByVal A As String, ByVal B as String) As String
       End Function
