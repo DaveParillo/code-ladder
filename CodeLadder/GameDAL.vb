@@ -344,7 +344,9 @@ Friend Class GameDAL
             End While
             'In general we want our code to preservve whitespace, but we want to get rid of
             ' the first bunch of spaces on each line.
-            Return code.Replace("      ", "")
+            code = Replace(code, "      ", String.Empty, 1, 1)           ' The very first line in the code block doesn't start w/ CRLF
+            code = Replace(code, vbNewLine & "      ", vbNewLine, 1)  ' All the rest do
+            Return code
         End Get
     End Property
 
