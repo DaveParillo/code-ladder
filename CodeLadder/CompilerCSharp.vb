@@ -5,8 +5,7 @@ Imports System.Text
 ''' <summary>
 ''' Compiles and assembles the code written by users in the Coding TextBox
 ''' </summary>
-''' <remarks>CodeProvider is currently hard-coded to VBCodeProvider,
-''' but this could be extended in the future.
+''' <remarks>This CodeProvider is barely functional.  A stub more than anything else.
 ''' </remarks>
 Public Class CompilerCSharp : Inherits Compiler
 

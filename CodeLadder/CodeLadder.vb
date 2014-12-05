@@ -273,17 +273,16 @@ Public Class CodeLadder
     ''' </summary>
     ''' <param name="Expected">The expected results for a given set of inputs</param>
     Private Sub ShowExpected(ByVal Expected As Results)
-        txtTalk.Text &= "Expected "
         If Not Expected.ObjectProperty Is Nothing AndAlso Expected.ObjectProperty.Length > 0 Then
-            txtTalk.Text &= "the '" & Expected.ObjectProperty & "' property to have a value of '" & Expected.Value & "'" & vbNewLine
+            txtTalk.Text &= "Expected the '" & Expected.ObjectProperty & "' property to have a value of '" & Expected.Value & "'" & vbNewLine
         ElseIf Not Expected.Parameters Is Nothing AndAlso Expected.Parameters.Length > 0 Then
-            txtTalk.Text &= "given parameters: "
+            txtTalk.Text &= "Given parameters: "
             For i As Integer = 0 To Expected.Parameters.Length - 1
                 txtTalk.Text &= Expected.Parameters(i) & ", "
             Next
-            txtTalk.Text &= " a value of '" & Expected.Value & "'" & vbNewLine
+            txtTalk.Text &= "expected a value of '" & Expected.Value & "'" & vbNewLine
         Else
-            txtTalk.Text &= "'" & Expected.Value & "'" & vbNewLine
+            txtTalk.Text &= "Expected '" & Expected.Value & "'" & vbNewLine
         End If
     End Sub
     ''' <summary>
@@ -482,6 +481,5 @@ Public Class CodeLadder
 
         Return s
     End Function
-
 
 End Class

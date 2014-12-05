@@ -4,9 +4,6 @@ Imports System.Text
 ''' <summary>
 ''' Compiles and assembles the code written by users in the Coding TextBox
 ''' </summary>
-''' <remarks>CodeProvider is currently hard-coded to VBCodeProvider,
-''' but this could be extended in the future.
-''' </remarks>
 Public Class CompilerVisualBasic : Inherits Compiler
 
     Private _Provider As Microsoft.VisualBasic.VBCodeProvider

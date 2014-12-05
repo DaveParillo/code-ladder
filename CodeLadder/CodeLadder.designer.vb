@@ -229,7 +229,7 @@ Partial Class CodeLadder
         Me.txtFooter.AutoIndentCharsPatterns = "" & Global.Microsoft.VisualBasic.ChrW(10) & "^\s*[\w\.\(\)]+\s*(?<range>=)\s*(?<range>.+)" & Global.Microsoft.VisualBasic.ChrW(10)
         Me.txtFooter.AutoScrollMinSize = New System.Drawing.Size(25, 15)
         Me.txtFooter.BackBrush = Nothing
-        Me.txtFooter.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtFooter.BackColor = System.Drawing.SystemColors.Control
         Me.txtFooter.CharHeight = 15
         Me.txtFooter.CharWidth = 7
         Me.txtFooter.CommentPrefix = "'"
@@ -305,7 +305,7 @@ Partial Class CodeLadder
         Me.txtHeader.AutoIndentCharsPatterns = "" & Global.Microsoft.VisualBasic.ChrW(10) & "^\s*[\w\.\(\)]+\s*(?<range>=)\s*(?<range>.+)" & Global.Microsoft.VisualBasic.ChrW(10)
         Me.txtHeader.AutoScrollMinSize = New System.Drawing.Size(25, 15)
         Me.txtHeader.BackBrush = Nothing
-        Me.txtHeader.BackColor = System.Drawing.SystemColors.ControlLight
+        Me.txtHeader.BackColor = System.Drawing.SystemColors.Control
         Me.txtHeader.CharHeight = 15
         Me.txtHeader.CharWidth = 7
         Me.txtHeader.CommentPrefix = "'"
