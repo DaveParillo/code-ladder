@@ -125,7 +125,11 @@
   <puzzle>
     <description>
       Create a function that converts the characters in the input phrase to their character code equivalent, 
-      concatentates all the codes together and returns the results.
+      concatentates all the codes together and returns the results. 
+      
+      Use the 'AscW' function to convert characters into character codes. 
+      
+      Example: intCode = AscW("A"c)
     </description>
     <code entryPoint="Example">
       Public Function Example (ByVal Phrase As String) As String
