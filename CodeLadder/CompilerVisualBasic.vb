@@ -39,6 +39,29 @@ Public Class CompilerVisualBasic : Inherits Compiler
         End Get
     End Property
 
+    Public Function HeaderCode() As String
+        Dim s As New StringBuilder
+        s.AppendLine("Option Strict On")
+        s.AppendLine("Imports System.Windows.Forms")
+        s.AppendLine("Imports System.Drawing")
+        s.AppendLine("Imports Microsoft.VisualBasic")
+        s.AppendLine("Imports Microsoft.VisualBasic.Constants")
+        s.AppendLine("Imports Microsoft.VisualBasic.Information")
+        s.AppendLine("Imports Microsoft.VisualBasic.Strings")
+        s.AppendLine("Imports System.Random")
+        s.AppendLine("Imports Microsoft.VisualBasic.VBMath")
+        s.AppendLine("Namespace GeneratedNamespace")
+        s.AppendLine("Class GeneratedMainClass")
+
+        Return s.ToString
+    End Function
+
+    Public Function FooterCode() As String
+        Dim s As New StringBuilder
+        s.AppendLine("End Class")
+        s.Append("End Namespace")
+        Return s.ToString
+    End Function
 
     ''' <summary>
     ''' Allows the game to insert the user entered code into the generated code template
@@ -50,22 +73,9 @@ Public Class CompilerVisualBasic : Inherits Compiler
             Return _Code.ToString
         End Get
         Set(ByVal value As String)
-            _Code.AppendLine("Option Strict On")
-            _Code.AppendLine("Imports System.Windows.Forms")
-            _Code.AppendLine("Imports System.Drawing")
-            _Code.AppendLine("Imports Microsoft.VisualBasic")
-            _Code.AppendLine("Imports Microsoft.VisualBasic.Constants")
-            _Code.AppendLine("Imports Microsoft.VisualBasic.Information")
-            _Code.AppendLine("Imports Microsoft.VisualBasic.Strings")
-            _Code.AppendLine("Imports System.Random")
-            _Code.AppendLine("Imports Microsoft.VisualBasic.VBMath")
-            _Code.AppendLine("Namespace GeneratedNamespace")
-            _Code.AppendLine("Class GeneratedMainClass")
-
-            _Code.AppendLine(value)
-
-            _Code.AppendLine("End Class")
-            _Code.AppendLine("End Namespace")
+            _Code.Append(HeaderCode)
+            _Code.Append(value)
+            _Code.Append(FooterCode)
         End Set
     End Property
 

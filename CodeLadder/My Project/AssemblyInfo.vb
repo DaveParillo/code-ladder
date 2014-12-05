@@ -8,11 +8,11 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("CodeLadder")> 
-<Assembly: AssemblyDescription("")> 
+<Assembly: AssemblyTitle("Code Ladder")> 
+<Assembly: AssemblyDescription("An introductory programming learning lab for Visual Basic and C#.")> 
 <Assembly: AssemblyCompany("Mesa College")> 
 <Assembly: AssemblyProduct("CodeLadder")> 
-<Assembly: AssemblyCopyright("GPL v3 or greater, 2013")> 
+<Assembly: AssemblyCopyright("GPL v3 or greater, 2013 - 2014")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion("1.1.0.0")> 
 <Assembly: AssemblyFileVersion("1.0.0.0")> 

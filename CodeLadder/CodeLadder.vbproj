@@ -85,9 +85,21 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutCodeLadder.Designer.vb">
+      <DependentUpon>AboutCodeLadder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AboutCodeLadder.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CompilerVisualBasic.vb" />
     <Compile Include="CompilerCSharp.vb" />
     <Compile Include="GameState.vb" />
+    <Compile Include="Help.Designer.vb">
+      <DependentUpon>Help.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Help.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="History.Designer.vb">
       <DependentUpon>History.vb</DependentUpon>
     </Compile>
@@ -126,8 +138,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AboutCodeLadder.resx">
+      <DependentUpon>AboutCodeLadder.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CodeLadder.resx">
       <DependentUpon>CodeLadder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Help.resx">
+      <DependentUpon>Help.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="History.resx">
       <DependentUpon>History.vb</DependentUpon>

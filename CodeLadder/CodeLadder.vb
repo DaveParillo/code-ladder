@@ -28,6 +28,8 @@ Public Class CodeLadder
         txtTalk.Text = String.Empty
 
         c.Code = Me.txtCode.Text
+        'txtCode.Text = c.Code
+
         For Each r As Results In _game.Expected
             actual = c.Eval(_game.EntryPoint, r.Parameters)
             If c.Errors.HasErrors Then
@@ -41,6 +43,7 @@ Public Class CodeLadder
                     ShowYouFailed(actual, r)
                     Exit For
                 End If
+                ShowExpected(r)
             End If
         Next
         If isAnswerOK Then
@@ -64,7 +67,6 @@ Public Class CodeLadder
         ChangeFontSizeOf(txtCode, amt)
         ChangeFontSizeOf(txtTalk, amt)
         ChangeFontSizeOf(txtDescription, amt)
-        'ChangeFontSizeOf(lblLineNumbers, amt)
         ChangeFontSizeOf(txtCodeBin, amt)
     End Sub
 
@@ -122,8 +124,18 @@ Public Class CodeLadder
     ''' Actions to take on Application Start
     ''' </summary>
     Private Sub CodeLadder_Load() Handles MyBase.Load
+        Dim c As Object
+
+        If _prefs.Language = PreferencesDialog.LANG.C_SHARP Then
+            c = New CompilerCSharp
+        Else
+            c = New CompilerVisualBasic
+        End If
         _state = LoadLatestWeek()
-        txtCode.LineNumberStartValue = 5
+        txtHeader.Text = c.HeaderCode()
+        txtCode.LineNumberStartValue = txtHeader.LinesCount + 1
+        txtFooter.Text = c.FooterCode()
+        txtCode_TextChanged()
 
         _game = New GameDAL(_prefs.Language, _prefs.Difficulty)
 
@@ -139,8 +151,13 @@ Public Class CodeLadder
         WriteNewPuzzle()
 
         txtTalk.Text = String.Empty
-
     End Sub
+
+    Private Sub txtCode_TextChanged() Handles txtCode.TextChanged
+        txtFooter.LineNumberStartValue = txtHeader.LinesCount + txtCode.LinesCount + 1
+    End Sub
+
+
 #Region "Toolstrip Menu Items"
 
     ''' <summary>
@@ -173,7 +190,7 @@ Public Class CodeLadder
     ''' </summary>
     Private Sub SaveToolStripMenuItem_Click() Handles SaveToolStripMenuItem.Click
         _state.SaveGame()
-        MessageBox.Show("FIle Saved to " & _state.FileName & ".", "File saved OK")
+        MessageBox.Show("File Saved to " & _state.FileName & ".", "File saved OK")
     End Sub
 
     ''' <summary>
@@ -208,7 +225,34 @@ Public Class CodeLadder
         h.ShowDialog()
     End Sub
 
+    ''' <summary>
+    ''' Show the About Box
+    ''' </summary>
+    Private Sub AboutCodeLadderToolStripMenuItem_Click() Handles AboutCodeLadderToolStripMenuItem.Click
+        Dim f As New AboutCodeLadder
+        f.Show()
+
+    End Sub
+    ''' <summary>
+    ''' Show Help.
+    ''' </summary>
+    ''' <remarks>The help is hosted on the Google Code wiki for this project.</remarks>
+    Private Sub UsingCodeLadderToolStripMenuItem_Click() Handles UsingCodeLadderToolStripMenuItem.Click
+        Dim f As New Help
+        f.Show()
+    End Sub
+
 #End Region
+
+    Private Sub chkShowAllCode_CheckedChanged(sender As Object, e As EventArgs) Handles chkShowAllCode.CheckedChanged
+        If chkShowAllCode.Checked Then
+            grpHeader.Visible = True
+            grpFooter.Visible = True
+        Else
+            grpHeader.Visible = False
+            grpFooter.Visible = False
+        End If
+    End Sub
 
 #End Region
 
@@ -246,7 +290,7 @@ Public Class CodeLadder
     ''' Let the user know they rock.
     ''' </summary>
     Private Sub ShowYouPassed()
-        txtTalk.Text = "You passed the challenge!" & vbNewLine
+        txtTalk.Text &= vbNewLine & "You passed the challenge!" & vbNewLine
 
         ' Update the score, if unsolved
         If Not _state.Solved.Contains(_game.Location) Then
@@ -438,5 +482,6 @@ Public Class CodeLadder
 
         Return s
     End Function
+
 
 End Class

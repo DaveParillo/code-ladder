@@ -58,7 +58,7 @@ Public MustInherit Class Compiler
         Dim e As CompilerError
         Dim sb As New StringBuilder
         For Each e In _CompilerErrors
-            sb.AppendLine("Line:    " & e.Line - 6)
+            sb.AppendLine("Line:    " & e.Line + 1)
             sb.AppendLine("Text:    " & e.ErrorText)
             sb.AppendLine(String.Empty)
 
