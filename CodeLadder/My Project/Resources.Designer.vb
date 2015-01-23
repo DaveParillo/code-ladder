@@ -66,23 +66,19 @@ Namespace My.Resources
         '''  version=&quot;1&quot;&gt;
         '''  &lt;game name=&quot;CodeLadder&quot;&gt;
         '''    &lt;language&gt;CSharp&lt;/language&gt;
+        '''    &lt;level&gt;1&lt;/level&gt;
         '''    &lt;start&gt;1&lt;/start&gt;
         '''  &lt;/game&gt;
-        '''
-        '''   &lt;!--
-        '''   CSharp Level 1
-        '''   --&gt;
         '''  &lt;puzzle&gt;
         '''    &lt;description&gt;Fix the variable declaration in this broken function.&lt;/description&gt;
         '''    &lt;code entryPoint=&quot;Main&quot;&gt;
-        '''      static int Main()
+        '''      &lt;header&gt;
+        '''      namespace GeneratedNamespace
         '''      {
-        '''        int p1 = 3,
-        '''        return p1;
-        '''      }
-        '''      &lt;/code&gt;
-        '''    &lt;results&gt;
-        '''      &lt;expec [rest of string was truncated]&quot;;.
+        '''        using System;
+        '''        class GeneratedMainClass
+        '''        {
+        '''          sta [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property CSharp() As String
             Get
@@ -110,32 +106,6 @@ Namespace My.Resources
         Friend ReadOnly Property GameML() As String
             Get
                 Return ResourceManager.GetString("GameML", resourceCulture)
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Looks up a localized string similar to &lt;GameML xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
-        '''  xsi:noNamespaceSchemaLocation=&quot;GameML.xsd&quot;
-        '''  version=&quot;1&quot;&gt;
-        '''  &lt;game name=&quot;CodeLadder&quot;&gt;
-        '''    &lt;language&gt;VisualBasic&lt;/language&gt;
-        '''    &lt;level&gt;1&lt;/level&gt;   
-        '''    &lt;start&gt;1&lt;/start&gt;   
-        '''  &lt;/game&gt;
-        '''
-        '''   &lt;!--
-        '''   VB Chapter 1
-        '''   --&gt;
-        '''  &lt;puzzle level=&quot;1&quot;&gt;
-        '''    &lt;description&gt;Fix the variable declaration in this broken function.&lt;/description&gt;
-        '''    &lt;code&gt;
-        '''      Public Function Puzzle() As Integer
-        '''        Dim *intStrange As Integer = 3
-        '''        Return *intS [rest of string was truncated]&quot;;.
-        '''</summary>
-        Friend ReadOnly Property VisualBasic() As String
-            Get
-                Return ResourceManager.GetString("VisualBasic", resourceCulture)
             End Get
         End Property
         
@@ -172,25 +142,14 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to &lt;GameML xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
-        '''  xsi:noNamespaceSchemaLocation=&quot;GameML.xsd&quot;
-        '''  version=&quot;1&quot;&gt;
-        '''  &lt;game name=&quot;CodeLadder&quot;&gt;
-        '''    &lt;language&gt;VisualBasic&lt;/language&gt;
-        '''    &lt;level&gt;3&lt;/level&gt;   
-        '''    &lt;start&gt;1&lt;/start&gt;   
-        '''  &lt;/game&gt;
-        '''
+        '''  Looks up a localized string similar to &lt;!DOCTYPE GameML [
+        '''  &lt;!ENTITY commonControls &apos;
+        '''        Private frm As New Form With {.Name = &quot;frm&quot;, .Text = &quot;Hello!&quot;, .AutoSize = True}
         '''  
-        '''  
-        '''  &lt;puzzle&gt;
-        '''    &lt;description&gt;
-        '''      Fix the variable declaration.
-        '''    &lt;/description&gt;
-        '''    &lt;help&gt;https://code.google.com/p/code-ladder/wiki/Variable#Variable_Naming_Rules&lt;/help&gt;
-        '''    &lt;code&gt;
-        '''      &lt;header&gt;
-        '''        Public Function Puzzle() As Integ [rest of string was truncated]&quot;;.
+        '''        Private lblPrompt As New Label With {.Name = &quot;lblPrompt&quot;, .Location = New System.Drawing.Point(25, 10), .AutoSize = True}
+        '''        Private WithEvents btnClose As New Button With {.Name = &quot;btnClose&quot;, .Text = &quot;Close&quot;, .AutoSize = True, 
+        '''                                                        .Location = New System.Drawing.Point(75, 225)}
+        '''        Private Sub C [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property Week3VisualBasic() As String
             Get
@@ -199,24 +158,13 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to &lt;GameML xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; 
-        '''  xsi:noNamespaceSchemaLocation=&quot;GameML.xsd&quot;
-        '''  version=&quot;1&quot;&gt;
-        '''  &lt;game name=&quot;CodeLadder&quot;&gt;
-        '''    &lt;language&gt;VisualBasic&lt;/language&gt;
-        '''    &lt;level&gt;4&lt;/level&gt;   
-        '''    &lt;start&gt;1&lt;/start&gt;   
-        '''  &lt;/game&gt;
-        '''
-        '''  &lt;!--
-        '''   VB Chapter 4
-        '''   --&gt;
-        '''  &lt;puzzle&gt;
-        '''    &lt;description&gt;Create a function that returns &quot;It&apos;s cold&quot; if intTemp is less than 40
-        '''    &lt;/description&gt;
-        '''    &lt;code entryPoint=&quot;Example&quot;&gt;
-        '''      Public Function Example (ByVal intTemp As Integer) As String
-        '''    [rest of string was truncated]&quot;;.
+        '''  Looks up a localized string similar to &lt;!DOCTYPE GameML [
+        '''  &lt;!ENTITY commonControls &apos;
+        '''        Private frm As New Form With {.Name = &quot;frm&quot;, .Text = &quot;Hello!&quot;, .AutoSize = True}
+        '''  
+        '''        Private lblPrompt As New Label With {.Name = &quot;lblPrompt&quot;, .Location = New System.Drawing.Point(25, 10), .AutoSize = True}
+        '''        Private grpBox As New GroupBox With {.Name = &quot;grpBox&quot;, .Text = &quot;Options&quot;, .Location = New System.Drawing.Point(25, 45), .AutoSize = True}
+        '''        Private WithEvents btnClose As New Button With {.Name = &quot;btnClose&quot;, .Text = &quot;Close&quot; [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property Week4VisualBasic() As String
             Get
@@ -242,8 +190,8 @@ Namespace My.Resources
         '''    &lt;description&gt;
         '''      Create a function that adds a NewItem to a ListBox control and returns the ListBox
         '''    &lt;/description&gt;
-        '''    &lt;code entryPoint=&quot;Example&quot;&gt;
-        '''      Public Function Example (ByVal NewItem As  [rest of string was truncated]&quot;;.
+        '''    &lt;help&gt;https://code.google.com/p/code-ladder/wiki/ListBox&lt;/help&gt;
+        '''    &lt;code en [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property Week5VisualBasic() As String
             Get

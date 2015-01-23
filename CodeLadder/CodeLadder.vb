@@ -325,6 +325,7 @@ Public Class CodeLadder
             txtTalk.Text = "Your code returned '" & Actual.ToString & "'" & vbNewLine
         End If
         ShowExpected(Expected)
+        txtTalk.Text &= vbNewLine & "Sorry, you did not pass the challenge.  Try again." & vbNewLine
     End Sub
 
     ''' <summary>
