@@ -153,7 +153,11 @@ Public Class GameState
     ''' <returns>The users name</returns>
     Public Property Name() As String
         Get
-            Return _state.name
+            If IsNothing(_state.name) Then
+                Return String.Empty
+            Else
+                Return _state.name
+            End If
         End Get
         Set(ByVal value As String)
             _state.name = value

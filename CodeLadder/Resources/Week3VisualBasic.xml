@@ -1,3 +1,27 @@
+<!DOCTYPE GameML [
+  <!ENTITY commonControls '
+        Private frm As New Form With {.Name = "frm", .Text = "Hello!", .AutoSize = True}
+  
+        Private lblPrompt As New Label With {.Name = "lblPrompt", .Location = New System.Drawing.Point(25, 10), .AutoSize = True}
+        Private WithEvents btnClose As New Button With {.Name = "btnClose", .Text = "Close", .AutoSize = True, 
+                                                        .Location = New System.Drawing.Point(75, 225)}
+        Private Sub CloseMe() Handles btnClose.Click
+            frm.Close()
+        End Sub'>
+
+  <!ENTITY commonAdd 'frm.Controls.Add(btnClose)
+             frm.Controls.Add(lblPrompt)'>
+
+  <!ENTITY isFrmOpen '
+        Public Function isFrmOpen() As Boolean 
+            Dim retval As Boolean = False
+            For Each f As Form In Application.OpenForms()
+                If f.Name = "frm" Then retval = True
+            Next
+            Return retval
+        End Function'>
+]>
+
 <GameML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
   xsi:noNamespaceSchemaLocation="GameML.xsd"
   version="1">
@@ -7,91 +31,253 @@
     <start>1</start>   
   </game>
 
-  <!--
-   VB Chapter 3
-   -->
   <puzzle>
-    <description>This function should return the value of 'HelloName' plus a mystery String</description>
-    <code entryPoint="HelloWorld">
-      Public Function HelloWorld(ByVal HelloName As String) As String
-      End Function
+    <description>
+      Set the TextBox 'txtCountry' Text property to 'Canada'.
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/TextBox</help>
+    <code>
+      <header>
+        &commonControls;
+        Private txtCountry As New TextBox With {.Name = "txtCountry", .Location = New System.Drawing.Point(150, 5), .AutoSize = True}
+
+        Private Sub ShowResults()
+            &commonAdd;
+            btnClose.Location = New System.Drawing.Point (75,150)
+            frm.Controls.Add(txtCountry)
+            frm.Show()
+        End Sub
+
+        Public Function Puzzle() As TextBox
+            lblPrompt.Text = "The text box says:"
+            frm.Text = "TextBox Text"
+      </header>
+      <body>
+      </body>
+      <footer>
+            ShowResults()
+            Return txtCountry
+        End Function
+      </footer>
     </code>
     <results>
-      <expected value="Hello, Bob!">
-        <parameter value="Bob" type="String" />
-      </expected>
-      <expected value="Hello, Everyone!">
-        <parameter value="Everyone" type="String" />
-      </expected>
+      <expected property="Text" value="Canada" />
+    </results>
+  </puzzle>
+  
+  <puzzle>
+    <description>
+      Fix the variable declaration.
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/Variable#Variable_Naming_Rules</help>
+    <code>
+      <header>
+        Public Function Puzzle() As Integer
+      </header>
+      <body>
+        Dim *strange As Integer
+      </body>
+      <footer>
+        strange = 3
+        Return strange
+        End Function
+      </footer>
+    </code>
+    <results>
+      <expected type="Integer" value="3" />
     </results>
   </puzzle>
 
   <puzzle>
-    <description>This function should return the value of HelloName plus a mystery String</description>
-    <code entryPoint="ShowGreeting">
-      Public Function ShowGreeting (ByVal HelloName As String) As String
-      End Function
+    <description>Fix the variable declaration.</description>
+    <help>https://code.google.com/p/code-ladder/wiki/Variables#Variable_Naming_Rules</help>
+    <code>
+      <header>
+        Public Function Puzzle() As Decimal
+      </header>
+      <body>
+        Dim 2cost As Decimal
+      </body>
+      <footer>
+        cost = 35.98d
+        Return cost
+        End Function
+      </footer>
     </code>
     <results>
-      <expected value="Hello Becky.">
-        <parameter value="Becky" type="String" />
-      </expected>
-      <expected value="Hello Charlie.">
-        <parameter value="Charlie" type="String" />
-      </expected>
-      <expected value="Hello Everyone.">
-        <parameter value="Everyone" type="String" />
-      </expected>
+      <expected type="Decimal" value="35.98" />
     </results>
   </puzzle>
 
   <puzzle>
-    <description>This function should concatenate its arguments to show a date string</description>
-    <code entryPoint="ShowDate">
-      Public Function ShowDate (ByVal DayOfWeek As String, ByVal Month As String, ByVal Day As String, ByVal Year As String) As String
-      End Function
+    <description>Assign the value 34.56 to the variable 'mileage'.</description>
+    <code>
+      <header>
+        Public Function Puzzle() As Single
+      </header>
+      <body>
+        Dim mileage As Single
+      </body>
+      <footer>
+        Return mileage
+        End Function
+      </footer>
     </code>
     <results>
-      <expected value="December 3, 2010 was a Friday." >
-        <parameter value="Friday" type="String" />
-        <parameter value="December" type="String" />
-        <parameter value="3" type="String" />
-        <parameter value="2010" type="String" />
-      </expected>
-      <expected value="January 1, 1970 was a Thursday." >
-        <parameter value="Thursday" type="String" />
-        <parameter value="January" type="String" />
-        <parameter value="1" type="String" />
-        <parameter value="1970" type="String" />
-      </expected>
-      <expected value="December 10, 1815 was a Sunday." >
-        <parameter value="Sunday" type="String" />
-        <parameter value="December" type="String" />
-        <parameter value="10" type="String" />
-        <parameter value="1815" type="String" />
-      </expected>
+      <expected type="Single" value="34.56" />
     </results>
   </puzzle>
 
   <puzzle>
-    <description>This function should return a button, Show Date, with a keyboard shortcut defined</description>
-    <code entryPoint="MakeShortcut">
-      Public Function MakeShortcut() As Button
-      End Function
+    <description>Fix the statement by changing as few characters as possible.</description>
+    <help>https://code.google.com/p/code-ladder/wiki/Variables</help>
+    <code>
+      <header>
+        Public Function Puzzle() As Double
+      </header>
+      <body>
+        Dim dbl/Strange As Double
+      </body>
+      <footer>
+            dblStrange = 45.6
+            Return dblStrange
+        End Function
+      </footer>
     </code>
     <results>
-      <expected property="Text" value="Show &amp;Date" />
+      <expected type="Double" value="45.6" />
     </results>
   </puzzle>
+
+  <puzzle>
+    <description>
+      Erase the contents of the control 'txtAddress' using code.
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/TextBox</help>
+    <code>
+      <header>
+        &commonControls;
+        Private txtAddress As New TextBox With {.Name = "txtAddress", .Location = New System.Drawing.Point(150, 5), .AutoSize = True}
+
+        Private Sub ShowResults()
+            &commonAdd;
+            btnClose.Location = New System.Drawing.Point (75,150)
+            frm.Controls.Add(txtAddress)
+            frm.Show()
+        End Sub
+
+        Public Function Puzzle() As TextBox
+            lblPrompt.Text = "The text box says:"
+            txtAddress.Text = "1600 Pennsylvania Ave. Washington, DC"
+            frm.Text = "TextBox Clear Example"
+      </header>
+      <body>
+      </body>
+      <footer>
+            ShowResults()
+            Return txtAddress
+        End Function
+      </footer>
+    </code>
+    <results>
+      <expected property="Text" value="" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Fix the variable declaration in this broken function.</description>
+    <code>
+      <header>
+        Public Function Puzzle() As Long
+      </header>
+      <body>
+        Dim .sum As Long
+      </body>
+      <footer>
+            sum = -334455
+            Return sum
+        End Function
+      </footer>
+    </code>
+    <results>
+      <expected type="Long" value="-334455" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Make the letter 'C' a shortcut for the 'btnClose' button.
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/ShortcutKey</help>
+    <code>
+      <header>
+        &commonControls;
+
+        Private Sub ShowResults()
+          &commonAdd;
+          frm.Show()
+        End Sub
+
+        Public Function Puzzle() As Button
+      </header>
+      <body>
+      </body>
+      <footer>
+          ShowResults()
+          Return btnClose
+        End Function
+      </footer>
+    </code>
+    <results>
+      <expected property="Text" value="&amp;Close" />
+    </results>
+  </puzzle>
+  
+ <puzzle>
+    <description>
+      Create a function which assigns the parameter 'value' to the text property 
+      of a new TextBox Control and returns the control.
+    </description>
+   <help>https://code.google.com/p/code-ladder/wiki/Variable</help>
+    <code>
+      <header>
+        Private txtFoo As New TextBox With {.Name = "txtFoo"}
+      </header>
+      <body>
+        ' This function stores a value in a TextBox 'txtFoo' and returns the TextBox
+        ' The parameter 'value' is treated exactly like a variable
+        Public Function Puzzle (ByVal value As String) As TextBox
+        
+            Return txtFoo
+        End Function
+      </body>
+      
+    </code>
+    <results>
+      <expected property= "Text" value="$29.99" >
+        <parameter type="String" value="$29.99" />
+      </expected>
+      <expected property= "Text" value="password is not a great password" >
+        <parameter type="String" value="password is not a great password" />
+      </expected>
+      <expected property= "Text" value="Ramerstat" >
+        <parameter type="String" value="Ramerstat" />
+      </expected>
+    </results>
+  </puzzle>
+
 
   <puzzle>
     <description>Fix this broken function</description>
+    <help>https://code.google.com/p/code-ladder/wiki/Variable</help>
     <code entryPoint="GetTwentyFive">
-      Public Function GetTwentyFive() As Integer
-        Dim intValue As Integer = -1
-        Dim intValue As Integer = 25
-        Return intValue
-      End Function
+      <body>
+        Public Function GetTwentyFive() As Integer
+          Dim intValue As Integer = -1
+          Dim intValue As Integer = 25
+          Return intValue
+        End Function
+      </body>
     </code>
     <results>
       <expected value="25"  type="Integer"/>
@@ -100,9 +286,12 @@
   
   <puzzle>
     <description>Create a function that negates a provided value</description>
+    <help>https://code.google.com/p/code-ladder/wiki/ArithmeticOperation</help>
     <code>
-      Public Function Puzzle(ByVal intValue As Integer) As Integer
-      End Function
+      <body>
+        Public Function Puzzle(ByVal intValue As Integer) As Integer
+        End Function
+      </body>
     </code>
     <results>
       <expected value="-1" type="Integer">
@@ -125,9 +314,12 @@
   
   <puzzle>
     <description>Create a function that returns the sum of two values</description>
+    <help>https://code.google.com/p/code-ladder/wiki/ArithmeticOperation</help>
     <code>
-      Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Integer
-      End Function
+      <body>
+        Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Integer
+        End Function
+      </body>
     </code>
     <results>
       <expected value="0" type="Integer">
@@ -159,9 +351,12 @@
 
   <puzzle>
     <description>Create a function that returns the product of two values</description>
+    <help>https://code.google.com/p/code-ladder/wiki/ArithmeticOperation</help>
     <code>
-      Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Long
-      End Function
+      <body>
+        Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Long
+        End Function
+      </body>
     </code>
     <results>
       <expected value="-1" type="Long">
@@ -194,9 +389,12 @@
 
   <puzzle>
     <description>Create a function that returns the quotient of two values</description>
+    <help>https://code.google.com/p/code-ladder/wiki/ArithmeticOperation</help>
     <code>
-      Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Double
-      End Function
+      <body>
+        Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Double
+        End Function
+      </body>
     </code>
     <results>
       <expected value="-1" type="Double">
@@ -216,9 +414,12 @@
 
   <puzzle>
     <description>Create a function that returns the remainder of a division operation</description>
+    <help>https://code.google.com/p/code-ladder/wiki/ArithmeticOperation</help>
     <code>
-      Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Integer
-      End Function
+      <body>
+        Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Integer
+        End Function
+      </body>
     </code>
     <results>
       <expected value="0" type="Integer">
@@ -246,9 +447,12 @@
 
   <puzzle>
     <description>Create a function that returns the quotient of an integer division operation</description>
+    <help>https://code.google.com/p/code-ladder/wiki/ArithmeticOperation</help>
     <code>
-      Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Integer
-      End Function
+      <body>
+        Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Integer
+        End Function
+      </body>
     </code>
     <results>
       <expected value="2" type="Integer">
@@ -272,9 +476,12 @@
 
   <puzzle>
     <description>Create a function that returns the results of exponentiation operations</description>
+    <help>https://code.google.com/p/code-ladder/wiki/ArithmeticOperation</help>
     <code>
-      Public Function Puzzle(ByVal Base As Integer, ByVal Exponent As Integer) As Double
-      End Function
+      <body>
+        Public Function Puzzle(ByVal Base As Integer, ByVal Exponent As Integer) As Double
+        End Function
+      </body>
     </code>
     <results>
       <expected value="8" type="Double">
@@ -302,9 +509,12 @@
 
   <puzzle>
     <description>Create a function that first adds 'X' and 'Base', then raises the sum to an exponent and returns the results</description>
+    <help>https://code.google.com/p/code-ladder/wiki/ArithmeticOperation#Parentheses</help>
     <code>
-      Public Function Puzzle(ByVal X As Integer, ByVal Base As Integer, ByVal Exponent As Integer) As Double
-      End Function
+      <body>
+        Public Function Puzzle(ByVal X As Integer, ByVal Base As Integer, ByVal Exponent As Integer) As Double
+        End Function
+      </body>
     </code>
     <results>
       <expected value="27" type="Double">
@@ -334,12 +544,57 @@
       </expected>
     </results>
   </puzzle>
+
+  <puzzle>
+    <description>This function should return the value of HelloName plus a mystery String</description>
+    <help>https://code.google.com/p/code-ladder/wiki/ArithmeticOperation#String_Concatenation_Operator</help>
+    <code entryPoint="ShowGreeting">
+      <body>
+        Public Function ShowGreeting (ByVal HelloName As String) As String
+        End Function
+      </body>
+    </code>
+    <results>
+      <expected value="Hello Becky">
+        <parameter value="Becky" type="String" />
+      </expected>
+      <expected value="Hello Charlie">
+        <parameter value="Charlie" type="String" />
+      </expected>
+      <expected value="Hello Everyone">
+        <parameter value="Everyone" type="String" />
+      </expected>
+    </results>
+  </puzzle>
   
   <puzzle>
-    <description>Create a function that converts a string to a number and returns the results</description>
+    <description>This function should return the value of 'HelloName' plus a mystery String</description>
+    <help>https://code.google.com/p/code-ladder/wiki/ArithmeticOperation#String_Concatenation_Operator</help>
+    <code entryPoint="HelloWorld">
+      <body>
+        Public Function HelloWorld(ByVal HelloName As String) As String
+        End Function
+      </body>
+      
+    </code>
+    <results>
+      <expected value="Hello, Bob!">
+        <parameter value="Bob" type="String" />
+      </expected>
+      <expected value="Hello, Everyone!">
+        <parameter value="Everyone" type="String" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>Create a function that converts a string 'X' to an Integer and returns the results</description>
+    <help>https://code.google.com/p/code-ladder/wiki/TypeConversion#Explicit_Type_Conversion</help>
     <code>
-      Public Function Puzzle(ByVal X As String) As Integer
-      End Function
+      <body>
+        Public Function Puzzle(ByVal X As String) As Integer
+        End Function
+      </body>
     </code>
     <results>
       <expected value="2" type="Integer">
@@ -355,10 +610,13 @@
   </puzzle>
 
   <puzzle>
-    <description>Create a function that converts a string to a number and returns the results</description>
+    <description>Create a function that converts a string 'X' to a Decimal and returns the results</description>
+    <help>https://code.google.com/p/code-ladder/wiki/TypeConversion#Explicit_Type_Conversion</help>
     <code>
-      Public Function Puzzle(ByVal X As String) As Decimal
-      End Function
+      <body>
+        Public Function Puzzle(ByVal X As String) As Decimal
+        End Function        
+      </body>
     </code>
     <results>
       <expected value="2.123456" type="Decimal">
@@ -372,31 +630,40 @@
       </expected>
     </results>
   </puzzle>
-  
+
+
   <puzzle>
     <description>Create a function that converts a number to a string and returns the results</description>
+    <help>https://code.google.com/p/code-ladder/wiki/TypeConversion#Explicit_Type_Conversion</help>
     <code>
-      Public Function Puzzle(ByVal X As Integer) As String
-      End Function
+      <body>
+        Public Function Puzzle(ByVal X As Double) As String
+        End Function
+      </body>
     </code>
     <results>
-      <expected value="2" type="String">
-        <parameter value="2" type="Integer" />
+      <expected value="3.14159" type="String">
+        <parameter value="3.14159" type="Double" />
       </expected>
       <expected value="-11" type="String">
-        <parameter value="-11" type="Integer" />
+        <parameter value="-11" type="Double" />
       </expected>
-      <expected value="1776" type="String">
-        <parameter value="1776" type="Integer" />
+      <expected value="2038.75" type="String">
+        <parameter value="2038.75" type="Double" />
       </expected>
     </results>
   </puzzle>
 
+
   <puzzle>
     <description>Create a function that converts a number to a string and returns results in currency format</description>
+    <help>https://code.google.com/p/code-ladder/wiki/ToString#Format_Strings</help>
     <code>
-      Public Function Puzzle(ByVal X As Decimal) As String
-      End Function
+      <body>
+        Public Function Puzzle(ByVal Cost As Decimal) As String
+        End Function
+      </body>
+      
     </code>
     <results>
       <expected value="$2,345.67" type="String">
@@ -410,67 +677,92 @@
 
   <puzzle>
     <description>Create a function that converts a number to a string and returns results in percent format</description>
+    <help>https://code.google.com/p/code-ladder/wiki/ToString#Format_Strings</help>
     <code>
-      Public Function Puzzle(ByVal X As Decimal) As String
-      End Function
+      <body>
+        Public Function Puzzle(ByVal X As Single) As String
+        End Function
+      </body>
+      
     </code>
     <results>
       <expected value="23.40 %" type="String">
-        <parameter value=".234" type="Decimal" />
+        <parameter value=".234" type="Single" />
       </expected>
       <expected value="-65.43 %" type="String">
-        <parameter value="-.6543" type="Decimal" />
+        <parameter value="-.6543" type="Single" />
       </expected>
       <expected value="177,600.00 %" type="String">
-        <parameter value="1776" type="Decimal" />
+        <parameter value="1776" type="Single" />
       </expected>
     </results>
   </puzzle>
 
   <puzzle>
-    <description>Create a function that converts a number to a string and returns results in exponential format to 3 places.</description>
+    <description>Create a function that converts a Date to a string and returns results as a Long Date.</description>
+    <help>https://code.google.com/p/code-ladder/wiki/ToString#Formatting_Dates_and_Times</help>
     <code>
-      Public Function Puzzle(ByVal X As Double) As String
-      End Function
+      <body>
+        Public Function Puzzle(ByVal MyDate As Date) As String
+        End Function
+      </body> 
     </code>
     <results>
-      <expected value="2.340e-001" type="String">
-        <parameter value="0.234" type="Double" />
-      </expected>
-      <expected value="1.235e+005" type="String">
-        <parameter value="123456" type="Double" />
-      </expected>
-    </results>
-  </puzzle>
-  <puzzle>
-    <description>Create a function that converts a number to a string and returns formatted results</description>
-    <code>
-      Public Function Puzzle(ByVal X As Date) As String
-      End Function
-    </code>
-    <results>
-      <expected value="Friday, December 03, 2010" type="String">
+      <expected value="Friday, December 3, 2010" type="String">
         <parameter value="#12/3/2010#" type="Date" />
       </expected>
-      <expected value="Thursday, July 04, 1776" type="String">
+      <expected value="Thursday, July 4, 1776" type="String">
         <parameter value="#7/4/1776#" type="Date" />
       </expected>
       <expected value="Sunday, December 10, 1815" type="String">
         <parameter value="#12/10/1815#" type="Date" />
-      </expected>  
+      </expected>
     </results>
   </puzzle>
 
+
+  <puzzle>
+    <description>Create a function that sums the values in 2 Strings and returns an Integer.  
+                 Ensure your code includes Exception Handling.</description>
+    <help>https://code.google.com/p/code-ladder/wiki/TryCatch</help>
+    <code entryPoint ="AddValues">
+      <body>
+        ' Attempt to convert two Strings, X and Y to numbers and add them.
+        ' If they can't be converted into numbers, then return -1
+        Public Function AddValues(ByVal X As String, ByVal Y As String) As Integer
+        End Function
+      </body>
+    </code>
+    <results>
+      <expected value="40" type="Integer">
+        <parameter value="17" type="String" />
+        <parameter value="23" type="String" />
+      </expected>
+      <expected value="6" type="Integer">
+        <parameter value="-17" type="String" />
+        <parameter value="23" type="String" />
+      </expected>
+      <expected value="-1" type="Integer">
+        <parameter value="three" type="String" />
+        <parameter value="-2" type="String" />
+      </expected>
+      <expected value="-1" type="Integer">
+        <parameter value="65656" type="String" />
+        <parameter value="big" type="String" />
+      </expected>
+      <expected value="-1" type="Integer">
+        <parameter value="1048576" type="String" />
+        <parameter value="value" type="String" />
+      </expected>
+    </results>
+  </puzzle>  
+  
+  
   <!--
   
   TODO:
-    
-    text boxes
-    exception handling
-    group boxes
     load event
     variable scope  - class level variables
-  
   
   -->
 

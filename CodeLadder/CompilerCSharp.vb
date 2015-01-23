@@ -46,18 +46,29 @@ Public Class CompilerCSharp : Inherits Compiler
             Return _Code.ToString
         End Get
         Set(ByVal value As String)
-            _Code.AppendLine("namespace GeneratedNamespace")
-            _Code.AppendLine("{")
-            _Code.AppendLine("using System;")
-            _Code.AppendLine("class GeneratedMainClass")
-            _Code.AppendLine("{")
-
             _Code.AppendLine(value)
-
-            _Code.AppendLine("} // End Class")
-            _Code.AppendLine("} // End Namespace")
         End Set
     End Property
+
+    ''' <summary>
+    ''' Defines standard code included before anything else when code is passed to the compiler.
+    ''' 
+    ''' For CSharp, this is a placeholder, as I don't think this is desired as it is for Visual Basic.
+    ''' </summary>
+    ''' <returns>The stock header code</returns>
+    Public Function HeaderCode() As String
+        Return String.Empty
+    End Function
+
+    ''' <summary>
+    ''' Defines standard code included after everything else when code is passed to the compiler.
+    '''
+    ''' For CSharp, this is a placeholder only.
+    ''' </summary>
+    ''' <returns>The stock footer code</returns>
+    Public Function FooterCode() As String
+        Return String.Empty
+    End Function
 
 #Region "IDisposable Methods"
     Protected Overridable Overloads Sub Dispose(ByVal isDisposing As Boolean)

@@ -36,6 +36,10 @@ Public Class CompilerVisualBasic : Inherits Compiler
         End Get
     End Property
 
+    ''' <summary>
+    ''' Defines standard code included before anything else when code is passed to the compiler.
+    ''' </summary>
+    ''' <returns>The stock header code</returns>
     Public Function HeaderCode() As String
         Dim s As New StringBuilder
         s.AppendLine("Option Strict On")
@@ -53,6 +57,10 @@ Public Class CompilerVisualBasic : Inherits Compiler
         Return s.ToString
     End Function
 
+    ''' <summary>
+    ''' Defines standard code included after everything else when code is passed to the compiler.
+    ''' </summary>
+    ''' <returns>The stock footer code</returns>
     Public Function FooterCode() As String
         Dim s As New StringBuilder
         s.AppendLine("End Class")
@@ -70,9 +78,7 @@ Public Class CompilerVisualBasic : Inherits Compiler
             Return _Code.ToString
         End Get
         Set(ByVal value As String)
-            _Code.Append(HeaderCode)
             _Code.Append(value)
-            _Code.Append(FooterCode)
         End Set
     End Property
 

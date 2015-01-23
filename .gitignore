@@ -16,6 +16,11 @@ bld/
 [Bb]in/
 [Oo]bj/
 
+# Do not check in keyfiles.  If you want to sign this app, make your own.
+# Otherwise remove from the assembly.
+*.snk
+
+
 # Enable "build/" folder in the NuGet Packages folder since NuGet packages use it for MSBuild targets
 !packages/*/build/
 

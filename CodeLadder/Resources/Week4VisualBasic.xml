@@ -1,3 +1,28 @@
+<!DOCTYPE GameML [
+  <!ENTITY commonControls '
+        Private frm As New Form With {.Name = "frm", .Text = "Hello!", .AutoSize = True}
+  
+        Private lblPrompt As New Label With {.Name = "lblPrompt", .Location = New System.Drawing.Point(25, 10), .AutoSize = True}
+        Private grpBox As New GroupBox With {.Name = "grpBox", .Text = "Options", .Location = New System.Drawing.Point(25, 45), .AutoSize = True}
+        Private WithEvents btnClose As New Button With {.Name = "btnClose", .Text = "Close", .AutoSize = True, 
+                                                        .Location = New System.Drawing.Point(75, 225)}
+        Private Sub CloseMe() Handles btnClose.Click
+            frm.Close()
+        End Sub'>
+
+  <!ENTITY commonAdd 'frm.Controls.Add(btnClose)
+            frm.Controls.Add(grpBox)
+            frm.Controls.Add(lblPrompt)'>
+
+  <!ENTITY isFrmOpen '
+        Public Function isFrmOpen() As Boolean 
+            Dim retval As Boolean = False
+            For Each f As Form In Application.OpenForms()
+                If f.Name = "frm" Then retval = True
+            Next
+            Return retval
+        End Function'>
+]>
 <GameML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
   xsi:noNamespaceSchemaLocation="GameML.xsd"
   version="1">
@@ -11,39 +36,44 @@
    VB Chapter 4
    -->
   <puzzle>
-    <description>Create a function that returns "It's cold" if intTemp is less than 40
+    <description>Create a function that returns "It's chilly" if intTemp is less than 50
     </description>
+    <help>https://code.google.com/p/code-ladder/wiki/IfThen</help>
     <code entryPoint="Example">
-      Public Function Example (ByVal intTemp As Integer) As String
+      <body>
+        Public Function Example (ByVal intTemp As Integer) As String
           Dim strResult As String
           ' There are two possible outcomes in this function:
-          '  1. The function returns the string "It's cold"
+          '  1. The function returns the string "It's chily"
           '  2. The function returns an empty string
 
           If what?
-              strResult = It's cold
+              strResult = It's chilly
           End If
 
           Return strResult
-      End Function
+        End Function
+      </body>
     </code>
     <results>
-      <expected value="It's cold" type="String">
-        <parameter value="39" type="Integer" />
+      <expected value="It's chilly" type="String">
+        <parameter value="49" type="Integer" />
       </expected>
       <expected value="" type="String">
-        <parameter value="40" type="Integer" />
+        <parameter value="50" type="Integer" />
       </expected>
     </results>
   </puzzle>
 
   <puzzle>
     <description>
-      Create a function that returns "It's cold, no?" if intTemp is less than 32 
+      Create a function that returns "It's cold, no?" if intTemp is less than 52 
       and "Nice weather we're having!" otherwise.
     </description>
+    <help>https://code.google.com/p/code-ladder/wiki/IfThenElse</help>
     <code entryPoint="Example">
-      Public Function Example (ByVal intTemp As Integer) As String
+      <body>
+        Public Function Example (ByVal intTemp As Integer) As String
           Dim strResult As String
           ' There are two possible outcomes in this function:
           '  1. The function returns the string "It's cold"
@@ -55,17 +85,18 @@
           End If
 
           Return strResult
-      End Function
+        End Function
+      </body>
     </code>
     <results>
       <expected value="It's cold, no?" type="String">
-        <parameter value="31" type="Integer" />
+        <parameter value="51" type="Integer" />
       </expected>
       <expected value="It's cold, no?" type="String">
         <parameter value="-5" type="Integer" />
       </expected>
       <expected value="Nice weather we're having!" type="String">
-        <parameter value="32" type="Integer" />
+        <parameter value="52" type="Integer" />
       </expected>
       <expected value="Nice weather we're having!" type="String">
         <parameter value="89" type="Integer" />
@@ -73,22 +104,18 @@
     </results>
   </puzzle>
 
+  
+
   <puzzle>
-    <description>Create a function that returns letter grades: A (90+), B(80+), C, D, F, given a numeric GPA</description>
+    <description>Create a function that returns letter grades: A (90+), B(80+), C, D, F, given a numeric GPA upto and including 100 and "Not a valid grade." otherwise.</description>
+    <help>https://code.google.com/p/code-ladder/wiki/IfThenElse</help>
     <code entryPoint="Example">
-      Public Function Example (ByVal GPA As Single) As String
-          Dim strGrade As String
+      <body>
+        Public Function Example (ByVal GPA As Single) As String
 
-          If 60 Then
-          ElseIf 70 Then
-          ElseIf 80 Then
-          ElseIf 90 Then
-          ElseIf 100 Then
-          Else
-          End If
-
-          Return strGrade
-      End Function
+        End Function
+      </body>
+      
     </code>
     <results>
       <expected value="A" type="String">
@@ -127,58 +154,15 @@
     </results>
   </puzzle>
 
-
-  <puzzle>
-    <description>Create a function that returns the length of a string</description>
-    <code entryPoint="Example">
-      Public Function Example (ByVal X As String) As Integer
-      End Function
-    </code>
-    <results>
-      <expected value="16" type="Integer">
-        <parameter value="Fat ed is not up" type="String" />
-      </expected>
-      <expected value="44" type="Integer">
-        <parameter value="The rain in spain falls mainly on the plain." type="String" />
-      </expected>
-      <expected value="2" type="Integer">
-        <parameter value="hi" type="String" />
-      </expected>
-    </results>
-  </puzzle>
-
-  <puzzle>
-    <description>
-      Create a function that replaces the occurences of a character in a string 
-      with nothing and returns the result
-    </description>
-    <code entryPoint="Example">
-      Public Function Example (ByVal Phrase As String, ByVal Ch As Char) As String
-      End Function
-    </code>
-    <results>
-      <expected value="Peter Pier icked a eck of Pickled Peers" type="String">
-        <parameter value="Peter Piper picked a peck of Pickled Peppers" type="String" />
-        <parameter value="p" type="Char" />
-      </expected>
-      <expected value="The rai i spai falls maily o the plai" type="String">
-        <parameter value="The rain in spain falls mainly on the plain" type="String" />
-        <parameter value="n" type="Char" />
-      </expected>
-      <expected value="The quick brwn fx jumped ver the lazy dgs" type="String">
-        <parameter value="The quick brown fox jumped over the lazy dogs" type="String" />
-        <parameter value="o" type="Char" />
-      </expected>
-    </results>
-  </puzzle>
-
     <puzzle>
     <description>
       Create a function that computes gross pay given hours worked and pay rate.  Display numeric 
       results in curreny format.  Ensure your code includes input validation.
     </description>
+    <help>https://code.google.com/p/code-ladder/wiki/TryParse</help>
     <code entryPoint="Example">
-      Public Function Example (ByVal HoursWorked As String, ByVal PayRate As String) As String
+      <body>
+        Public Function Example (ByVal HoursWorked As String, ByVal PayRate As String) As String
           Dim intHours As Integer
           Dim decPayRate As Decimal
           Dim decGrossPay As Decimal
@@ -201,7 +185,9 @@
           End If
 
           Return
-      End Function
+        End Function
+      </body>
+      
     </code>
     <results>
       <expected value="$150.00" type="String">
@@ -224,12 +210,15 @@
   </puzzle>
 
 
-
   <puzzle>
     <description>Create a function that returns True if Savings are greater than or equal to Goal</description>
+    <help>https://code.google.com/p/code-ladder/wiki/IfThen</help>
     <code>
-      Public Function Puzzle(ByVal Savings As Decimal, ByVal Goal As Decimal) As Boolean
-      End Function
+      <body>
+        Public Function Puzzle(ByVal Savings As Decimal, ByVal Goal As Decimal) As Boolean
+        End Function
+      </body>
+      
     </code>
     <results>
       <expected value="False" type="Boolean">
@@ -249,21 +238,25 @@
 
   <puzzle>
     <description>
-      Create a function that returns "'X' is a number." if X is a number 
-      and "'X' is not a number." otherwise
+      Create a function using TryParse that returns "X is a number." if X is a number 
+      and "X is not a number." otherwise.  Use the value of 'X' in your return value.
     </description>
+    <help>https://code.google.com/p/code-ladder/wiki/TryParse</help>
     <code>
-      Public Function Puzzle(ByVal X As String) As String
-      End Function
+      <body>
+        Public Function Puzzle(ByVal X As String) As String
+        End Function
+      </body>
+      
     </code>
     <results>
-      <expected value="'39' is a number." type="String">
+      <expected value="39 is a number." type="String">
         <parameter value="39" type="String" />
       </expected>
-      <expected value="'$14.92' is a number." type="String">
+      <expected value="$14.92 is not a number." type="String">
         <parameter value="$14.92" type="String" />
       </expected>
-      <expected value="'foo42' is not a number." type="String">
+      <expected value="foo42 is not a number." type="String">
         <parameter value="foo42" type="String" />
       </expected>
     </results>
@@ -272,10 +265,20 @@
   <puzzle>
     <description>
       Create a function that compares two numeric strings and determines which is larger.  Ensure your 
-      code includes input validation.</description>
+      code includes input validation.
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/TryParse</help>
     <code>
-      Public Function Puzzle(ByVal A As String, ByVal B as String) As String
-      End Function
+      <body>
+        ' Return one of the following 5 strings:
+        ' * "A is larger than B."
+        ' * "B is larger than A."
+        ' * "A and B are the same."
+        ' * "A is not a number."
+        ' * "B is not a number."
+        Public Function Puzzle(ByVal A As String, ByVal B as String) As String
+        End Function
+      </body>
     </code>
     <results>
       <expected value="A is larger than B." type="String">
@@ -285,6 +288,10 @@
       <expected value="B is larger than A." type="String">
         <parameter value="14.92" type="String" />
         <parameter value="99.54" type="String" />
+      </expected>
+      <expected value="B is larger than A." type="String">
+        <parameter value="9" type="String" />
+        <parameter value="78.90" type="String" />
       </expected>
       <expected value="A and B are the same." type="String">
         <parameter value="3.14159" type="String" />
@@ -300,13 +307,174 @@
       </expected>
     </results>
   </puzzle>
+  
+  <puzzle>
+    <description>
+      Evaluate the check boxes and compute appropriate fees.
+      
+        Store the results in the 'lblFees' Label control with currency format applied.  
+      
+        Use the constants where appropriate.
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/CheckBox</help>
+    <code>
+      <header>
+        &commonControls;
+        Private WithEvents chkYoga As New CheckBox With {.Name = "chkYoga", .Text = "Yoga", .Location = New System.Drawing.Point(10, 20), .AutoSize = True}
+        Private WithEvents chkKarate As New CheckBox With {.Name = "chkKarate", .Text = "Karate", .Location = New System.Drawing.Point(10, 40), .AutoSize = True}
+        Private lblFees As New Label With {.Name = "lblFees", .Text = "lblFees", .Location = New System.Drawing.Point(100, 10), .AutoSize = True}
+        Private lblYoga As New Label With {.Name = "lblYoga", .Visible = False, .Location = New System.Drawing.Point(25, 175), .AutoSize = True}
+        Private lblKarate As New Label With {.Name = "lblKarate", .Visible = False, .Location = New System.Drawing.Point(25, 200), .AutoSize = True}
+        Const FEE_YOGA As Decimal = 50d
+        Const FEE_KARATE As Decimal = 75d
+        Const FEE_MSG As String = " should be part of the total fees."
 
+        Private Sub UpdateLabels () Handles chkYoga.CheckedChanged, chkKarate.CheckedChanged
+            lblYoga.Visible = chkYoga.Checked
+            lblKarate.Visible = chkKarate.Checked
+            CalculateFees()
+        End Sub
+
+        Public Function Puzzle(ByVal checked As Integer) As Label
+            lblPrompt.Text = "Total Fees:"
+            frm.Text = "CheckBox Example"
+            chkYoga.Checked = False
+            chkKarate.Checked = False
+            Select Case checked
+              Case 1
+                  chkYoga.Checked = True
+                  chkKarate.Checked = False
+              Case 2
+                  chkYoga.Checked = False
+                  chkKarate.Checked = True
+              Case 3
+                  chkYoga.Checked = True
+                  chkKarate.Checked = True
+            End Select
+            
+            CalculateFees()
+            If Not isFrmOpen() Then
+                ShowResults()
+            End If
+            Return lblFees
+        End Function  
+        
+        &isFrmOpen;
+        
+        Private Sub CalculateFees()
+        
+      </header>
+      <body>
+        ' Computes some health club style fees based on 2 check box selections.
+        '
+        ' The fees associated with the Yoga and Karate programs are defined as follows:
+        '     Const FEE_YOGA As Decimal = 50d
+        '     Const FEE_KARATE As Decimal = 75d
+        ' The yoga check box is 'chkYoga'
+        ' The karate check box is 'chkKarate' 
+        ' Store the result in 'lblFees'
+        
+      </body>
+      <footer>
+        
+        End Sub 
+        Private Sub ShowResults()
+            &commonAdd;
+            btnClose.Location = New System.Drawing.Point (75,150)
+            lblYoga.Text = FEE_YOGA.ToString("C") &amp; FEE_MSG
+            lblKarate.Text = FEE_KARATE.ToString("C") &amp; FEE_MSG
+            frm.Controls.Add(lblFees)
+            frm.Controls.Add(lblYoga)
+            frm.Controls.Add(lblKarate)
+            grpBox.Controls.Add(chkYoga)
+            grpBox.Controls.Add(chkKarate)
+            frm.Show()
+        End Sub
+        
+      </footer>
+    </code>
+    <results>
+      <expected property="Text" value="$0.00" >
+        <parameter value="0" type="Integer" />
+      </expected>
+      <expected property="Text" value="$50.00">
+        <parameter value="1" type="Integer" />
+      </expected>
+      <expected property="Text" value="$75.00">
+        <parameter value="2" type="Integer" />
+      </expected>
+      <expected property="Text" value="$125.00">
+        <parameter value="3" type="Integer" />
+      </expected>
+    </results>
+  </puzzle>  
+  
 
   <puzzle>
+    <description>Create a function that returns the length of a string</description>
+    <help>https://code.google.com/p/code-ladder/wiki/StringLength</help>
+    <code entryPoint="GetLength">
+      <body>
+        ' Return the length of the string 'theText'
+        Public Function GetLength (ByVal theText As String) As Integer
+        End Function
+      </body>
+      
+    </code>
+    <results>
+      <expected value="16" type="Integer">
+        <parameter value="Fat ed is not up" type="String" />
+      </expected>
+      <expected value="44" type="Integer">
+        <parameter value="The rain in spain falls mainly on the plain." type="String" />
+      </expected>
+      <expected value="2" type="Integer">
+        <parameter value="hi" type="String" />
+      </expected>
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Create a function that replaces the occurences of a character in a string 
+      with the character 'b' and returns the result.
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/StringReplace</help>
+    <code entryPoint="ReplaceCharWithEmpty">
+      <body>
+        ' Replace each occurrence of the character 'Ch' in the string 'Phrase' 
+        ' with an empty string and return the result.
+        Public Function ReplaceCharWithEmpty (ByVal Phrase As String, ByVal Ch As Char) As String
+        End Function
+      </body>
+      
+    </code>
+    <results>
+      <expected value="Peter Piber bicked a beck of Pickled Pebberss" type="String">
+        <parameter value="Peter Piper picked a peck of Pickled Peppers" type="String" />
+        <parameter value="p" type="Char" />
+      </expected>
+      <expected value="The raib ib spaib falls maibly ob the plaib" type="String">
+        <parameter value="The rain in spain falls mainly on the plain" type="String" />
+        <parameter value="n" type="Char" />
+      </expected>
+      <expected value="The quick brbwn fbx jumped bver the lazy dbgs" type="String">
+        <parameter value="The quick brown fox jumped over the lazy dogs" type="String" />
+        <parameter value="o" type="Char" />
+      </expected>
+    </results>
+  </puzzle>
+  
+  <puzzle>
     <description>Create a function that counts the occurences of a character in a string</description>
-    <code>
-      Public Function Puzzle(ByVal Phrase As String, ByVal Ch as Char) As Integer
-      End Function
+    <help>https://code.google.com/p/code-ladder/wiki/StringReplace</help>
+    <code entryPoint="CountChars">
+      <body>
+        ' Count each occurrence of the character 'Ch' in the string 'Phrase'
+        ' and return the result.
+        Public Function CountChars (ByVal Phrase As String, ByVal Ch as Char) As Integer
+        End Function
+      </body>
     </code>
     <results>
       <expected value="1" type="Integer">
@@ -323,16 +491,5 @@
       </expected>
     </results>
   </puzzle>
-
-
-  <!--
-  TODO:
-  String manipluation and String functions
-  More with Message boxes
-  Input Validation
-  Radio & Checkboxes
-
-  -->
-
 
 </GameML>

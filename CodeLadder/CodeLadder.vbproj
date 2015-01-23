@@ -58,6 +58,12 @@
   <PropertyGroup>
     <ApplicationIcon>code-ladder.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>code-ladder.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="FastColoredTextBox">
       <HintPath>..\..\FastColoredTextBox\Binary\FastColoredTextBox.dll</HintPath>
@@ -161,6 +167,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="code-ladder.snk" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -171,19 +178,25 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <None Include="Resources\CodeLadder.xml">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Resources\GameML.xsd" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="code-ladder.ico" />
+    <Content Include="Resources\Week1VisualBasic.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Resources\Week5VisualBasic.xml">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Resources\Week4VisualBasic.xml" />
-    <None Include="Resources\Week3VisualBasic.xml" />
-    <None Include="Resources\Week2VisualBasic.xml" />
+    <None Include="Resources\Week4VisualBasic.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\Week3VisualBasic.xml">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Resources\Week2VisualBasic.xml">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Resources\CSharp.xml">
       <SubType>Designer</SubType>
     </None>

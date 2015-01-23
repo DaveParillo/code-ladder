@@ -137,6 +137,7 @@ Friend Class GameDAL
             If Not _Puzzle Is Nothing Then
                 _Location = Val(WhichPuzzle)
                 Me.NextPuzzle()
+                Me.CollectResults()
             End If
         Else
             LoadNewGame()
@@ -152,7 +153,13 @@ Friend Class GameDAL
     Private Sub LoadNewGame()
         Dim e As IEnumerator
 
-        e = _Doc.FirstChild.ChildNodes.Item(0).GetEnumerator
+        If _Doc.ChildNodes.Count > 1 Then
+            'Must have an Entitiy declaration
+            e = _Doc.LastChild.ChildNodes.Item(0).GetEnumerator
+        Else
+            e = _Doc.FirstChild.ChildNodes.Item(0).GetEnumerator
+        End If
+
         While e.MoveNext()
             If IsNodeName("start", e) Then
                 _Location = Val(e.Current.InnerText)
@@ -327,26 +334,90 @@ Friend Class GameDAL
     End Property
 
     ''' <summary>
-    ''' Grab all the puzzle code from the XML node
+    ''' Create a string describing the current puzzle
     ''' </summary>
-    ''' <returns>The code</returns>
-    Public ReadOnly Property PuzzleCode() As String
+    Public ReadOnly Property PuzzleHelp() As String
         Get
             Dim e As IEnumerator
-            Dim code As String = String.Empty
+            Dim help As String = String.Empty
 
             e = _Puzzle.ChildNodes.GetEnumerator
             While e.MoveNext()
-                If IsNodeName("code", e) Then
-                    code = Replace(e.Current.InnerText, vbNewLine, String.Empty, 1, 1)
-                    _Code = e.Current
+                If IsNodeName("help", e) Then
+                    help &= e.Current.InnerText
                 End If
             End While
-            'In general we want our code to preservve whitespace, but we want to get rid of
-            ' the first bunch of spaces on each line.
-            code = Replace(code, "      ", String.Empty, 1, 1)           ' The very first line in the code block doesn't start w/ CRLF
-            code = Replace(code, vbNewLine & "      ", vbNewLine, 1)  ' All the rest do
-            Return code
+            Return help
+        End Get
+    End Property
+
+    Private Function CodeEnumerator() As IEnumerator
+        Dim e As IEnumerator
+        Dim c As IEnumerator = Nothing
+
+        e = _Puzzle.ChildNodes.GetEnumerator
+        While e.MoveNext()
+            If IsNodeName("code", e) Then
+                _Code = e.Current
+                c = e.Current.ChildNodes.GetEnumerator
+            End If
+        End While
+
+        Return c
+    End Function
+
+    ''' <summary>
+    ''' Return code from one of the child nodes of the code element: header, body, or footer
+    ''' </summary>
+    ''' <param name="CodeType">one of the child nodes of the code element</param>
+    ''' <returns>The code associated with this XML node</returns>
+    ''' <remarks></remarks>
+    Private Function GetCode(ByVal CodeType As String) As String
+        Dim e As IEnumerator
+        Dim code As String = String.Empty
+
+        e = CodeEnumerator()
+        While e.MoveNext()
+            If IsNodeName(CodeType, e) Then
+                code = Replace(e.Current.InnerText, vbNewLine, String.Empty, 1, 1)
+                'In general we want our code to preservve whitespace, but we want to get rid of
+                ' the first bunch of spaces on each line.
+                code = Replace(code, "      ", String.Empty, 1, 1)           ' The very first line in the code block doesn't start w/ CRLF
+                code = Replace(code, vbNewLine & "      ", vbNewLine, 1)     ' All the rest do
+            End If
+        End While
+
+        Return code
+    End Function
+
+    ''' <summary>
+    ''' Grab the puzzle code the user sees from the XML code body node
+    ''' </summary>
+    ''' <returns>The code</returns>
+    Public ReadOnly Property CodeBody() As String
+        Get
+            Return GetCode("body")
+        End Get
+    End Property
+
+    ''' <summary>
+    ''' Grab any  header code from the XML node
+    ''' </summary>
+    ''' <returns>The header code</returns>
+    ''' <remarks>Header code is the code before the code body and is not editable in the UI</remarks>
+    Public ReadOnly Property CodeHeader() As String
+        Get
+            Return GetCode("header")
+        End Get
+    End Property
+    ''' <summary>
+    ''' Grab any  footer code from the XML node
+    ''' </summary>
+    ''' <returns>The footer code</returns>
+    ''' <remarks>Footer code is the code after the code body and is not editable in the UI</remarks>
+    Public ReadOnly Property CodeFooter() As String
+        Get
+            Return GetCode("footer")
         End Get
     End Property
 

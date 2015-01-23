@@ -1,10 +1,9 @@
-﻿Imports System.IO
-
+﻿
 ''' <summary>
 ''' The main game controller
 ''' </summary>
 Public Class CodeLadder
-    Private Const GAME_NAME As String = "Code Ladder"
+    Private Const PROG_NAME As String = "Code Ladder"
 
     Private _prefs As New PreferencesDialog
     Private _game As GameDAL
@@ -27,7 +26,7 @@ Public Class CodeLadder
         End If
         txtTalk.Text = String.Empty
 
-        c.Code = Me.txtCode.Text
+        c.Code = txtHeader.Text & txtCode.Text & txtFooter.Text
         'txtCode.Text = c.Code
 
         For Each r As Results In _game.Expected
@@ -68,6 +67,29 @@ Public Class CodeLadder
         ChangeFontSizeOf(txtTalk, amt)
         ChangeFontSizeOf(txtDescription, amt)
         ChangeFontSizeOf(txtCodeBin, amt)
+    End Sub
+
+    ''' <summary>
+    ''' Update the code on the 'All Code' tab, but only if the user selects it
+    ''' </summary>
+    Private Sub UpdateAllCode_Tab() Handles tabMain.SelectedIndexChanged
+        If tabMain.SelectedTab.Name = "tabAllCode" Then
+            txtAllCode.Text = txtHeader.Text & vbNewLine _
+                & txtCode.Text & vbNewLine _
+                & txtFooter.Text
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' Open a browser with help text for this problem
+    ''' </summary>
+    ''' <param name="sender">the LinkLabel clicked</param>
+    ''' <param name="e">the Event args from the Click event</param>
+    ''' <remarks></remarks>
+    Private Sub linkHelp_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles linkHelp.LinkClicked
+        If sender.Links.Count > 0 Then
+            System.Diagnostics.Process.Start(e.Link.LinkData.ToString())
+        End If
     End Sub
 
 #Region "Puzzle Navigation Button Event handlers"
@@ -131,19 +153,15 @@ Public Class CodeLadder
         Else
             c = New CompilerVisualBasic
         End If
-        _state = LoadLatestWeek()
-        txtHeader.Text = c.HeaderCode()
-        txtCode.LineNumberStartValue = txtHeader.LinesCount + 1
-        txtFooter.Text = c.FooterCode()
-        txtCode_TextChanged()
+        _state = _prefs.LoadLatestWeek()
 
         _game = New GameDAL(_prefs.Language, _prefs.Difficulty)
 
         lblScore.Text = _state.Score.ToString
         If Len(_state.Name) > 0 Then
-            _prefs.txtName.Text = _state.Name
+            _prefs.UserName = _state.Name
         End If
-        Me.Text = GAME_NAME & ", " & GetPrefix() & ": " & _prefs.txtName.Text
+        Me.Text = PROG_NAME & ", " & _prefs.GetDifficultyText() & ": " & _prefs.UserName
         _game.LoadGame(_state.Location)
         txtCodeBin.Text = _state.CodeBin
         lblTotal.Text = _game.Count.ToString
@@ -154,6 +172,7 @@ Public Class CodeLadder
     End Sub
 
     Private Sub txtCode_TextChanged() Handles txtCode.TextChanged
+        txtCode.LineNumberStartValue = txtHeader.LinesCount + 1
         txtFooter.LineNumberStartValue = txtHeader.LinesCount + txtCode.LinesCount + 1
     End Sub
 
@@ -167,7 +186,7 @@ Public Class CodeLadder
         Dim l As PreferencesDialog.LANG
         l = _prefs.Language
         If _state.Name.Length >= PreferencesDialog.MIN_NAME_LENGTH Then
-            _prefs.txtName.Text = _state.Name
+            _prefs.UserName = _state.Name
         End If
         _prefs.ShowDialog()
         If _prefs.Language = PreferencesDialog.LANG.C_SHARP Then
@@ -179,7 +198,7 @@ Public Class CodeLadder
             If l <> _prefs.Language Then
                 _state.Delete()
             End If
-            _state.Name = _prefs.txtName.Text
+            _state.Name = _prefs.UserName
             _state.SaveGame()
             CodeLadder_Load()
         End If
@@ -196,10 +215,10 @@ Public Class CodeLadder
     ''' <summary>
     ''' Restart from the beginning
     ''' </summary>
-    Private Sub NewGameToolStripMenuItem_Click() Handles NewGameToolStripMenuItem.Click
+    Private Sub NewToolStripMenuItem_Click() Handles NewToolStripMenuItem.Click
         If vbYes = MessageBox.Show("Restart?" & vbNewLine & vbNewLine & _
                                    "This will delete your " _
-                                   & _prefs.cboLevel.SelectedItem  _
+                                   & _prefs.cboLevel.SelectedItem _
                                    & " saved results and restart from problem #1.", "Are you sure?", _
                                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) Then
             _state.Delete()
@@ -231,7 +250,6 @@ Public Class CodeLadder
     Private Sub AboutCodeLadderToolStripMenuItem_Click() Handles AboutCodeLadderToolStripMenuItem.Click
         Dim f As New AboutCodeLadder
         f.Show()
-
     End Sub
     ''' <summary>
     ''' Show Help.
@@ -256,16 +274,8 @@ Public Class CodeLadder
 
 #End Region
 
+
 #Region "Utility Functions"
-
-    ''' <summary>
-    '''   Get the currently selected Difficulty Level in a filename safe way.
-    ''' </summary>
-    Private Function GetPrefix() As String
-        Return Replace(_prefs.cboLevel.SelectedItem, " ", "_")
-    End Function
-
-
 
     ''' <summary>
     ''' Show the user where they went wrong.
@@ -391,6 +401,8 @@ Public Class CodeLadder
         Select Case Expected.ObjectProperty
             Case "AutoSize"
                 isAnswerOK = (Expected.Value = Actual.AutoSize)
+            Case "BorderStyle"
+                isAnswerOK = (Expected.Value = Actual.BorderStyle.ToString)
             Case "Checked"
                 isAnswerOK = (Expected.Value = Actual.Checked)
             Case "Font.Size"
@@ -430,10 +442,39 @@ Public Class CodeLadder
 
     ' Update all the controls that display puzzle specific information
     Private Sub WriteNewPuzzle()
-        pagePuzzle.Text = "Problem #" & _game.Location
+        Dim c As Object
+
+        If _prefs.Language = PreferencesDialog.LANG.C_SHARP Then
+            c = New CompilerCSharp
+        Else
+            c = New CompilerVisualBasic
+        End If
+
+        tabPuzzle.Text = "Problem #" & _game.Location
+        tabAllCode.Text = "All Problem #" & _game.Location & " Code"
         txtDescription.Text = _game.PuzzleDescription
         _state.History = "Move to problem #" & _game.Location
-        txtCode.Text = _game.PuzzleCode
+
+        ' The code th user changes to solve the problem
+        txtCode.Clear()  ' explicitly celar in case CodeBody is null
+        txtCode.Text = _game.CodeBody
+
+        ' Available for context, but read-only
+        txtHeader.Text = c.HeaderCode & vbNewLine & _game.CodeHeader
+        txtFooter.Text = vbNewLine & _game.CodeFooter & vbNewLine & c.FooterCode
+        ' Seem to need this here to get the numbering correct
+        txtCode_TextChanged()
+
+        'Update help
+        linkHelp.Links.Clear()
+        If _game.PuzzleHelp = String.Empty Then
+            linkHelp.Visible = False
+        Else
+            linkHelp.Visible = True
+            linkHelp.Links.Add(0, linkHelp.Text.Length, _game.PuzzleHelp)
+        End If
+
+
     End Sub
 
 
@@ -454,32 +495,5 @@ Public Class CodeLadder
 
 #End Region
 
-    Private Function LoadLatestWeek() As GameState
-        Dim s As GameState
-        Dim prefix As String
-        s = Nothing
-
-        Const postfix As String = "SavedGame.dat"
-        If _prefs.cboLevel.SelectedIndex > -1 Then
-            s = New GameState(GetPrefix() & "SavedGame.dat")
-        Else
-            For i As Integer = _prefs.cboLevel.Items.Count - 1 To 0 Step -1
-                prefix = Replace(_prefs.cboLevel.Items(i), " ", "_")
-                If File.Exists(prefix & postfix) Then
-                    s = New GameState(prefix & postfix)
-                    _prefs.Difficulty = i
-                    Exit For
-                End If
-            Next
-            If s Is Nothing Then
-                prefix = Replace(_prefs.cboLevel.Items(0), " ", "_")
-                s = New GameState(prefix & postfix)
-                _prefs.Difficulty = 0
-            End If
-        End If
-
-
-        Return s
-    End Function
 
 End Class

@@ -26,9 +26,9 @@ Partial Class CodeLadder
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CodeLadder))
         Me.Label5 = New System.Windows.Forms.Label()
         Me.lblScore = New System.Windows.Forms.Label()
-        Me.tabCode = New System.Windows.Forms.TabPage()
+        Me.tabCodeBin = New System.Windows.Forms.TabPage()
         Me.txtCodeBin = New FastColoredTextBoxNS.FastColoredTextBox()
-        Me.pagePuzzle = New System.Windows.Forms.TabPage()
+        Me.tabPuzzle = New System.Windows.Forms.TabPage()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.txtDescription = New System.Windows.Forms.TextBox()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
@@ -40,16 +40,18 @@ Partial Class CodeLadder
         Me.grpHeader = New System.Windows.Forms.GroupBox()
         Me.txtHeader = New FastColoredTextBoxNS.FastColoredTextBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.linkHelp = New System.Windows.Forms.LinkLabel()
         Me.chkShowAllCode = New System.Windows.Forms.CheckBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btnEval = New System.Windows.Forms.Button()
         Me.btnNext = New System.Windows.Forms.Button()
         Me.tabMain = New System.Windows.Forms.TabControl()
+        Me.tabAllCode = New System.Windows.Forms.TabPage()
+        Me.txtAllCode = New FastColoredTextBoxNS.FastColoredTextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblTotal = New System.Windows.Forms.Label()
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.NewGameToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NewToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SaveToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -65,9 +67,10 @@ Partial Class CodeLadder
         Me.btnLast = New System.Windows.Forms.Button()
         Me.btnTextBigger = New System.Windows.Forms.Button()
         Me.btnTextSmaller = New System.Windows.Forms.Button()
-        Me.tabCode.SuspendLayout()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.tabCodeBin.SuspendLayout()
         CType(Me.txtCodeBin, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.pagePuzzle.SuspendLayout()
+        Me.tabPuzzle.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.grpFooter.SuspendLayout()
@@ -78,6 +81,8 @@ Partial Class CodeLadder
         CType(Me.txtHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.tabMain.SuspendLayout()
+        Me.tabAllCode.SuspendLayout()
+        CType(Me.txtAllCode, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -103,15 +108,15 @@ Partial Class CodeLadder
         Me.lblScore.TabIndex = 22
         Me.lblScore.Text = "999"
         '
-        'tabCode
+        'tabCodeBin
         '
-        Me.tabCode.Controls.Add(Me.txtCodeBin)
-        Me.tabCode.Location = New System.Drawing.Point(4, 25)
-        Me.tabCode.Name = "tabCode"
-        Me.tabCode.Size = New System.Drawing.Size(678, 582)
-        Me.tabCode.TabIndex = 2
-        Me.tabCode.Text = "My Code Bin"
-        Me.tabCode.UseVisualStyleBackColor = True
+        Me.tabCodeBin.Controls.Add(Me.txtCodeBin)
+        Me.tabCodeBin.Location = New System.Drawing.Point(4, 25)
+        Me.tabCodeBin.Name = "tabCodeBin"
+        Me.tabCodeBin.Size = New System.Drawing.Size(678, 582)
+        Me.tabCodeBin.TabIndex = 2
+        Me.tabCodeBin.Text = "My Code Bin"
+        Me.tabCodeBin.UseVisualStyleBackColor = True
         '
         'txtCodeBin
         '
@@ -138,16 +143,16 @@ Partial Class CodeLadder
         Me.txtCodeBin.TabIndex = 2
         Me.txtCodeBin.Zoom = 100
         '
-        'pagePuzzle
+        'tabPuzzle
         '
-        Me.pagePuzzle.Controls.Add(Me.TableLayoutPanel1)
-        Me.pagePuzzle.Location = New System.Drawing.Point(4, 25)
-        Me.pagePuzzle.Name = "pagePuzzle"
-        Me.pagePuzzle.Padding = New System.Windows.Forms.Padding(3)
-        Me.pagePuzzle.Size = New System.Drawing.Size(678, 582)
-        Me.pagePuzzle.TabIndex = 0
-        Me.pagePuzzle.Text = "Puzzles"
-        Me.pagePuzzle.UseVisualStyleBackColor = True
+        Me.tabPuzzle.Controls.Add(Me.TableLayoutPanel1)
+        Me.tabPuzzle.Location = New System.Drawing.Point(4, 25)
+        Me.tabPuzzle.Name = "tabPuzzle"
+        Me.tabPuzzle.Padding = New System.Windows.Forms.Padding(3)
+        Me.tabPuzzle.Size = New System.Drawing.Size(678, 582)
+        Me.tabPuzzle.TabIndex = 0
+        Me.tabPuzzle.Text = "Puzzles"
+        Me.tabPuzzle.UseVisualStyleBackColor = True
         '
         'TableLayoutPanel1
         '
@@ -227,7 +232,7 @@ Partial Class CodeLadder
         '
         Me.txtFooter.AutoCompleteBracketsList = New Char() {Global.Microsoft.VisualBasic.ChrW(40), Global.Microsoft.VisualBasic.ChrW(41), Global.Microsoft.VisualBasic.ChrW(123), Global.Microsoft.VisualBasic.ChrW(125), Global.Microsoft.VisualBasic.ChrW(91), Global.Microsoft.VisualBasic.ChrW(93), Global.Microsoft.VisualBasic.ChrW(34), Global.Microsoft.VisualBasic.ChrW(34), Global.Microsoft.VisualBasic.ChrW(39), Global.Microsoft.VisualBasic.ChrW(39)}
         Me.txtFooter.AutoIndentCharsPatterns = "" & Global.Microsoft.VisualBasic.ChrW(10) & "^\s*[\w\.\(\)]+\s*(?<range>=)\s*(?<range>.+)" & Global.Microsoft.VisualBasic.ChrW(10)
-        Me.txtFooter.AutoScrollMinSize = New System.Drawing.Size(25, 15)
+        Me.txtFooter.AutoScrollMinSize = New System.Drawing.Size(2, 15)
         Me.txtFooter.BackBrush = Nothing
         Me.txtFooter.BackColor = System.Drawing.SystemColors.Control
         Me.txtFooter.CharHeight = 15
@@ -330,6 +335,7 @@ Partial Class CodeLadder
         '
         Me.Panel1.AutoSize = True
         Me.Panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
+        Me.Panel1.Controls.Add(Me.linkHelp)
         Me.Panel1.Controls.Add(Me.chkShowAllCode)
         Me.Panel1.Controls.Add(Me.Label3)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
@@ -337,6 +343,17 @@ Partial Class CodeLadder
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(666, 27)
         Me.Panel1.TabIndex = 9
+        '
+        'linkHelp
+        '
+        Me.linkHelp.AutoSize = True
+        Me.linkHelp.Location = New System.Drawing.Point(493, 4)
+        Me.linkHelp.Name = "linkHelp"
+        Me.linkHelp.Size = New System.Drawing.Size(147, 17)
+        Me.linkHelp.TabIndex = 27
+        Me.linkHelp.TabStop = True
+        Me.linkHelp.Text = "Question specific help"
+        Me.ToolTip1.SetToolTip(Me.linkHelp, "Opens a new web page")
         '
         'chkShowAllCode
         '
@@ -347,6 +364,7 @@ Partial Class CodeLadder
         Me.chkShowAllCode.TabIndex = 12
         Me.chkShowAllCode.Text = "Show All"
         Me.chkShowAllCode.UseVisualStyleBackColor = True
+        Me.chkShowAllCode.Visible = False
         '
         'Label3
         '
@@ -387,14 +405,51 @@ Partial Class CodeLadder
         Me.tabMain.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.tabMain.Controls.Add(Me.pagePuzzle)
-        Me.tabMain.Controls.Add(Me.tabCode)
+        Me.tabMain.Controls.Add(Me.tabPuzzle)
+        Me.tabMain.Controls.Add(Me.tabCodeBin)
+        Me.tabMain.Controls.Add(Me.tabAllCode)
         Me.tabMain.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.tabMain.Location = New System.Drawing.Point(12, 63)
         Me.tabMain.Name = "tabMain"
         Me.tabMain.SelectedIndex = 0
         Me.tabMain.Size = New System.Drawing.Size(686, 611)
         Me.tabMain.TabIndex = 5
+        '
+        'tabAllCode
+        '
+        Me.tabAllCode.Controls.Add(Me.txtAllCode)
+        Me.tabAllCode.Location = New System.Drawing.Point(4, 25)
+        Me.tabAllCode.Name = "tabAllCode"
+        Me.tabAllCode.Size = New System.Drawing.Size(678, 582)
+        Me.tabAllCode.TabIndex = 3
+        Me.tabAllCode.Text = "All Code"
+        Me.tabAllCode.UseVisualStyleBackColor = True
+        '
+        'txtAllCode
+        '
+        Me.txtAllCode.AutoCompleteBracketsList = New Char() {Global.Microsoft.VisualBasic.ChrW(40), Global.Microsoft.VisualBasic.ChrW(41), Global.Microsoft.VisualBasic.ChrW(123), Global.Microsoft.VisualBasic.ChrW(125), Global.Microsoft.VisualBasic.ChrW(91), Global.Microsoft.VisualBasic.ChrW(93), Global.Microsoft.VisualBasic.ChrW(34), Global.Microsoft.VisualBasic.ChrW(34), Global.Microsoft.VisualBasic.ChrW(39), Global.Microsoft.VisualBasic.ChrW(39)}
+        Me.txtAllCode.AutoIndentCharsPatterns = "" & Global.Microsoft.VisualBasic.ChrW(10) & "^\s*[\w\.\(\)]+\s*(?<range>=)\s*(?<range>.+)" & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.txtAllCode.AutoScrollMinSize = New System.Drawing.Size(2, 16)
+        Me.txtAllCode.BackBrush = Nothing
+        Me.txtAllCode.CharHeight = 16
+        Me.txtAllCode.CharWidth = 8
+        Me.txtAllCode.CommentPrefix = "'"
+        Me.txtAllCode.Cursor = System.Windows.Forms.Cursors.IBeam
+        Me.txtAllCode.DisabledColor = System.Drawing.Color.FromArgb(CType(CType(100, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer), CType(CType(180, Byte), Integer))
+        Me.txtAllCode.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.txtAllCode.Font = New System.Drawing.Font("Consolas", 10.75!)
+        Me.txtAllCode.IsReplaceMode = False
+        Me.txtAllCode.Language = FastColoredTextBoxNS.Language.VB
+        Me.txtAllCode.LeftBracket = Global.Microsoft.VisualBasic.ChrW(40)
+        Me.txtAllCode.Location = New System.Drawing.Point(0, 0)
+        Me.txtAllCode.Name = "txtAllCode"
+        Me.txtAllCode.Paddings = New System.Windows.Forms.Padding(0)
+        Me.txtAllCode.ReadOnly = True
+        Me.txtAllCode.RightBracket = Global.Microsoft.VisualBasic.ChrW(41)
+        Me.txtAllCode.SelectionColor = System.Drawing.Color.FromArgb(CType(CType(60, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(255, Byte), Integer))
+        Me.txtAllCode.Size = New System.Drawing.Size(678, 582)
+        Me.txtAllCode.TabIndex = 3
+        Me.txtAllCode.Zoom = 100
         '
         'Label1
         '
@@ -418,38 +473,29 @@ Partial Class CodeLadder
         Me.lblTotal.TabIndex = 25
         Me.lblTotal.Text = "999"
         '
-        'MenuStrip1
-        '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.EditToolStripMenuItem, Me.ViewToolStripMenuItem, Me.HelpToolStripMenuItem})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(709, 24)
-        Me.MenuStrip1.TabIndex = 26
-        Me.MenuStrip1.Text = "MenuStrip1"
-        '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewGameToolStripMenuItem, Me.SaveToolStripMenuItem, Me.ExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NewToolStripMenuItem, Me.SaveToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "&File"
         '
-        'NewGameToolStripMenuItem
+        'NewToolStripMenuItem
         '
-        Me.NewGameToolStripMenuItem.Name = "NewGameToolStripMenuItem"
-        Me.NewGameToolStripMenuItem.Size = New System.Drawing.Size(120, 22)
-        Me.NewGameToolStripMenuItem.Text = "&New Lab"
+        Me.NewToolStripMenuItem.Name = "NewToolStripMenuItem"
+        Me.NewToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.NewToolStripMenuItem.Text = "&New Lab"
         '
         'SaveToolStripMenuItem
         '
         Me.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem"
-        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(120, 22)
+        Me.SaveToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SaveToolStripMenuItem.Text = "&Save"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(120, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExitToolStripMenuItem.Text = "E&xit"
         '
         'EditToolStripMenuItem
@@ -539,6 +585,7 @@ Partial Class CodeLadder
         Me.btnTextBigger.TabIndex = 19
         Me.btnTextBigger.Tag = "+1"
         Me.btnTextBigger.Text = "A"
+        Me.ToolTip1.SetToolTip(Me.btnTextBigger, "Make Text bigger")
         Me.btnTextBigger.UseVisualStyleBackColor = True
         '
         'btnTextSmaller
@@ -551,7 +598,17 @@ Partial Class CodeLadder
         Me.btnTextSmaller.Tag = "-1"
         Me.btnTextSmaller.Text = "A"
         Me.btnTextSmaller.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.ToolTip1.SetToolTip(Me.btnTextSmaller, "Make text smaller")
         Me.btnTextSmaller.UseVisualStyleBackColor = True
+        '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.EditToolStripMenuItem, Me.ViewToolStripMenuItem, Me.HelpToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(709, 24)
+        Me.MenuStrip1.TabIndex = 26
+        Me.MenuStrip1.Text = "MenuStrip1"
         '
         'CodeLadder
         '
@@ -576,9 +633,9 @@ Partial Class CodeLadder
         Me.MinimumSize = New System.Drawing.Size(500, 39)
         Me.Name = "CodeLadder"
         Me.Text = "Code Ladder"
-        Me.tabCode.ResumeLayout(False)
+        Me.tabCodeBin.ResumeLayout(False)
         CType(Me.txtCodeBin, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.pagePuzzle.ResumeLayout(False)
+        Me.tabPuzzle.ResumeLayout(False)
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
@@ -592,6 +649,8 @@ Partial Class CodeLadder
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         Me.tabMain.ResumeLayout(False)
+        Me.tabAllCode.ResumeLayout(False)
+        CType(Me.txtAllCode, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
@@ -600,17 +659,16 @@ Partial Class CodeLadder
     End Sub
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents lblScore As System.Windows.Forms.Label
-    Friend WithEvents tabCode As System.Windows.Forms.TabPage
+    Friend WithEvents tabCodeBin As System.Windows.Forms.TabPage
     Friend WithEvents txtCodeBin As FastColoredTextBoxNS.FastColoredTextBox
-    Friend WithEvents pagePuzzle As System.Windows.Forms.TabPage
+    Friend WithEvents tabPuzzle As System.Windows.Forms.TabPage
     Friend WithEvents btnEval As System.Windows.Forms.Button
     Friend WithEvents tabMain As System.Windows.Forms.TabControl
     Friend WithEvents btnNext As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents lblTotal As System.Windows.Forms.Label
-    Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
     Friend WithEvents FileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents NewGameToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents NewToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EditToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PreferencesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -639,4 +697,8 @@ Partial Class CodeLadder
     Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents UsingCodeLadderToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AboutCodeLadderToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents tabAllCode As System.Windows.Forms.TabPage
+    Friend WithEvents txtAllCode As FastColoredTextBoxNS.FastColoredTextBox
+    Friend WithEvents linkHelp As System.Windows.Forms.LinkLabel
+    Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
 End Class

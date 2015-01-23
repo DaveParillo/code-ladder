@@ -1,3 +1,28 @@
+<!DOCTYPE GameML [
+  <!ENTITY commonControls '
+        Private frm As New Form With {.Name = "frm", .Text = "Hello!", .AutoSize = True}
+  
+        Private lblPrompt As New Label With {.Name = "lblPrompt", .Location = New System.Drawing.Point(25, 10), .AutoSize = True}
+        Private WithEvents btnClose As New Button With {.Name = "btnClose", .Text = "Close", .AutoSize = True, 
+                                                        .Location = New System.Drawing.Point(75, 75)}
+        Private Sub CloseMe() Handles btnClose.Click
+            frm.Close()
+        End Sub'>
+
+  <!ENTITY commonAdd 'frm.Controls.Add(btnClose)
+             frm.Controls.Add(lblPrompt)'>
+
+  <!ENTITY isFrmOpen '
+        Public Function isFrmOpen() As Boolean 
+            Dim retval As Boolean = False
+            For Each f As Form In Application.OpenForms()
+                If f.Name = "frm" Then retval = True
+            Next
+            Return retval
+        End Function'>
+]>
+
+
 <GameML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:noNamespaceSchemaLocation="GameML.xsd"
   version="1">
@@ -11,87 +36,99 @@
    VB Chapter 1
    -->
   <puzzle>
-    <description>Fix the variable declaration in this broken function.
+    <description>
+      Change the string literal assigned to the Text property of the Label control from 'Hello, world.' to 'Howdy!'.
     </description>
+    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
     <code>
-      Public Function Puzzle() As Integer
-          Dim *intStrange As Integer = 3
-          Return *intStrange
-      End Function
+      <header>
+        &commonControls;
+
+        Private Sub ShowResults()
+            &commonAdd;
+            frm.PerformLayout()
+            frm.Show()
+        End Sub
+
+        Public Function Puzzle() As Label
+      </header>
+      <body>
+        lblPrompt.Text = "Hello, world."
+      </body>
+      <footer>
+        ShowResults()
+        Return lblPrompt
+        End Function
+      </footer>
     </code>
     <results>
-      <expected type="Integer" value="3" />
+      <expected property="Text" value="Howdy!" />
+    </results>
+  </puzzle>
+  
+  
+  <puzzle>
+    <description>
+      Assign the string literal 'Hello, World!' to the Label control text property.
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
+    <code>
+      <header>
+        &commonControls;
+
+        Private Sub ShowResults()
+            &commonAdd;
+            frm.Show()
+        End Sub
+
+        Public Function Puzzle() As Label
+          lblPrompt.Text = "You have not yet changed the 'Text' property of this control"
+      </header>
+      <body>
+          ' Lines which begin with a single quote character, such as this one
+          ' are completely ignored by the compiler.
+          
+          'lblPrompt.Text = ""
+      </body>
+      <footer>
+        ShowResults()
+        Return lblPrompt
+        End Function
+      </footer>
+    </code>
+    <results>
+      <expected property="Text" value="Hello, World!" />
     </results>
   </puzzle>
 
-
   <puzzle>
-    <description>Create a function which returns the text 'Hello, World!'</description>
-    <code entryPoint="Howdy">
-      Public Function Howdy() As String
-      End Function
-    </code>
-    <results>
-      <expected value="Hello, World!" />
-    </results>
-  </puzzle>
-
-  <puzzle>
-    <description>Fix the variable declaration in this broken function by changing as few characters as possible.</description>
+    <description>
+      Assign the string literal 'Close' to the Button control text property.
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
     <code>
-      Public Function Puzzle() As Decimal
-          Dim dec Cost As Decimal
-            dec Cost = 35.987654d
-          Return dec Cost
-      End Function
-    </code>
-    <results>
-      <expected type="Decimal" value="35.987654" />
-    </results>
-  </puzzle>
+      <header>
+        &commonControls;
 
+        Private Sub ShowResults()
+          &commonAdd;
+          frm.Show()
+        End Sub
 
-  <puzzle>
-    <description>Ensure this function returns 34.56 by adding an approriate assignment.</description>
-    <code>
-      Public Function Puzzle() As Single
-          Dim sngMileage As Single
+        Public Function Puzzle() As Button
+          btnClose.Text = "Change me"
+      </header>
+      <body>
+          ' Lines which begin with a single quote character, such as this one
+          ' are completely ignored by the compiler.
 
-          Return sngMileage
-      End Function
-    </code>
-    <results>
-      <expected type="Single" value="34.56" />
-    </results>
-  </puzzle>
-
-
-  <puzzle>
-    <description>Fix the variable declaration in this broken function.</description>
-    <code>
-      Public Function Puzzle() As Double
-          Dim dbl/Strange As Double = 45.6R
-          Return dbl/Strange
-      End Function
-    </code>
-    <results>
-      <expected type="Double" value="45.6" />
-    </results>
-  </puzzle>
-
-
-
-
-  <puzzle>
-    <description>Fix the control declaration in this broken function by changing as few characters as possible.</description>
-    <code>
-      Public Function Puzzle() As Button
-          Dim btnClose x As New Button
-
-          btnClose x.Text = "Close"
-
-          Return btnClose x
-      End Function
+          'btnClose.Text = ""
+      </body>
+      <footer>
+          ShowResults()
+          Return btnClose
+        End Function
+      </footer>
     </code>
     <results>
       <expected property="Text" value="Close" />
@@ -99,172 +136,193 @@
   </puzzle>
 
   <puzzle>
-    <description>Fix the control declaration in this broken function by removing as few characters as possible.</description>
+    <description>
+      Assign the string literal 'Simple Greeting' to the Form control text property.
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
     <code>
-      Public Function Puzzle() As Label
-          Dim 2lblStart As New Label
+      <header>
+        &commonControls;
 
-          2lblStart.Name = "2lblStart"
-          2lblStart.Text = "Start"
+        Private Sub ShowResults()
+        &commonAdd;
+        frm.Show()
+        End Sub
 
-          Return 2lblStart
-      End Function
+        Public Function Puzzle() As Form
+      </header>
+      <body>
+        ' The main form of this application is named 'frm'.
+        ' The Text property of a Form is displayed in the Window title area.
+
+        'frm.Text = ""
+      </body>
+      <footer>
+        ShowResults()
+        Return frm
+        End Function
+      </footer>
     </code>
     <results>
+      <expected property="Text" value="Simple Greeting" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Assign the following string literal to the lblPrompt control: 'Most controls in Visual Basic have a Text property.'
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
+    <code>
+      <header>
+        &commonControls;
+
+        Private Sub ShowResults()
+        &commonAdd;
+        frm.Show()
+        End Sub
+
+        Public Function Puzzle() As Label
+          lblPrompt.Text = "You have not yet changed the 'Text' property of this control"
+      </header>
+      <body>
+          ' Note: The statement on the following line is incomplete.  You need to finish it.
+          lblPrompt.Text
+      </body>
+      <footer>
+          ShowResults()
+          Return lblPrompt
+        End Function
+      </footer>
+    </code>
+    <results>
+      <expected property="Text" value="Most controls in Visual Basic have a Text property." />
+    </results>
+  </puzzle>
+  
+    <puzzle>
+    <description>
+      Assign the following string literal to the lblNew control: 'I am new'.
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
+    <code>
+      <header>
+        &commonControls;
+        Private lblNew As New Label With {.Name = "lblNew", .Location = New System.Drawing.Point(25, 45), .AutoSize = True}
+        &isFrmOpen;
+    
+        Private Sub ShowResults()
+          If Not isFrmOpen() Then
+             &commonAdd;
+             frm.Controls.Add(lblNew)
+             frm.Show()
+          End If
+        End Sub
+
+        Public Function Puzzle() As Label
+          lblPrompt.Text = "The Text property of a control is set equal " &amp; vbNewline _
+                         &amp;  "to the Name property by default."
+      </header>
+      <body>
+          lblNew.Name = "lblNew"
+          lblNew.Text = "Label2"
+      </body>
+      <footer>
+          ShowResults()
+          Return lblNew
+        End Function
+      </footer>
+    </code>
+    <results>
+      <expected property="Text" value="I am new" />
+      <expected property="Name" value="lblNew" />
+    </results>
+  </puzzle>
+  
+  <puzzle>
+    <description>
+      Assign the following string literal to the lblStart control: 'Get Going:'.
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
+    <code>
+      <header>
+        &commonControls;
+        Private lblStart As New Label With {.Name = "", .Location = New System.Drawing.Point(25, 45), .AutoSize = True}
+        &isFrmOpen;
+    
+        Private Sub ShowResults()
+          If Not isFrmOpen() Then
+             &commonAdd;
+             frm.Controls.Add(lblStart)
+             frm.Show()
+          End If
+        End Sub
+
+        Public Function Puzzle() As Label
+          lblPrompt.Text = "It's important to understand the difference " &amp; vbNewline _
+                         &amp;  "between the Text and Name properties."
+      </header>
+      <body>
+          lblStart.Name = 
+          lblStart.Text = 
+      </body>
+      <footer>
+          ShowResults()
+          Return lblStart
+        End Function
+      </footer>
+    </code>
+    <results>
+      <expected property="Text" value="Get Going:" />
       <expected property="Name" value="lblStart" />
-      <expected property="Text" value="Start" />
-    </results>
-  </puzzle>
-
-  <puzzle>
-    <description>Fix the control declaration in this broken function by removing as few characters as possible.</description>
-    <code>
-      Public Function Puzzle() As TextBox
-          Dim txtName/Address As New TextBox
-
-          txtName/Address.Text = "Jane Doe"
-
-          Return txtName/Address
-      End Function
-    </code>
-    <results>
-      <expected property="Text" value="Jane Doe" />
-    </results>
-  </puzzle>
-
-  <puzzle>
-    <description>Fix the variable declaration in this broken function.</description>
-    <code>
-      Public Function Puzzle() As Long
-          Dim .lngSum As Long = -334455
-          Return .lngSum
-      End Function
-    </code>
-    <results>
-      <expected type="Long" value="-334455" />
-    </results>
-  </puzzle>
-
-  <puzzle>
-    <description>Create a function which returns a boolean value, with its return value NOT false</description>
-    <code entryPoint="IsValid">
-      Public Function IsValid() As Boolean
-      End Function
-    </code>
-    <results>
-      <expected type="Boolean" value="True" />
-    </results>
-  </puzzle>
-
-  <puzzle>
-    <description>Create a function which returns the number 7.</description>
-    <code>
-      Public Function Puzzle() As Integer
-      End Function
-    </code>
-    <results>
-      <expected type="Integer" value="7" />
-    </results>
-  </puzzle>
-
-  <puzzle>
-    <description>Create a function which returns the value "$34.99".</description>
-    <code>
-      Public Function Puzzle() As String
-      End Function
-    </code>
-    <results>
-      <expected type="String" value="$34.99" />
     </results>
   </puzzle>
   
-  <puzzle>
-    <description>Fix the control property assignment.</description>
+    <puzzle>
+    <description>
+      Finish the TextBox property assignment.
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
     <code>
-      Public Function Puzzle() As Label
-          Dim lblNext As New Label
+      <header>
+        &commonControls;
+        Private WithEvents txtFruit As New TextBox With {.Name = "", .Location = New System.Drawing.Point(150, 5), .AutoSize = True}
+        Private Label2 As New Label With {.Name = "Label2", .Text = "My Fruit:", .Location = New System.Drawing.Point(25, 75), .AutoSize = True}
+        Private lblFruit As New Label With {.Name = "lblFruit", .Location = New System.Drawing.Point(25, 110), .AutoSize = True}
+        &isFrmOpen;
+    
+        Private Sub ShowResults()
+          If Not isFrmOpen() Then
+             &commonAdd;
+             btnClose.Location = New System.Drawing.Point (75,150)
+             lblFruit.BorderStyle = BorderStyle.Fixed3D
+             frm.Controls.Add(txtFruit)
+             frm.Controls.Add(lblFruit)
+             frm.Controls.Add(Label2)
+             frm.Show()
+          End If
+        End Sub
+        
+        Private Sub EchoText() Handles txtFruit.TextChanged
+            lblFruit.Text = txtFruit.Text
+        End Sub
 
-          lblNext.Name
-
-          Return lblNext
-      End Function
+        Public Function Puzzle() As TextBox
+          lblPrompt.Text = "Enter the name of a fruit:"
+          lblFruit.Text = "If you type in the text box, it will echo here."
+          frm.Text = "Fruit Entry"
+      </header>
+      <body>
+          txtFruit.Name
+      </body>
+      <footer>
+          ShowResults()
+          Return txtFruit
+        End Function
+      </footer>
     </code>
     <results>
-      <expected property="Name" value="lblNext" />
-    </results>
-  </puzzle>
-
-  <puzzle>
-    <description>Create a function which returns a Button with its Text property set to 'Close'.</description>
-    <code>
-      Public Function Puzzle() As Button
-      End Function
-    </code>
-    <results>
-      <expected property="Text" value="Close" />
-    </results>
-  </puzzle>
-
-
-  <puzzle>
-    <description>Create a function which returns a CheckBox with its Text property set to 'Check Me'.</description>
-    <code>
-      Public Function Puzzle() As CheckBox
-      End Function
-    </code>
-    <results>
-      <expected property="Text" value="Check Me" />
-    </results>
-  </puzzle>
-
-  <puzzle>
-    <description>Create a function which returns a Label with its Name property set to 'lblGrossPay'.</description>
-    <code>
-      Public Function Puzzle() As Label
-      End Function
-    </code>
-    <results>
-      <expected property="Name" value="lblGrossPay" />
-    </results>
-  </puzzle>
-
-  <puzzle>
-    <description>Fix the control property assignments. Ensure the name matches the variable name and the checkbox is checked.</description>
-    <code>
-      Public Function Puzzle() As CheckBox
-          Dim chkTax As New CheckBox
-
-          chkTax.Name
-          chkTax.Checked
-
-          Return chkTax
-      End Function
-    </code>
-    <results>
-      <expected property="Name" value="chkTax" />
-      <expected property="Checked" value="True" />
-    </results>
-  </puzzle>
-
-  <puzzle>
-    <description>Create a function which returns the value "two".</description>
-    <code>
-      Public Function Puzzle() As String
-      End Function
-    </code>
-    <results>
-      <expected type="String" value="two" />
-    </results>
-  </puzzle>
-  
-  <puzzle>
-    <description>Create a function which returns the number 34.99.</description>
-    <code>
-      Public Function Puzzle() As Double
-      End Function
-    </code>
-    <results>
-      <expected type="Double" value="34.99" />
+      <expected property="Name" value="txtFruit" />
     </results>
   </puzzle>
   

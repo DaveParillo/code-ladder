@@ -1,3 +1,29 @@
+<!DOCTYPE GameML [
+  <!ENTITY commonControls '
+        Private frm As New Form With {.Name = "frm", .Text = "Hello!", .AutoSize = True}
+  
+        Private lblPrompt As New Label With {.Name = "lblPrompt", .Location = New System.Drawing.Point(25, 10), .AutoSize = True}
+        Private WithEvents btnClose As New Button With {.Name = "btnClose", .Text = "Close", .AutoSize = True, 
+                                                        .Location = New System.Drawing.Point(75, 225)}
+        Private Sub CloseMe() Handles btnClose.Click
+            frm.Close()
+        End Sub'>
+
+  <!ENTITY commonAdd 'frm.Controls.Add(btnClose)
+             frm.Controls.Add(lblPrompt)'>
+
+  <!ENTITY isFrmOpen '
+        Public Function isFrmOpen() As Boolean 
+            Dim retval As Boolean = False
+            For Each f As Form In Application.OpenForms()
+                If f.Name = "frm" Then retval = True
+            Next
+            Return retval
+        End Function'>
+]>
+
+
+
 <GameML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
   xsi:noNamespaceSchemaLocation="GameML.xsd"
   version="1">
@@ -6,161 +32,37 @@
     <level>2</level>
     <start>1</start>   
   </game>
-
-  <puzzle>
+ 
+    <puzzle>
     <description>
-      Create a function which returns a TextBox with its text property set to "Canada".
+      Ensure the AutoSize property of the lblPrompt Control is True
     </description>
-    <code entryPoint="Example">
-      Public Function Puzzle() As TextBox
-        
-      End Function
-    </code>
-    <results>
-      <expected property="Text" value="Canada" />
-    </results>
-  </puzzle>
-
-  <puzzle>
-    <description>
-      Fix this broken function by changing as few characters as possible.
-    </description>
-    <code entryPoint="ShowMessage">
-      Public Function ShowMessage() As DialogResult
-          Dim retVal As DialogResult
-          retVal =  MassageBoxShow("Hello, World!)
-          Return retVal
-      End Function
-    </code>
-    <results>
-      <expected  value="OK" />
-    </results>
-  </puzzle>
-
-    
-  <puzzle>
-    <description>
-      Fix this broken function by changing as few characters as possible.
-    </description>
-    <code entryPoint="ShowFancyMessage">
-      Public Function ShowFancyMessage() As DialogResult
-          Dim vbAnswer As DialogResult
-          vbAnswer =  MessageBox.Show("Press the 'Yes' Button in this message box to finish.", _
-                                       A two button Message Box", _
-                                       MessageBoxButtons.YesNo, _
-                                       MessageBoxIcon.Question) 
-          Return vbAnswer
-      End Function
-    </code>
-    <results>
-      <expected  value="Yes" />
-    </results>
-  </puzzle>
-
-
-  <puzzle>
-    <description>
-      Create a function which returns a Label with its text alignment property set to the upper left hand corner of the control.
-    </description>
-    <code entryPoint="Alignment">
-      Public Function Alignment() As Label
-          Dim lblTest As New Label
-          lblTest.Align = ContentAlignment
-          Return lblTest
-      End Function
-    </code>
-    <results>
-      <expected property="TextAlign" value="TopLeft" />
-    </results>
-  </puzzle>
-
-  <puzzle>
-    <description>
-      Create a function which assigns the parameter 'value' to the text property
-      of a new Label Control and returns the control.
-    </description>
-    <code exntryPoint="Example">
-      Public Function Example(ByVal value as String) As Label
-          Dim lblExample As New Label
-          lblExample.Text = value
-          Return value
-      End Function
-    </code>
-    <results>
-      <expected property= "Text" value="Sample" >
-        <parameter type="String" value="Sample" />
-      </expected>
-      <expected property= "Text" value="Foo" >
-        <parameter type="String" value="Foo" />
-      </expected>
-      <expected property= "Text" value="Entry" >
-        <parameter type="String" value="Entry" />
-      </expected>
-    </results>
-  </puzzle>
-
-  <puzzle>
-    <description>
-      Create a function which returns a Label with its tag property set to 'VA'.
-    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/AutoSize</help>
     <code>
-      Public Function Puzzle() As Label
-          Dim lblState As New Label
-      End Function
-    </code>
-    <results>
-      <expected property="Tag" value="VA" />
-    </results>
-  </puzzle>
-
-  <puzzle>
-    <description>
-      Create a function which returns a TextBox with its visible property set to True.
-    </description>
-    <code>
-      Public Function Puzzle() As TextBox
-      End Function
-    </code>
-    <results>
-      <expected property="Visible" value="True" />
-    </results>
-  </puzzle>
-
-  <puzzle>
-    <description>
-      Create a function which returns a Label with its text property set to 'To be or not to be?'.
-    </description>
-    <code>
-      Public Function Puzzle() As Label
-      End Function
-    </code>
-    <results>
-      <expected property="Text" value="To be or not to be?" />
-    </results>
-  </puzzle>
-
-  <puzzle>
-    <description>
-      Create a function which returns a Label with its text alignment property set to 
-      middle vertical alignment and centered horizontally.
-    </description>
-    <code>
-      Public Function Puzzle() As Label
-      End Function
-    </code>
-    <results>
-      <expected property="TextAlign" value="MiddleCenter" />
-    </results>
-  </puzzle>
+      <header>
+        &commonControls;
+        Private Sub Setup()
+            &commonAdd;
+            frm.Text = "AutoSize Example"
+            lblPrompt.AutoSize = False
+            lblPrompt.Size = New System.Drawing.Size(200,25)
+            lblPrompt.Text = "If you have changed the 'AutoSize' property of this control " &amp; vbNewline &amp; _
+                             "then you will be able to see far more text than if the " &amp; vbNewline &amp; _
+                             "'AutoSize' property is set equal to 'False'."
+        End Sub
 
 
-  <puzzle>
-    <description>
-      Create a function that turns on the auto size property for a label control.
-    </description>
-    <code>
-      Public Function Puzzle() As Label
-      End Function
+        Public Function Puzzle() As Label
+          Setup()
+      </header>
+      <body>
+        lblPrompt
+      </body>
+      <footer>
+        frm.Show()
+        Return lblPrompt
+        End Function
+      </footer>
     </code>
     <results>
       <expected property="AutoSize" value="True" />
@@ -169,83 +71,414 @@
 
   <puzzle>
     <description>
-      Create a function which returns a Label with its visible property set so that the Label Control is visible.
+      Set the BorderStyle property of the lblPrompt Control to a single thin line.
     </description>
+    <help>https://code.google.com/p/code-ladder/wiki/BorderStyle</help>
     <code>
-      Public Function Puzzle() As Label
-      End Function
+      <header>
+        &commonControls;
+        Private Sub Setup()
+            &commonAdd;
+            frm.Text = "BorderStyle Example"
+            lblPrompt.Text = "If you have changed the 'BorderStyle' property of this control " &amp; vbNewline &amp; _
+                             "then you should see a single thin black line " &amp; vbNewline &amp; _
+                             "surrounding all of the label text."
+        End Sub
+
+        Public Function Puzzle() As Label
+          Setup()
+      </header>
+      <body>
+        'lblPrompt.BorderStyle = ?
+      </body>
+      <footer>
+        frm.Show()
+        Return lblPrompt
+        End Function
+      </footer>
     </code>
     <results>
-      <expected property="Visible" value="True" />
+      <expected property="BorderStyle" value="FixedSingle" />
     </results>
   </puzzle>
 
   <puzzle>
     <description>
-      Fix this broken function by changing as few characters as possible.
+      Create a function which sets the lblPrompt text alignment property set to the upper right hand corner of the control.
     </description>
-    <code entryPoint="ShowUselessMessage">
-      Public Function ShowUselessMessage() As DialogResult
+    <help>https://code.google.com/p/code-ladder/wiki/TextAlign</help>
+    <code entryPoint="SetAlignment">
+      <header>
+        &commonControls;
+        Private Sub Setup()
+            &commonAdd;
+            lblPrompt.AutoSize = False
+            lblPrompt.Size = New System.Drawing.Size(250,150)
+            frm.Text = "TextAlign Example"
+            lblPrompt.BorderStyle = BorderStyle.FixedSingle
+            lblPrompt.Text = "If you have changed the 'TextAlign' property of this control " &amp; vbNewline &amp; _
+                             "then you should see the text aligned " &amp; vbNewline &amp; _
+                             "in the upper-right hand corner of the box."
+        End Sub
+
+        Public Function SetAlignment() As Label
+        Setup()
+      </header>
+      <body>
+        ' TopLeft is the default
+        
+      </body>
+      <footer>
+            frm.Show()
+            Return lblPrompt
+        End Function
+      </footer>
+    </code>
+    <results>
+      <expected property="TextAlign" value="TopRight" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Fix this broken MessageBox function by changing as few characters as possible.
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/MessageBox</help>
+    <code entryPoint="ShowMessage">
+      <header>
+        Public Function ShowMessage() As DialogResult
           Dim retVal As DialogResult
-          intRetVal =  MessagBox("This is a message in a message box.)
-          Return retVal
+      </header>
+      
+      <body>
+        ' Do not edit the variable
+        ' retVal stores the action from the message box
+        retVal = MassageBoxShow("Hello, World!)
+        
+      </body>
+      
+      <footer>
+        Return retVal
       End Function
+      </footer>
+      
     </code>
     <results>
       <expected  value="OK" />
     </results>
   </puzzle>
 
-  <puzzle>
-    <description>
-      Create a function which returns a Label with its text alignment property set to 
-      middle vertical alignment and aligned right horizontally.
-    </description>
-    <code>
-      Public Function Puzzle() As Label
-      End Function
-    </code>
-    <results>
-      <expected property="TextAlign" value="MiddleRight" />
-    </results>
-  </puzzle>
 
   <puzzle>
     <description>
-      Create a function which returns a button with its name property set to 'btnExit'
+      Fix this broken MessageBox function and ensre you can press the 'Yes' button when done.
     </description>
-    <code>
-      Public Function Puzzle() As Button
-      End Function
+    <help>https://code.google.com/p/code-ladder/wiki/MessageBox</help>
+    <code entryPoint="ShowYesNoMessage">
+      <header>
+        Public Function ShowYesNoMessage() As DialogResult
+            Dim vbAnswer As DialogResult
+      </header>
+
+      <body>
+        ' Do not edit the variable to the left of the =
+        ' vbAnswer stores the action from the message box
+        vbAnswer =  MessageBox.Show("Press the 'Yes' Button in this message box to finish.", _
+                                    "A two button Message Box", _
+                                    MessageBoxButtons, _
+                                    MessageBoxIcon.Information) 
+
+      </body>
+
+      <footer>
+            Return vbAnswer
+        End Function
+      </footer>
+
     </code>
     <results>
-      <expected property="Name" value="btnExit" />
+      <expected  value="Yes" />
     </results>
   </puzzle>
 
   
- <puzzle>
+    <puzzle>
     <description>
-      Create a function which assigns the parameter 'value' to the text property 
-      of a new TextBox Control and returns the control.
+      Change the 'btnClose' button text from 'Close' to 'Exit'.
     </description>
+    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
     <code>
-      Public Function Puzzle (ByVal value As String) As TextBox
-      End Function
+      <header>
+        &commonControls;
+
+        Private Sub ShowResults()
+          &commonAdd;
+          frm.Show()
+        End Sub
+
+        Public Function Puzzle() As Button
+      </header>
+      <body>
+      </body>
+      <footer>
+          ShowResults()
+          Return btnClose
+        End Function
+      </footer>
     </code>
     <results>
-      <expected property= "Text" value="$29.99" >
-        <parameter type="String" value="$29.99" />
-      </expected>
-      <expected property= "Text" value="password is not a great password" >
-        <parameter type="String" value="password is not a great password" />
-      </expected>
-      <expected property= "Text" value="Ramerstat" >
-        <parameter type="String" value="Ramerstat" />
-      </expected>
+      <expected property="Text" value="Exit" />
+    </results>
+  </puzzle>
+
+  
+    <puzzle>
+    <description>
+      Give the lblPrompt Control a border with a '3D' look.
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/BorderStyle</help>
+    <code>
+      <header>
+        &commonControls;
+        Private Sub Setup()
+        &commonAdd;
+        frm.Text = "BorderStyle Example"
+        lblPrompt.Text = "If you have changed the 'BorderStyle' property of this control " &amp; vbNewline &amp; _
+                         "then you should see a recessed-looking border " &amp; vbNewline &amp; _
+                         "surrounding all of the label text."
+        End Sub
+
+        Public Function Puzzle() As Label
+        Setup()
+      </header>
+      <body>
+        
+      </body>
+      <footer>
+        frm.Show()
+        Return lblPrompt
+        End Function
+      </footer>
+    </code>
+    <results>
+      <expected property="BorderStyle" value="Fixed3D" />
+    </results>
+  </puzzle>
+
+  
+  <puzzle>
+    <description>
+      Sets the lblPrompt text alignment property set to the center of the control lblPrompt in the provided click event handler.
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/TextAlign</help>
+    <code entryPoint="SetAlignment">
+      <header>
+        &commonControls;
+        Private WithEvents btnAlign As New Button With {.Name = "btnAlign", .Text = "Set Alignment", .AutoSize = True,
+                                                        .Location = New System.Drawing.Point(150, 225)}
+        Private Sub Setup()
+            &commonAdd;
+            frm.Controls.Add(btnAlign)
+            lblPrompt.AutoSize = False
+            lblPrompt.Size = New System.Drawing.Size(250,150)
+            frm.Text = "TextAlign Example"
+            lblPrompt.BorderStyle = BorderStyle.FixedSingle
+            lblPrompt.Text = "If you have changed the 'TextAlign' property of this control " &amp; vbNewline &amp; _
+                             "then you should see the text aligned " &amp; vbNewline &amp; _
+                             "in the center of the box both horizontally and vertically."
+        End Sub
+
+        
+      </header>
+      <body>
+        ' Button click event handler
+        Private Sub btnAlign_Click(sender As Object, e As System.EventArgs) Handles btnAlign.Click
+            
+        End Sub
+      </body>
+      <footer>
+        Public Function SetAlignment() As Label
+            Setup()
+            Dim foo as New System.EventArgs
+            btnAlign_Click(btnAlign, foo)
+            frm.Show()
+            Return lblPrompt
+        End Function
+      </footer>
+    </code>
+    <results>
+      <expected property="TextAlign" value="MiddleCenter" />
+    </results>
+  </puzzle>
+
+  <puzzle>
+    <description>
+      Set a property of the 'lblNew' control so that it is visible when the program runs.
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/Visible</help>
+    <code>
+      <header>
+        &commonControls;
+        Private lblNew As New Label With {.Name = "lblNew", .Visible = False, .Location = New System.Drawing.Point(25, 45), .AutoSize = True}
+        &isFrmOpen;
+    
+        Private Sub ShowResults()
+          If Not isFrmOpen() Then
+             &commonAdd;
+             frm.Controls.Add(lblNew)
+             frm.Show()
+          End If
+        End Sub
+
+        Public Function Puzzle() As Label
+          lblNew.Text = "If you can see this, then you're done."
+          lblPrompt.Text = "If a control has its visible property set to 'False' " &amp; vbNewline _
+                         &amp;  "you won't see it when your program runs."
+      </header>
+      <body>
+          
+      </body>
+      <footer>
+          ShowResults()
+          Return lblNew
+        End Function
+      </footer>
+    </code>
+    <results>
+      <expected property="Visible" value="True" />
+      <expected property="Name" value="lblNew" />
+    </results>
+  </puzzle>
+    
+  <puzzle>
+    <description>
+      Fix this broken MessageBox function by changing as few characters as possible.
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/MessageBox</help>
+    <code entryPoint="ShowMessage">
+      <header>
+        Public Function ShowMessage() As DialogResult
+          Dim retVal As DialogResult
+      </header>
+      
+      <body>
+        ' Do not mess with anything on the left hand side of the =
+        retVal = MessageBox("This is a message in a message box.)
+        
+      </body>
+      
+      <footer>
+        Return retVal
+      End Function
+      </footer>
+      
+    </code>
+    <results>
+      <expected  value="OK" />
+    </results>
+  </puzzle>
+  
+  <puzzle>
+    <description>
+      Assign $34.99 to the control lblPrompt
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
+    <code>
+      <header>
+        &commonControls;
+
+        Private Sub ShowResults()
+            &commonAdd;
+            frm.PerformLayout()
+            frm.Show()
+        End Sub
+
+        Public Function Puzzle() As Label
+      </header>
+      <body>
+        
+      </body>
+      <footer>
+        ShowResults()
+        Return lblPrompt
+        End Function
+      </footer>
+    </code>
+    <results>
+      <expected property="Text" value="$34.99" />
     </results>
   </puzzle>
 
 
+  <puzzle>
+    <description>
+      Set tag property of a control named 'lblState' to 'VA'.
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
+    <code>
+      <header>
+        Public Function Puzzle() As Label
+           Dim lblState As New Label
+      </header>
+      <body>
+        ' The Tag property is never visible to users - it's a string property of many controls.
+        ' This example will not create an example dialog window, since there is nothing to see.
+        
+      </body>
+      <footer>
+         Return lblState
+         End Function
+      </footer>
+      
+    </code>
+    <results>
+      <expected property="Tag" value="VA" />
+    </results>
+  </puzzle>
+
+    <puzzle>
+    <description>
+      Sets the lblPrompt text alignment property set to the left center of the control lblPrompt in the provided click event handler.
+    </description>
+    <help>https://code.google.com/p/code-ladder/wiki/TextAlign</help>
+    <code entryPoint="SetAlignment">
+      <header>
+        &commonControls;
+        Private WithEvents btnAlign As New Button With {.Name = "btnAlign", .Text = "Set Alignment", .AutoSize = True,
+                                                        .Location = New System.Drawing.Point(150, 225)}
+        Private Sub Setup()
+            &commonAdd;
+            frm.Controls.Add(btnAlign)
+            lblPrompt.AutoSize = False
+            lblPrompt.Size = New System.Drawing.Size(250,150)
+            frm.Text = "TextAlign Example"
+            lblPrompt.BorderStyle = BorderStyle.FixedSingle
+            lblPrompt.Text = "If you have changed the 'TextAlign' property of this control " &amp; vbNewline &amp; _
+                             "then you should see the text aligned " &amp; vbNewline &amp; _
+                             "in the center of the box vertically &amp; on the left side of the control."
+        End Sub
+
+        
+      </header>
+      <body>
+        ' Button click event handler
+        Private Sub btnAlign_Click(sender As Object, e As System.EventArgs) Handles btnAlign.Click
+            
+        End Sub
+      </body>
+      <footer>
+        Public Function SetAlignment() As Label
+            Setup()
+            Dim foo as New System.EventArgs
+            btnAlign_Click(btnAlign, foo)
+            frm.Show()
+            Return lblPrompt
+        End Function
+      </footer>
+    </code>
+    <results>
+      <expected property="TextAlign" value="MiddleLeft" />
+    </results>
+  </puzzle>
 </GameML>
 

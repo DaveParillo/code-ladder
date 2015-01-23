@@ -33,6 +33,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="description"/>
+        <xs:element ref="help" minOccurs="0" maxOccurs="1"/>
         <xs:element ref="code"/>
         <xs:element ref="results"/>
       </xs:sequence>
@@ -40,10 +41,26 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="description" type="xs:string"/>
+  <xs:element name="help" type="xs:anyURI"/>
+
   <xs:element name="code">
     <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element ref="header" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="body"/>
+        <xs:element ref="footer" minOccurs="0" maxOccurs="1"/>
+      </xs:sequence>
       <xs:attribute name="entryPoint" use="optional" type="xs:NCName"/>
     </xs:complexType>
+  </xs:element>
+  <xs:element name="header">
+    <xs:complexType mixed="true" />
+  </xs:element>
+  <xs:element name="body">
+    <xs:complexType mixed="true" />
+  </xs:element>
+  <xs:element name="footer">
+    <xs:complexType mixed="true" />
   </xs:element>
   <xs:attribute name="type">
     <xs:simpleType>

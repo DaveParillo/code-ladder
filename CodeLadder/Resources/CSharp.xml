@@ -3,21 +3,60 @@
   version="1">
   <game name="CodeLadder">
     <language>CSharp</language>
+    <level>1</level>
     <start>1</start>
   </game>
-
-   <!--
-   CSharp Level 1
-   -->
   <puzzle>
     <description>Fix the variable declaration in this broken function.</description>
     <code entryPoint="Main">
-      static int Main()
+      <header>
+      namespace GeneratedNamespace
       {
-        int p1 = 3,
-        return p1;
-      }
-      </code>
+        using System;
+        class GeneratedMainClass
+        {
+          static int Main()
+          {
+      </header>
+      <body>
+            // declare variable i as an integer
+            integer i
+      </body>
+      <footer>
+            i = 3;
+            return i;
+          }
+        }  // end Generated MainClass
+      }  // end GeneratedNamespace
+      </footer>
+    </code>
+    <results>
+      <expected value="3" />
+    </results>
+  </puzzle>
+  
+  <puzzle>
+    <description>Fix the variable declaration in this broken function.</description>
+    <code entryPoint="Main">
+      <header>
+      namespace GeneratedNamespace
+      {
+        using System;
+        class GeneratedMainClass
+        {
+      </header>
+      <body>
+        static int Main()
+        {
+          int p1 = 3,
+          return p1;
+        }
+      </body>
+      <footer>
+        }  // end Generated MainClass
+      }  // end GeneratedNamespace
+      </footer>
+    </code>
     <results>
       <expected value="3" />
     </results>
