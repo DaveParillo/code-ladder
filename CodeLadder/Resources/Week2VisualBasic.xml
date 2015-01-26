@@ -171,7 +171,7 @@
 
   <puzzle>
     <description>
-      Fix this broken MessageBox function and ensre you can press the 'Yes' button when done.
+      Fix this broken MessageBox function and ensure you can press the 'Yes' button when done.
     </description>
     <help>https://code.google.com/p/code-ladder/wiki/MessageBox</help>
     <code entryPoint="ShowYesNoMessage">
@@ -299,9 +299,7 @@
       <footer>
         Public Function SetAlignment() As Label
             Setup()
-            Dim foo as New System.EventArgs
-            btnAlign_Click(btnAlign, foo)
-            frm.Show()
+            frm.ShowDialog()
             Return lblPrompt
         End Function
       </footer>
@@ -316,6 +314,7 @@
       Set a property of the 'lblNew' control so that it is visible when the program runs.
     </description>
     <help>https://code.google.com/p/code-ladder/wiki/Visible</help>
+
     <code>
       <header>
         &commonControls;
@@ -344,9 +343,44 @@
         End Function
       </footer>
     </code>
+    <!--
+    <code entryPoint="SetVisibility">
+      <header>
+        &commonControls;
+        Private lblNew As New Label With {.Name = "lblNew", .Visible = False, .Location = New System.Drawing.Point(25, 45), .AutoSize = True}
+        Private WithEvents btnVisible As New Button With {.Name = "btnVisible", .Text = "Set Visibility", .AutoSize = True,
+                                                        .Location = New System.Drawing.Point(150, 225)}
+        Private Sub Setup()
+            &commonAdd;
+            frm.Controls.Add(btnVisible)
+            frm.Controls.Add(lblNew)
+            frm.Text = "Visibility Example"
+            lblNew.Text = "If you can see this, then you're done."
+            lblPrompt.Text = "If you have changed the 'Visibility' property of this control " &amp; vbNewline &amp; _
+                             "then you should see a new label below this prompt."
+        End Sub
+
+        
+      </header>
+      <body>
+        ' Button click event handler
+        Private Sub btnVisible_Click(sender As Object, e As System.EventArgs) Handles btnVisible.Click
+            
+        End Sub
+      </body>
+      <footer>
+        Public Function SetVisibility() As Label
+            Setup()
+            frm.ShowDialog()
+            MessageBox.Show(lblPrompt.Visible.ToString)
+            Return lblNew
+        End Function
+      </footer>
+    </code>
+    
+-->   
     <results>
       <expected property="Visible" value="True" />
-      <expected property="Name" value="lblNew" />
     </results>
   </puzzle>
     
@@ -414,14 +448,14 @@
     <description>
       Set tag property of a control named 'lblState' to 'VA'.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
+    <help>https://code.google.com/p/code-ladder/wiki/Tag</help>
     <code>
       <header>
         Public Function Puzzle() As Label
            Dim lblState As New Label
       </header>
       <body>
-        ' The Tag property is never visible to users - it's a string property of many controls.
+        ' The Tag property is never visible to users - it's a property of many controls.
         ' This example will not create an example dialog window, since there is nothing to see.
         
       </body>
@@ -469,9 +503,7 @@
       <footer>
         Public Function SetAlignment() As Label
             Setup()
-            Dim foo as New System.EventArgs
-            btnAlign_Click(btnAlign, foo)
-            frm.Show()
+            frm.ShowDialog()
             Return lblPrompt
         End Function
       </footer>
