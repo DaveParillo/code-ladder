@@ -314,7 +314,7 @@
       Set a property of the 'lblNew' control so that it is visible when the program runs.
     </description>
     <help>https://code.google.com/p/code-ladder/wiki/Visible</help>
-
+    
     <code>
       <header>
         &commonControls;
@@ -343,7 +343,7 @@
         End Function
       </footer>
     </code>
-    <!--
+<!--
     <code entryPoint="SetVisibility">
       <header>
         &commonControls;
@@ -356,7 +356,7 @@
             frm.Controls.Add(lblNew)
             frm.Text = "Visibility Example"
             lblNew.Text = "If you can see this, then you're done."
-            lblPrompt.Text = "If you have changed the 'Visibility' property of this control " &amp; vbNewline &amp; _
+            lblPrompt.Text = "If you have changed the 'Visible' property of this control " &amp; vbNewline &amp; _
                              "then you should see a new label below this prompt."
         End Sub
 
@@ -372,7 +372,7 @@
         Public Function SetVisibility() As Label
             Setup()
             frm.ShowDialog()
-            MessageBox.Show(lblPrompt.Visible.ToString)
+            MessageBox.Show(lblNew.Visible.ToString)
             Return lblNew
         End Function
       </footer>

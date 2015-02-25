@@ -450,7 +450,7 @@
       
     </code>
     <results>
-      <expected value="Peter Piber bicked a beck of Pickled Pebberss" type="String">
+      <expected value="Peter Piber bicked a beck of Pickled Pebbers" type="String">
         <parameter value="Peter Piper picked a peck of Pickled Peppers" type="String" />
         <parameter value="p" type="Char" />
       </expected>
