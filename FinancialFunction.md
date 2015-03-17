@@ -108,11 +108,14 @@ based on periodic fixed payments at a fixed interest rate.
 Dim dblPayment As Double
 Dim dblInterest As Double
 Dim dblPrincipal As Double
-Dim dblRate As Double = 0.065    ' 6.5 %
+Const RATE As Double = 0.065            ' 6.5 % annual interest rate
+Const MONTHS_PER_YEAR As Double = 12    ' Used to convert annual rate to monthly rate
+Const LOAN_AMOUNT As Double = 15000
+Const LOAN_TERM As Double = 60          ' term of loan in months
 
-dblPayment   = Pmt (dblRate / 12R, 60, -15000)       ' Monthly payment
-dblInterest  = IPmt (dblRate / 12R, 1, 60, -15000)   ' First month interest
-dblPrincipal = PPmt (dblRate / 12R, 1, 60, -15000)   ' First month Principal
+dblPayment   = Pmt (RATE / MONTHS_PER_YEAR, LOAN_TERM, -LOAN_AMOUNT)       ' Monthly payment
+dblInterest  = IPmt (RATE / MONTHS_PER_YEAR, 1, LOAN_TERM, -LOAN_AMOUNT)   ' First month interest
+dblPrincipal = PPmt (RATE / MONTHS_PER_YEAR, 1, LOAN_TERM, -LOAN_AMOUNT)   ' First month Principal
 
 If dblPayment = (dblInterest + dblPrincipal) Then
     MessageBox.Show ("All is well.")
