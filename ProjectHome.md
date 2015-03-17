@@ -1,0 +1,5 @@
+![http://code-ladder.googlecode.com/git/docs/images/home.png](http://code-ladder.googlecode.com/git/docs/images/home.png)
+
+**Code Ladder** provides students an opportunity to practice Visual Basic programming concepts by presenting a series of puzzles of progressively increasing difficulty, each of which is solved by writing a small piece of code.  Code Ladder uses the [CodeDom](http://msdn.microsoft.com/en-us/library/650ax5cx(v=vs.110).aspx) to dynamically compile and evaluate the code typed by the student.  They have the advantage of seeing and understanding real compiler responses to their actions.
+
+**Code Ladder** is written in Visual Basic 2010 and currently supports puzzles written in either [Visual Basic](http://msdn.microsoft.com/en-us/vstudio/hh388573.aspx) or [C#](http://msdn.microsoft.com/en-us/vstudio/hh341490.aspx).
