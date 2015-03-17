@@ -12,7 +12,7 @@ Or, one can refer to it as an _unhandled exception_.
 
 Visual Basic provides an exception handler,
 the Try-Catch statement:
-```
+```vb.net
 Try
   ' Try block statements… '
   ' These statements might throw an exception '
@@ -28,7 +28,7 @@ Instead of a messy runtime failure, the _Catch block_ provides an
 opportunity to address the problem.
 
 For example:
-```
+```vb.net
 Try
    ' Get the user''s input and convert it to a Decimal.'
    decSalary = CDec(txtSalary.Text)
@@ -52,7 +52,7 @@ the _**catch**_ block which displays the error message.
 It is possible to handle more than one type of exception.
 Each exception can be handled in its own _Catch_ block.
 For example:
-```
+```vb.net
 Try
     Dim decAnnualSalaray, decSalary As Decimal
     Dim intPayPeriods As Integer
