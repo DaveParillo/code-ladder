@@ -8,6 +8,7 @@ The BorderStyle property defines the appearance of a border surrounding the cont
 ![http://wiki.code-ladder.googlecode.com/git/images/BorderStyle.png](http://wiki.code-ladder.googlecode.com/git/images/BorderStyle.png)
 
 The default BorderStyle depends upon the control type.  For example:
+
 | **Control**   | **Default BorderStyle** |
 |:--------------|:------------------------|
 | Label       | None      |
@@ -18,15 +19,16 @@ Some controls, suchas as _Button_ controls, do not have a BorderStyle property.
 ## Examples ##
 
   1. Setting the BorderStyle property of a Label control named _lblCity_
-> > `lblCity.BorderStyle = BorderStyle.FixedSingle`
-  1. Retrieving the property
+```vb.net
+   lblCity.BorderStyle = BorderStyle.FixedSingle
 ```
+  2. Retrieving the property
+```vb.net
    Dim myStyle As BorderStyle
-   
    myStyle = lblCity.BorderStyle
 ```
-  1. Testing the property
-```
+  3. Testing the property
+```vb.net
    If myStyle = BorderStyle.Fixed3D Then
 ```
 

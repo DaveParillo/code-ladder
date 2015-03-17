@@ -1,6 +1,6 @@
 # Definiton #
 A Select ... Case statement conditionally executes code blocks,
-just as the IfThen and IfTheElse statements do.
+just as the [IfThen](IfThen.md) and [IfThenElse](IfThenElse.md) statements do.
 
 Select Case is different in that:
   * A single test expression may be evaluated

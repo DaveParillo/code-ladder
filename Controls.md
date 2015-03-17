@@ -24,6 +24,7 @@ Most controls in Visual Basic have a _Text_ property.
 The _Text_ property is used slightly differently in different controls, but it usually displays any text or an identifying label, if the control can display one.
 
 Some Examples:
+
 | **Control**  | **How _Text_ Property is used** |
 |:-------------|:--------------------------------|
 | Label      | Displays text to user |

@@ -5,7 +5,7 @@ used for holding information while the program is running.
 
 Each DataType is able to store values up to the amount allowed by the DataType.
 The Boolean type is the smallest and can store a single bit of information,
-represented as either _True_ or _False_.
+represented as either _**True**_ or _**False**_.
 
 
 | **Type**       | **Definiton and Range**               |
@@ -19,7 +19,7 @@ represented as either _True_ or _False_.
 | Integer      | A whole number in the range +/- 2^31      |
 | Long         | A whole number in the range +/- 2^63      |
 | Object       | Everything in Visual Basic inherits from this type, so ultimately everything is an Object |
-| Short        | A whole number in the range +/- 2^16      |
+| Short        | A whole number in the range +/- 2^15      |
 | Single       | A flaoting point number with 7 significant figures in the range +/- 1. x 10^38      |
 | String       | An array of characters.  It can be very long.      |
 
@@ -29,7 +29,7 @@ A _Literal_ is the term used to describe assigning an actual value to a variable
 as opposed to retrieving the value from a function or property.
 
 When assigning a literal to a variable, you must ensure the literal is the correct size for your data type,
-otherwise the compiler with throw an error.  This is especially true if you have OptionStrict set to _On_.
+otherwise the compiler with throw an error.  This is especially true if you have [OptionStrict](OptionStrict.md) set to _On_.
 
 Table of Literals
 

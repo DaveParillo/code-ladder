@@ -16,9 +16,8 @@ Code examples:
   1. Setting the AutoSize property of a Label control named _lblCity_
 > > `lblCity.AutoSize = False`
   1. Retrieving the property
-```
+```vb.net
    Dim blnTest As Boolean
-   
    blnTest = lblCity.AutoSize
 ```
 

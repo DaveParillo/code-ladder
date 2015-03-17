@@ -17,14 +17,14 @@ and a _posttest form_.
 
 
 Pretest form:
-```
+```vb.net
 Do { While | Until } condition
     [ statements ]
 Loop
 ```
 
 Posttest form:
-```
+```vb.net
 Do
     [ statements ]
 Loop { While | Until } condition
@@ -53,7 +53,7 @@ The condition usually results from a comparison of two values,
 but it can be any expression that evaluates to a Boolean Data Type value (_True_ or _False_).
 This includes values of other data types, such as numeric types, that have been converted to Boolean.
 
-This treatment of condition is the same as in the IfThen statement.
+This treatment of condition is the same as in the [IfThen](IfThen.md) statement.
 
 You can nest Do loops by putting one loop within another.
 You can also nest different kinds of control structures within each other.
@@ -64,7 +64,7 @@ Both of these examples produce the same output.
 Neither is 'more correct' than the other.
 
   1. While loop using _pretest form_
-```
+```vb.net
 Dim index As Integer 
 Dim output As String
 Do While index <= 10
@@ -75,7 +75,7 @@ Loop
 ' output = "0 1 2 3 4 5 6 7 8 9 10 "
 ```
   1. Until loop using _posttest form_
-```
+```vb.net
 Dim index As Integer 
 Dim output As String
 Do

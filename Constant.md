@@ -12,7 +12,7 @@ The information that is stored in a constant **cannot change**, hence the name â
 ## Declaring Constants ##
 A variable declaration is a statement that creates a variable in memory
 The general syntax is:
-```
+```vb.net
 Const VariableName As DataType = aValue
 ```
 Where:
@@ -25,16 +25,6 @@ Where:
 Unlike variables, where assigning a literal is optional,
 it is required for constants.
 
-Here are some examples of constant declarations:
-```
-Const intLength As Integer = 12I
-Const sum As Long = 12345L
-Const mileage As Single = 32.45S
-Const totalCost As Decimal = 999.76D
-Const radius As Double 55.46R
-Const isFinished As Boolean = False
-```
-
 ## Naming Rules ##
 Constants have names that you, the programmer define.
 
@@ -44,9 +34,20 @@ Constants names are subject to some constraints:
   * Nothing else is allowed
     * Spaces
     * Reserved words (If, Dim, As, New, Private)
-    * Operators (_, +, -, .)_
+    * Operators (`*, +, -, .`)
 
-These rules are exactly the same rules defined for [Variable](Variable.md)s.**
+These rules are exactly the same rules defined for [Variable](Variable.md)s.
+
+## Naming Conventions ##
+Due to the special nature of constants, naming conventions are used to help readers easily distinguish them from [Variable](Variable.md)s.  Typically constants are always declared using upper case characters with an underscore between words, if needed.
+
+Here are some examples of constant declarations:
+```vb.net
+Const RULER_LENGTH As Integer = 12I
+Const MAX_ALLOWED As Long = 12345L
+Const COST_LIMIT As Decimal = 999.76D
+Const TANK_RADIUS As Double 55.46R
+```
 
 
 ## More to Explore ##

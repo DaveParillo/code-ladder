@@ -9,7 +9,8 @@ A _binary_ operator combines two values, for example `2 + 2`.
 ## Arithmetic Operators ##
 These are the common operators we learned in grade school.
 
-Common operators, listed in their order of precedence
+Common operators, listed in their order of precedence:
+
 | **Operator** | **Definition** |
 |:-------------|:---------------|
 | `^`        | Exponent.  Raises a base to a power, `base^power` = base<sup>power</sup> |
@@ -24,7 +25,7 @@ The default order of operations can be overridden using parentheses.
 In Visual Basic, expressions are always evaluated from left to right.
 Operations within parentheses are evaluated first and the results within parentheses are then
 evaluated within the rest of the expression.  FOr example:
-```
+```vb.net
 Dim x as Double
 Dim y as Double
 
@@ -32,8 +33,8 @@ x = 1 + 2 ^ 3
 y = (1 + 2) ^ 3
 ```
 
-In the example above, `2^3` is evaluated first, then 1 is added.  X = 9.
-In the second line, `1+2` is evaluated first, then 3 is cubed `3^3`.  Y = 27.
+In the example above, `2^3` is evaluated first, then 1 is added:  x = 9.
+In the second line, `1+2` is evaluated first, then 3 is cubed `3^3`:  y = 27.
 
 ## String Concatenation Operator ##
 After all the arithmetic operators in precendence follows and operator used to combine two strings

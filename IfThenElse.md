@@ -1,7 +1,7 @@
 # Mutually Exclusive Choices #
 The **If…Then…Else…End If** provides two code blocks.
 
-Just as in a normal IfThen statement, the **_condition_** will either be `True` or `False`,
+Just as in a normal [IfThen](IfThen.md) statement, the **_condition_** will either be `True` or `False`,
 
 Either the Then clause or Else clause will be executed, for example:
 ```

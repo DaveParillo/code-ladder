@@ -10,17 +10,17 @@ Check Boxes have a Boolean _**Checked**_ property and a _**CheckedChanged**_ eve
 
 ## Example ##
 Testing the value of the _**Checked**_ property:
-```
+```vb.net
 Dim discount As Decimal
+Const DISCOUNT_STUDENT As Decimal = 0.25d
+Const DISCOUNT_NONE As Decimal = 0d
 
 If chkApplyDiscount.Checked Then
-    discount = 0.025d
+    discount = DISCOUNT_STUDENT
 Else
-    discount = 0.0d
+    discount = DISCOUNT_NONE
 End If
-
 ```
-
 
 
 ## More to Explore ##
