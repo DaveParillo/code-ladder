@@ -1,7 +1,7 @@
 # The Fundamentals #
 When you start CodeLadder, it should look something like the following annotated image below.
 
-![http://wiki.code-ladder.googlecode.com/git/images/codeLadder.png](http://wiki.code-ladder.googlecode.com/git/images/codeLadder.png)
+![code ladder screenshot](images/codeLadder.png)
 
 Each of the numbered portions of the image are explained in the sections which follow.
 

@@ -2,7 +2,7 @@
 
 The TextAlign property defines how text is justified (aligned) within a control.  The TextAlign property can take one of nine values:
 
-![http://wiki.code-ladder.googlecode.com/git/images/TextAlign.png](http://wiki.code-ladder.googlecode.com/git/images/TextAlign.png)
+![TextAlign examples](images/TextAlign.png)
 
 The default TextAlign depends upon the control type.  For example:
 

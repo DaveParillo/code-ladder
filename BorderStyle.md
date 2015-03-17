@@ -5,7 +5,7 @@ The BorderStyle property defines the appearance of a border surrounding the cont
   * **FixedSingle**.  A thin (1 pixel) border is drawn
   * **Fixed3D**.  A recessed border with a '3D' look
 
-![http://wiki.code-ladder.googlecode.com/git/images/BorderStyle.png](http://wiki.code-ladder.googlecode.com/git/images/BorderStyle.png)
+![Border Style](images/BorderStyle.png)
 
 The default BorderStyle depends upon the control type.  For example:
 

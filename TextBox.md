@@ -8,7 +8,7 @@ The stored text can be used by other parts of your program.
 For example, in the figure below, the text entered in the TextBox
 is used to display "Hello, ", the text from the text box, plus an exclaimation point.
 
-![http://wiki.code-ladder.googlecode.com/git/images/controlText.png](http://wiki.code-ladder.googlecode.com/git/images/controlText.png)
+![Text box control](images/controlText.png)
 
 ## Examples ##
 

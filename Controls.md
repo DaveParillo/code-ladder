@@ -2,7 +2,7 @@
 
 Everything you can see in your program is called a _**Control**_.
 
-![http://wiki.code-ladder.googlecode.com/git/images/controlText.png](http://wiki.code-ladder.googlecode.com/git/images/controlText.png)
+![ontrolText](images/controlText.png)
 
 Figure 1. Simple program showing the _Text_ property of each control.
 
@@ -10,7 +10,7 @@ Controls are the main objects we manipulate in Visual Basic.  Each control has m
 
 As programmers, we modify _**Controls**_ by changing their _**Properties**_
 
-![http://wiki.code-ladder.googlecode.com/git/images/controlNames.png](http://wiki.code-ladder.googlecode.com/git/images/controlNames.png)
+![Control names](images/controlNames.png)
 
 Figure 2. Same program showing the _Name_ property of each control.
 
@@ -33,7 +33,7 @@ Some Examples:
 | Button     | Displays button caption |
 | ComboBox  | Displays a prompt when no option from the box has been selected. |
 
-![http://wiki.code-ladder.googlecode.com/git/images/commonControls.png](http://wiki.code-ladder.googlecode.com/git/images/commonControls.png)
+![common controls](images/commonControls.png)
 
 Figure 3. Some common controls
 

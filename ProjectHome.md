@@ -1,4 +1,4 @@
-![http://code-ladder.googlecode.com/git/docs/images/home.png](http://code-ladder.googlecode.com/git/docs/images/home.png)
+![home](images/home.png)
 
 **Code Ladder** provides students an opportunity to practice Visual Basic programming concepts by presenting a series of puzzles of progressively increasing difficulty, each of which is solved by writing a small piece of code.  Code Ladder uses the [CodeDom](http://msdn.microsoft.com/en-us/library/650ax5cx(v=vs.110).aspx) to dynamically compile and evaluate the code typed by the student.  They have the advantage of seeing and understanding real compiler responses to their actions.
 

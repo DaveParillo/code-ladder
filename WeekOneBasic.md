@@ -18,13 +18,13 @@ Then you move controls from the palette to the designer and edit their propertie
 
 Everything you can see in your program is called a _**Control**_
 
-![http://wiki.code-ladder.googlecode.com/git/images/controlText.png](http://wiki.code-ladder.googlecode.com/git/images/controlText.png)
+![text box control](images/controlText.png)
 
 Figure 1. Simple program showing the _Text_ property of each control.
 
 As programmers, we modify _**Controls**_ by changing their _**Properties**_
 
-![http://wiki.code-ladder.googlecode.com/git/images/controlNames.png](http://wiki.code-ladder.googlecode.com/git/images/controlNames.png)
+![control names](images/controlNames.png)
 
 Figure 2. Same program showing the _Name_ property of each control.
 

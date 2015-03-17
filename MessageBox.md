@@ -10,7 +10,7 @@ The only way to display a MessageBox to the user is by writing code.
 You can't make a MessageBox appear in the designer.
 For example, `MessageBox.Show ("Hello, World!")` displays the simple window shown below.
 
-![http://wiki.code-ladder.googlecode.com/git/images/helloWorld.png](http://wiki.code-ladder.googlecode.com/git/images/helloWorld.png)
+![hello world message](images/helloWorld.png)
 
 A MessageBox is an object with a function named _Show_.
 The significance of each part of this statement is:
@@ -66,8 +66,7 @@ MessageBox.Show( "Do you really want to exit?",  _
                   MessageBoxIcon.Question, _
                   MessageBoxDefaultButton.Button2 )
 ```
-
-<img src='http://wiki.code-ladder.googlecode.com/git/images/exitBox.png' />
+![exit message](images/exitBox.png)
 
 
 <h2>Return Values</h2>
