@@ -14,7 +14,7 @@ The PMT Function is a member of the Microsoft.VisualBasic.Financial namespace.
 ## Parameters ##
   * **Rate:** Required. The interest rate per period.
     For example, if you get a car loan at an annual percentage rate (APR) of 10%
-    percent and make monthly payments, the rate per period is 0.1/12, or 0.0083.
+    and make monthly payments, the rate per period is 0.1/12, or 0.0083.
   * **NPer:** Required. The total number of payment periods in the annuity.
     For example, if you make monthly payments on a four-year car loan, then
     your loan has a total of 4 × 12 (or 48) payment periods.
@@ -42,10 +42,10 @@ See [TryCatch](TryCatch.md) for how to handle exceptions.
 ## Example ##
 ```vb.net
 Dim dblPayment As Double
-Dim dblAnnualInterest As Double = 0.065    ' 6.5 %'
+Dim dblAnnualInterest As Double = 0.065    ' 6.5 %
 
-dblPayment = Pmt (dblAnnualInterest / 12R, 60, 15000)      ' dblPayment = -293.49 '
-dblPayment = Pmt (dblAnnualInterest / 12R, 60, -15000)     ' dblPayment =  293.49 '
+dblPayment = Pmt (dblAnnualInterest / 12R, 60, 15000)      ' dblPayment = -293.49
+dblPayment = Pmt (dblAnnualInterest / 12R, 60, -15000)     ' dblPayment =  293.49
 
 ```
 
@@ -69,8 +69,8 @@ The IPMT Function is a member of the Microsoft.VisualBasic.Financial namespace.
 
 ## Parameters ##
   * **Rate:** Required. The interest rate per period.
->   For example, if you get a car loan at an annual percentage rate (APR) of
-    1. percent and make monthly payments, the rate per period is 0.1/12, or 0.0083.
+>   For example, if you get a car loan at an annual percentage rate (APR) of 10%
+    and make monthly payments, the rate per period is 0.1/12, or 0.0083.
   * **Period:** Required. The specif payment from 1 to NPer you want to calculate interest for.
   * **NPer:** Required. The total number of payment periods in the annuity.
 >   For example, if you make monthly payments on a four-year car loan, then
@@ -108,11 +108,11 @@ based on periodic fixed payments at a fixed interest rate.
 Dim dblPayment As Double
 Dim dblInterest As Double
 Dim dblPrincipal As Double
-Dim dblRate As Double = 0.065    ' 6.5 %'
+Dim dblRate As Double = 0.065    ' 6.5 %
 
-dblPayment   = Pmt (dblRate / 12R, 60, -15000)       ' Monthly payment '
-dblInterest  = IPmt (dblRate / 12R, 1, 60, -15000)   ' First month interest '
-dblPrincipal = PPmt (dblRate / 12R, 1, 60, -15000)   ' First month Principal '
+dblPayment   = Pmt (dblRate / 12R, 60, -15000)       ' Monthly payment
+dblInterest  = IPmt (dblRate / 12R, 1, 60, -15000)   ' First month interest
+dblPrincipal = PPmt (dblRate / 12R, 1, 60, -15000)   ' First month Principal
 
 If dblPayment = (dblInterest + dblPrincipal) Then
     MessageBox.Show ("All is well.")
