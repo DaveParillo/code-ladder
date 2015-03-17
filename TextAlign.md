@@ -5,6 +5,7 @@ The TextAlign property defines how text is justified (aligned) within a control.
 ![http://wiki.code-ladder.googlecode.com/git/images/TextAlign.png](http://wiki.code-ladder.googlecode.com/git/images/TextAlign.png)
 
 The default TextAlign depends upon the control type.  For example:
+
 | **Control**   | **Default TextAlign** |
 |:--------------|:----------------------|
 | Label       | TopLeft      |
@@ -21,15 +22,17 @@ Note that the TextBox control has a TextAlign property, but it only takes 3 valu
 ## Examples ##
 
   1. Setting the TextAlign property of a Label control named _lblCity_
-> > `lblCity.TextAlign = ContentAlignment.TopLeft`
-  1. Retrieving the property
+```vb.net
+     lblCity.TextAlign = ContentAlignment.TopLeft
 ```
+  2. Retrieving the property
+```vb.net
    Dim myAlign As ContentAlignment
    
    myAlign = lblCity.TextAlign
 ```
-  1. Testing the property
-```
+  3. Testing the property
+```vb.net
    If myAlign = ContentAlignment.BottomRight Then
 ```
 

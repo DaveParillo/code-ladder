@@ -12,7 +12,7 @@ The information that is stored in a variable may change, hence the name “varia
 ## Declaring Variables ##
 A variable declaration is a statement that creates a variable in memory
 The general syntax is:
-```
+```vb.net
 Dim VariableName As DataType
 ```
 Where:
@@ -22,7 +22,7 @@ Where:
   * **DataType** tells the computer how much memory this variable requires
 
 Here are some examples of a variable declarations:
-```
+```vb.net
 Dim intLength As Integer
 Dim sum As Long
 Dim mileage As Single
@@ -40,13 +40,14 @@ Variable names are subject to some constraints:
   * Nothing else is allowed
     * Spaces
     * Reserved words (If, Dim, As, New, Private)
-    * Operators (_, +, -, .)_**
+    * Operators (`*, +, -, .`)
 
 ## Variable Naming Conventions ##
 In Visual Basic, it's common to use a prefix as part of the variable name.
 This is especially common for [Controls](Controls.md), but can be used for any variable.
 
 Typocal prefix notion used for controls:
+
 | **Control**    | **Prefix** | **Example**  |
 |:---------------|:-----------|:-------------|
 | Form         | frm      | frmMain    |
@@ -57,7 +58,8 @@ Typocal prefix notion used for controls:
 | RadioButton | rad      | radSenior  |
 
 You may also see prefixes applied to primitive a DataType as well.
-Typocal prefix notion used for controls:
+Typical prefix notion used for controls:
+
 | **Type**       | **Prefix** | **Example**  |
 |:---------------|:-----------|:-------------|
 | Boolean      | bln      | blnReturn  |

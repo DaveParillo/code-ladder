@@ -9,12 +9,12 @@ If the property = _False_ then the Control will not be visible at runtime.
 A control with its visible property = False is still visible in the Visual Basic designer.
 
 ## Examples ##
-
-Code examples:
   1. Setting the Visible property of a Label control named _lblCity_
-> > `lblCity.Visible = False`
-  1. Retrieving the property
+```vb.net
+     lblCity.Visible = False
 ```
+  2. Retrieving the property
+```vb.net
    Dim blnTest As Boolean
    
    blnTest = lblCity.Visible

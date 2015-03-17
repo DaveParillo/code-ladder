@@ -13,13 +13,15 @@ A control with its visible property = False is still visible in the Visual Basic
 
 Code examples:
   1. Setting the Tag property of a Label control named _lblCity_
-> > `lblCity.Tag = "San Diego"`
-  1. Retrieving the property
+```vb.net
+   lblCity.Tag = "San Diego"
 ```
+  2. Retrieving the property
+```vb.net
    Dim strTest As String
    
-   strTest = lblCity.Tag                ' This example assumes the Tag contains a String. '
-   strTest = lblCity.Tag.ToString  ' If unsure, this approach is safer.  '
+   strTest = lblCity.Tag           ' This example assumes the Tag contains a String.
+   strTest = lblCity.Tag.ToString  ' If unsure, this approach is safer. 
 ```
 
 ## More to Explore ##

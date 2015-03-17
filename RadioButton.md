@@ -18,10 +18,10 @@ Radio buttons have a Boolean _**Checked**_ property and a _**CheckedChanged**_ e
 
 ## Example ##
 Testing the value of the _**Checked**_ property:
-```
+```vb.net
 Dim discount As Decimal
 
-If chkApplyDiscount.Checked Then
+If radApplyDiscount.Checked Then
     discount = 0.025d
 Else
     discount = 0.0d

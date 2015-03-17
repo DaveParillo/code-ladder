@@ -14,9 +14,9 @@ Note that this is not the same as the empty string (value "" or `String.Empty`).
 ## String Comparisons ##
 Relational operators can be used to compare strings and string literals,
 for example:
-```
-strName1 = "Mary"
-strName2 = "Mark"
+```vb.net
+strName1 = "Alice"
+strName2 = "Alfred"
 If strName1 = strName2 Then
 	lblMessage.Text = " Names are the same"
 Else
@@ -25,17 +25,16 @@ End If
 
 
 If strMonth <> "October" Then
-	' statement '
+	' statement
 End If
 ```
 
 Strings are compared to each other _lexicographically_ - that is they
 are compared as they would be ordered in the dictionary:
 
-```
-"Mark" < "Mary"  ' This is True' 
-"79" < "9"       ' This is True'
-
+```vb.net
+"Alfred" < "Alice"  ' This is True' 
+"79" < "9"          ' This is also True'
 ```
 
 
@@ -49,16 +48,14 @@ which is a string that contains no characters.
 Useful for determining whether the user has provided input for
 a required field before performing operations on that field.
 For example:
-```
+```vb.net
 If txtInput.Text = String.Empty Then
    lblMessage.Text = "Please enter a value"
 Else
    ' The txtInput control contains something, so'
    ' perform an operation with it here.'
 End If
-
 ```
-
 
 ## More to Explore ##
   * [What is Unicode?](http://unicode.org/standard/WhatIsUnicode.html) and [Unicode Charts Index](http://www.unicode.org/charts/index.html)

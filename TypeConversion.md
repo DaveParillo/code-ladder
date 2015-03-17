@@ -5,15 +5,15 @@ A value of one data type can be assigned to a variable of a different type.
 An _implicit type conversion_ is an attempt to automatically convert to the receiving variable’s data type.
 A _widening conversion_ suffers no loss of data.
   * Converting an integer to a double
-```
-Dim dblVal As Double = 5 ' implicit conversion during declaration   '
+```vb.net
+Dim dblVal As Double = 5 ' implicit conversion during declaration
 
-dblVal = -40             ' implicit conversion during assignment   '
+dblVal = -40             ' implicit conversion during assignment 
 ```
 
 A narrowing conversion may lose data
   * Converting a decimal to an integer
-```
+```vb.net
 Dim intNum As Integer = 12.2    ' intNum becomes 12
 ```
 
@@ -45,17 +45,17 @@ Other conversion functions:
   * CSng
 
 Some examples:
-```
-intVal = CInt(12.4)   ' intVal will round down to 12  '
-intVal = CInt(12.5)   ' intVal will round up to 13    '
+```vb.net
+intVal = CInt(12.4)   ' intVal will round down to 12 
+intVal = CInt(12.5)   ' intVal will round up to 13
 
-strVal = CStr(26)     ' strVal will contain "26"   '
+strVal = CStr(26)     ' strVal will contain "26"
 
-decPay = CDec("$1,534") ' removes the $ and , characters and stores 1534.0  '
+decPay = CDec("$1,534") ' removes the $ and , characters and stores 1534.0 
 
 dateHired = CDate("2/14/2012")
 
-' An example converting strings stored in Text properties '
+' An example converting strings stored in Text properties
 dblArea = CDbl(txtHeight.Text) * CDbl(txtWidth.Text)
 ```
 

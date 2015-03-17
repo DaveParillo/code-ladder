@@ -9,7 +9,7 @@ Results in a string with lowercase letters converted to uppercase
 The original string is not changed.
 
 For example:
-```
+```vb.net
 Dim strUpperCase 
 Dim myString = "Some Text"
 

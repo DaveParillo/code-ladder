@@ -11,7 +11,7 @@ Select Case is different in that:
 `Case Else` may be included and executed if none of the values match the expression.
 
 ## Example ##
-```
+```vb.net
 Dim dblAvg As Double = 85.23
 Dim strLetterGrade As String
 

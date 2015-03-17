@@ -2,6 +2,7 @@
 Usually a conditional expression is formed using a _relational operator_.
 
 A relational operator determines if a specific relationship exists between two values:
+
 | **Operator** | **Definition** |
 |:-------------|:---------------|
 |  `>`       | Greater than    |
@@ -23,14 +24,14 @@ It _always_ returns a _Boolean_: `True` or `False`, for example:
 
 ## Examples ##
 
-```
+```vb.net
   If decSales > 50000 Then
      MessageBox.Show("You earned a bonus!")
   End If
 ```
 
 
-```
+```vb.net
   If airTemperature < 48 Then
      intCount += 1
      MessageBox.Show("You should wear a jacket.")

@@ -9,14 +9,13 @@ Results in a string with uppercase letters converted to lowercase.
 The original string is not changed.
 
 For example:
-```
+```vb.net
 Dim strLowerCase As String
 Dim myString = "Some Text"
 
-strLowerCase = myString.ToLower()       ' Applied to variable "myString" '
-strLowerCase = "Hello".ToLower()        ' Applied to String literal "Hello"'
-strLowerCase = btnClose.Text.ToLower()  ' Applied to Text property of a Button Control'
-
+strLowerCase = myString.ToLower()       ' Applied to variable "myString" 
+strLowerCase = "Hello".ToLower()        ' Applied to String literal "Hello"
+strLowerCase = btnClose.Text.ToLower()  ' Applied to Text property of a Button Control
 ```
 
 
