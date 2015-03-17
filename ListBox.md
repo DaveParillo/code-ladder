@@ -36,7 +36,7 @@ The add function returns the new item position in the list, but you don't have t
 
 
 Examples:
-```
+```vb.net
 lstStudents.Items.Add ("Sharon")
 
 lstCities.Items.Add (txtCityName.Text)
@@ -53,7 +53,7 @@ i = lstAnimals.Items.Add ("Aardvark")
 | Clear ()              | Subroutine  | Removes all items from the collection. |
 | Contains (value As Object)  | Function    | Checks the collection for _value_, returning _True_ is value is found at least once in the collection |
 | Count               | Property      | Returns the number of items in the collection. |
-| IndexOf (value As Object)  | Function    | Returns the index position of the occurrence of _value_ in the collection.  If _value is not found, then_-1_is returned._|
+| IndexOf (value As Object)  | Function    | Returns the index position of the occurrence of _value_ in the collection.  If _value_ is not found, then -1 is returned. |
 | Insert (index As Integer, <br> item As Object) <table><thead><th> Subroutine </th><th> Inserts an item in the collection at the provided index position. </th></thead><tbody>
 <tr><td> Item (index As Integer)  </td><td> Property    </td><td> Returns the item at the specified index position. </td></tr>
 <tr><td> Remove (value As Object)  </td><td> Subroutine    </td><td> Deletes the item at the occurrence of <i>value</i> in the collection. </td></tr>

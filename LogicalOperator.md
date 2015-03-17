@@ -4,6 +4,7 @@ _Logical Operators_ allow us to combine Boolean variables and literals
 which then returns a single composite boolean for the entire expression.
 
 The Boolean operators, listed in order of precedence:
+
 | **Operator** | **Effect** |
 |:-------------|:-----------|
 | **Not**      | Reverses the value of a Boolean |
@@ -16,13 +17,14 @@ As in an ArithmeticOperation, parentheses are used to clarify and override the d
 ## Boolean AND Operator ##
 The **And** operator combines two expressions into one.
 The following **If** statement uses the **And** operator:
-```
+```vb.net
 If intTemperature < 20 And intMinutes > 12 Then
    lblMessage.Text = "It’s been cold too long."
 End If
 ```
 
 Both expressions must be true for the overall expression to be true, as shown in the following truth table:
+
 | **X**     | **Y**     | **X And Y**  |
 |:----------|:----------|:-------------|
 | `True`  | `True`  | `True`     |
@@ -34,13 +36,14 @@ Both expressions must be true for the overall expression to be true, as shown in
 ## Boolean OR Operator ##
 The **Or** operator combines two expressions into one.
 The following **If** statement uses the **Or** operator:
-```
+```vb.net
 If intTemperature < 20 Or intTemperature > 100 Then
    lblMessage.Text = "The temperature is out of control."
 End If
 ```
 
 If either expression is true, then the overall expression is true, as shown in the following truth table:
+
 | **X**     | **Y**     | **X Or Y**   |
 |:----------|:----------|:-------------|
 | `True`  | `True`  | `True`     |
@@ -52,6 +55,7 @@ If either expression is true, then the overall expression is true, as shown in t
 The Not operator takes a Boolean expression and reverses its logical value.
 
 If the expression is `True`, the **Not** operator returns `False`, and if the expression is `False`, it returns `True`:
+
 | **X**     | **Not X** |
 |:----------|:----------|
 | `True`  | `False` |
@@ -62,6 +66,7 @@ If the expression is `True`, the **Not** operator returns `False`, and if the ex
 The **Xor** operator combines two expressions into one.
 
 If exactly one expression is true, then the overall expression is true, as shown in the following truth table:
+
 | **X**     | **Y**     | **X Xor Y**   |
 |:----------|:----------|:--------------|
 | `True`  | `True`  | `False`     |
@@ -81,7 +86,6 @@ then the entire expression will be `True`.
 
 If there is no need to evaluate the second expression,
 it can be skipped using a method called short-circuit evaluation.
-
 
 | **Operator** | **Effect** |
 |:-------------|:-----------|

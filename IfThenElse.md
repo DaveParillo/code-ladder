@@ -4,14 +4,14 @@ The **If…Then…Else…End If** provides two code blocks.
 Just as in a normal [IfThen](IfThen.md) statement, the **_condition_** will either be `True` or `False`,
 
 Either the Then clause or Else clause will be executed, for example:
-```
+```vb.net
   Dim recommendation As String
 
   If airTemperature >= 45 Then
-       ' our condition is true'
+       ' our condition is true
        recommendation = "Go outside an play."
   Else
-       ' our condition is false'
+       ' our condition is false
        recommendation = "Go outside and play, but wear a jacket."
   End If
 ```
@@ -26,7 +26,7 @@ The `If…Then…ElseIf…[ElseIf]…Else…End If` provides many choices.
   * Only 1 code block is executed – the rest are ignored
     * The first block that evaluates to `True` is executed.
 
-```
+```vb.net
   Dim recommendation As String
 
   If airTemperature > 95 Then
@@ -38,8 +38,8 @@ The `If…Then…ElseIf…[ElseIf]…Else…End If` provides many choices.
   ElseIf airTemperature > 5 Then
        recommendation = "Build an igloo and wear your parka and mittens."
   Else
-       ' this executes if every previous test fails    '
-       ' the temperature must be <= 5  '
+       ' this executes if every previous test fails 
+       ' the temperature must be <= 5 
        recommendation = "Play inside."
   End If
 ```

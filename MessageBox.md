@@ -33,6 +33,7 @@ The buttons argument is optional.
 Unless specified, a MessageBox has only an _OK_ button.
 
 The buttons parameter must equal one of the allowed types:
+
 | **Value**                               | **Description** |
 |:----------------------------------------|:----------------|
 | MessageBoxButtons.AbortRetryIgnore    | Displays _Abort_, _Retry_, & _Ignore_   |
@@ -48,6 +49,7 @@ The icon argument is optional.
 Unless specified, a MessageBox has no icon.
 
 The icon parameter must equal one of the allowed types:
+
 | **Parameter**                            | **Icon** |
 |:-----------------------------------------|:---------|
 | MessageBoxIcon.Asterisk  <br> MessageBoxIcon.Information            <table><thead><th> <img src='http://wiki.code-ladder.googlecode.com/git/images/iconInfo.png' /> </th></thead><tbody>
@@ -56,15 +58,15 @@ The icon parameter must equal one of the allowed types:
 <tr><td> MessageBoxIcon.Question           </td><td> <img src='http://wiki.code-ladder.googlecode.com/git/images/iconQuestion.png' /> </td></tr></tbody></table>
 
 <h2>Example</h2>
-The following statement displays a message box and selects Button2 (the No button) as the default button:<br>
-<br>
-<pre><code>MessageBox.Show( "Do you really want to exit?",  _<br>
-                 "Confirm Exit", _<br>
-                  MessageBoxButtons.YesNo,  _<br>
-                  MessageBoxIcon.Question, _<br>
-                  MessageBoxDefaultButton.Button2 )<br>
-<br>
-</code></pre>
+The following statement displays a message box and selects Button2 (the No button) as the default button:
+```vb.net
+MessageBox.Show( "Do you really want to exit?",  _
+                 "Confirm Exit", _
+                  MessageBoxButtons.YesNo,  _
+                  MessageBoxIcon.Question, _
+                  MessageBoxDefaultButton.Button2 )
+```
+
 <img src='http://wiki.code-ladder.googlecode.com/git/images/exitBox.png' />
 
 
@@ -81,21 +83,21 @@ The MessageBox.Show function returns a value corresponding to the button that wa
 <tr><td> Windows.Forms.DialogResult.Retry      </td><td> The <i>Retry</i> button was clicked </td></tr>
 <tr><td> Windows.Forms.DialogResult.Yes        </td><td> The <i>Yes</i> button was clicked </td></tr></tbody></table>
 
-As a programmer you can use the return value to take different actions based on the user selections.<br>
-<br>
-<pre><code>Dim retVal as Windows.Forms.DialogResult<br>
-<br>
-retVal = MessageBox.Show( "Do you really want to exit?",  _<br>
-                          "Confirm Exit", _<br>
-                           MessageBoxButtons.YesNo,  _<br>
-                           MessageBoxIcon.Question, _<br>
-                           MessageBoxDefaultButton.Button2 )<br>
-<br>
-If retVal = Windows.Forms.DialogResult.Yes Then<br>
-    Me.Close()<br>
-End If<br>
-<br>
-</code></pre>
+As a programmer you can use the return value to take different actions based on the user selections.
+```vb.net
+Dim retVal as Windows.Forms.DialogResult
+
+retVal = MessageBox.Show( "Do you really want to exit?",  _
+                          "Confirm Exit", _
+                           MessageBoxButtons.YesNo,  _
+                           MessageBoxIcon.Question, _
+                           MessageBoxDefaultButton.Button2 )
+
+If retVal = Windows.Forms.DialogResult.Yes Then
+    Me.Close()
+End If
+```
+
 
 
 <h2>More to Explore</h2>

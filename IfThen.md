@@ -1,5 +1,5 @@
 # Definiton #
-The If ... Then statement is one of the most basic _control flow_ statement in computer science.
+The If ... Then statement is one of the most basic _control flow_ statements in computer science.
 It tells your program to execute a certain section of code
 _only if_ a _**test**_  or _**condition**_ evaluates to `True`.
 
@@ -14,13 +14,13 @@ As ridiculous as this sounds, it can _only_ evaluate to one of 2 values:
 
 
 And you can read a Visual Basic example almost like an sentence too:
-```
-  If ThereIsAnElephantInTheRefrigerator = True Then
-       You = You + 100  ' dollars   '
+```vb.net
+  If ThereIsAnElephantInTheRefrigerator Then
+       You = You + 100  ' dollars 
   End If
 ```
 and generally:
-```
+```vb.net
   If expression Then
        ' zero or more statements here'
   End If

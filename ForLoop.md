@@ -10,13 +10,14 @@ and you can optionally specify the amount by which it increases from one repetit
 
 # General Form #
 
-```
+```vb.net
 For counter = start To end
     [ statements ]
 Next
 ```
 
 where:
+
 | For | Required. Starts the definition of the For loop. |
 |:----|:-------------------------------------------------|
 | counter  | Required. A variable used to control the loop |
@@ -26,7 +27,7 @@ where:
 
 There is no _posttest_ form for a **For Loop**.
 For example:
-```
+```vb.net
 Dim number As Double
 Dim output As String
 
@@ -39,7 +40,7 @@ Next
 ```
 
 what works for a primitive DataType as above, works for controls as well:
-```
+```vb.net
 Dim i As Integer
 Dim txtBox As New TextBox
 
@@ -61,7 +62,7 @@ An optional _**Step**_ increment allows the counter to increment at a
 value other than 1 each time though the loop.
 
 For example:
-```
+```vb.net
 Dim number As Double
 Dim output As String
 
@@ -80,7 +81,7 @@ the **For Each** loop repeats a group of statements for each member of
 a _**Collection**_ or an _**enumerable**_ Object.
 
 General form:
-```
+```vb.net
 For Each element In group
     [ statements ]
 Next [ element ]
@@ -88,6 +89,7 @@ Next [ element ]
 ```
 
 where:
+
 | For Each | Required. Starts the definition of the For Each loop. |
 |:---------|:------------------------------------------------------|
 | element | Required. Used to iterate through the elements of the collection.  It must be able to store objects of the type stored in the collection. |
@@ -95,12 +97,12 @@ where:
 | Next | Required. Terminates the definition of the For Each loop. |
 
 For example:
-```
+```vb.net
 Dim ch As Char
 Dim input As String = "The rain in Spain falls mainly on the plain"
 Dim output As String
 
-' A String can be viewed as a collection of characters'
+' A String can be viewed as a collection of characters
 For Each ch In input
     output &= ch.ToString & ":"
 Next
