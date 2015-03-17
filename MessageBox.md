@@ -51,11 +51,11 @@ Unless specified, a MessageBox has no icon.
 The icon parameter must equal one of the allowed types:
 
 | **Parameter**                            | **Icon** |
-|:-----------------------------------------|:---------|
-| MessageBoxIcon.Asterisk  <br> MessageBoxIcon.Information            <table><thead><th> <img src='http://wiki.code-ladder.googlecode.com/git/images/iconInfo.png' /> </th></thead><tbody>
-<tr><td> MessageBoxIcon.Error  <br> MessageBoxIcon.Hand <br> MessageBoxIcon.Stop            </td><td> <img src='http://wiki.code-ladder.googlecode.com/git/images/iconError.png' /> </td></tr>
-<tr><td> MessageBoxIcon.Exclamation  <br> MessageBoxIcon.Warning            </td><td> <img src='http://wiki.code-ladder.googlecode.com/git/images/iconWarn.png' /> </td></tr>
-<tr><td> MessageBoxIcon.Question           </td><td> <img src='http://wiki.code-ladder.googlecode.com/git/images/iconQuestion.png' /> </td></tr></tbody></table>
+|:-----------------------------------------|:---------:|
+| MessageBoxIcon.Asterisk  <br> MessageBoxIcon.Information  | <img src='http://wiki.code-ladder.googlecode.com/git/images/iconInfo.png' /> |
+| MessageBoxIcon.Error  <br> MessageBoxIcon.Hand <br> MessageBoxIcon.Stop | <img src='http://wiki.code-ladder.googlecode.com/git/images/iconError.png' /> |
+| MessageBoxIcon.Exclamation  <br> MessageBoxIcon.Warning   |<img src='http://wiki.code-ladder.googlecode.com/git/images/iconWarn.png' /> |
+| MessageBoxIcon.Question | <img src='http://wiki.code-ladder.googlecode.com/git/images/iconQuestion.png' /> |
 
 <h2>Example</h2>
 The following statement displays a message box and selects Button2 (the No button) as the default button:
