@@ -52,10 +52,10 @@ The icon parameter must equal one of the allowed types:
 
 | **Parameter**                            | **Icon** |
 |:-----------------------------------------|:---------:|
-| MessageBoxIcon.Asterisk  <br> MessageBoxIcon.Information  | [Info icon](images/iconInfo.png) |
-| MessageBoxIcon.Error  <br> MessageBoxIcon.Hand <br> MessageBoxIcon.Stop | [Error icon](images/iconError.png) |
-| MessageBoxIcon.Exclamation  <br> MessageBoxIcon.Warning   |[Warning icon](images/iconWarn.png) |
-| MessageBoxIcon.Question | [Question icon](images/iconQuestion.png) |
+| MessageBoxIcon.Asterisk  <br> MessageBoxIcon.Information  | ![Info icon](images/iconInfo.png) |
+| MessageBoxIcon.Error  <br> MessageBoxIcon.Hand <br> MessageBoxIcon.Stop | ![Error icon](images/iconError.png) |
+| MessageBoxIcon.Exclamation  <br> MessageBoxIcon.Warning   | ![Warning icon](images/iconWarn.png) |
+| MessageBoxIcon.Question | ![Question icon](images/iconQuestion.png) |
 
 <h2>Example</h2>
 The following statement displays a message box and selects Button2 (the No button) as the default button:
