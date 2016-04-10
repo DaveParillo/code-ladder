@@ -12,7 +12,7 @@ Imports System.Runtime.InteropServices
 <Assembly: AssemblyDescription("An introductory programming learning lab for Visual Basic and C#.")> 
 <Assembly: AssemblyCompany("Mesa College")> 
 <Assembly: AssemblyProduct("CodeLadder")> 
-<Assembly: AssemblyCopyright("GPL v3 or greater, 2013 - 2014")> 
+<Assembly: AssemblyCopyright("GPL v3 or greater, 2013 - 2016")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>

@@ -15,7 +15,7 @@
     <description>
       Create a function that adds a NewItem to a ListBox control and returns the ListBox
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/ListBox</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ListBox</help>
     <code entryPoint="AddToList">
       <body>
         ' This is the list box to be evaluated.  
@@ -41,7 +41,7 @@
       the interest rate, number of periods, and the loan amount. 
       Return the results as a string in currency format.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/FinancialFunction#Pmt_Function</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/FinancialFunction#Pmt_Function</help>
     <code entryPoint = "MonthlyPayment">
       <body>
         Public Function MonthlyPayment (ByVal AnnualInterestRate As Double, NumberOfPeriods As Integer, LoanAmount As Double) As String
@@ -76,7 +76,7 @@
     <description>
       Create a function that loops to add a number to a ListBox control 'HowMany' times and returns the ListBox
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/ForLoop</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ForLoop</help>
     <code entryPoint="BuildList">
       <body>
         Public Function BuildList (ByVal HowMany As Integer) As ListBox
@@ -99,7 +99,7 @@
 
   <puzzle>
     <description>Create a function that sums the numbers from 1 to 'Limit' and returns the results.</description>
-    <help>https://code.google.com/p/code-ladder/wiki/ForLoop</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ForLoop</help>
     <code entryPoint="SumToLimit">
       <body>
         Public Function SumToLimit (ByVal Limit As Integer) As Long
@@ -122,7 +122,7 @@
  
   <puzzle>
     <description>Create a function that sums every odd number from 1 to 'Limit' and returns the results.</description>
-    <help>https://code.google.com/p/code-ladder/wiki/ForLoop#Step_Keyword</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ForLoop#Step_Keyword</help>
     <code entryPoint="SumOddToLimit">
       <body>
         Public Function SumOddToLimit (ByVal Limit As Integer) As Long
@@ -152,7 +152,7 @@
       
        Example: intCode = AscW("A"c)
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/ForLoop#For_Each_Loop</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ForLoop#For_Each_Loop</help>
     <code entryPoint="ConvertToAsciiCode">
       <body>
         Public Function ConvertToAsciiCode (ByVal Phrase As String) As String
@@ -179,7 +179,7 @@
       the interest rate, total number of payment periods, and the loan amount. 
       Return the results as a string in currency format.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/FinancialFunction#IPMT_Function</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/FinancialFunction#IPMT_Function</help>
     <code entryPoint = "InterestPayment">
       <body>
         Public Function InterestPayment (ByVal AnnualInterestRate As Double, NumberOfPeriods As Integer, LoanAmount As Double) As String
@@ -217,7 +217,7 @@
       the interest rate, month number, total number of payment periods, and the loan amount. 
       Return the results as a string in percent format with no decimal places.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/FinancialFunction</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/FinancialFunction</help>
     <code entryPoint = "InterestPercent">
       <body>
         Public Function InterestPercent (ByVal AnnualInterestRate As Double, MonthNumber As Integer, NumberOfPeriods As Integer, LoanAmount As Double) As String
@@ -259,7 +259,7 @@
       Create a function that returns every number from 'Start' to 0 in reverse order.  
       Separate each number with a single space.  Trim the string before returning to eliminate the trailing space.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/ForLoop#Step_Keyword</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ForLoop#Step_Keyword</help>
     <code>
       <body>
         Public Function Puzzle (ByVal Start As Integer) As String
@@ -284,7 +284,7 @@
     <description>
       Create a function that sums every number from 'Start' to 'Finish' and returns the results.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/ForLoop</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ForLoop</help>
     <code entryPoint="SumStartToFinish">
       <body>
         Public Function SumStartToFinish (ByVal Start As Integer, ByVal Finish As Integer) As Long
@@ -319,7 +319,7 @@
       Create a function that sums the numbers from 1 to 'Limit', but stops once the sum is at least as large as 
       'Limit' and returns - read carefully - the last number used to compute the sum.
   </description>
-    <help>https://code.google.com/p/code-ladder/wiki/DoLoop</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/DoLoop</help>
     <code>
       <body>
         Public Function Puzzle (ByVal Limit As Integer) As Integer
@@ -349,7 +349,7 @@
       Return the results as a string in currency format.
     </description>
     <!--  Really, help should link to both for loop and financial functions -->
-    <help>https://code.google.com/p/code-ladder/wiki/ForLoop</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ForLoop</help>
     <code entryPoint="TotalInterestPaid">
       <body>
         Public Function TotalInterestPaid (ByVal AnnualInterestRate As Double, NumberOfPeriods As Integer, LoanAmount As Double) As String

@@ -19,8 +19,8 @@
         Me.TextBoxDescription.Text = My.Application.Info.Description _
                                    & vbNewLine & vbNewLine _
                                    & "The content provided relates to CISC-181 as taught at San Diego Mesa College " _
-                                   & "using material drawn from the first six chapter of " _
-                                   & " Gaddis, 'Starting out with Visual Basic 2010', Addison Wesley, 2011."
+                                   & "using material drawn from the first six chapters of " _
+                                   & "Gaddis, 'Starting out with Visual Basic 2010', Addison Wesley, 2011."
     End Sub
 
     Private Sub OKButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OKButton.Click

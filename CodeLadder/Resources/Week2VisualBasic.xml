@@ -37,7 +37,7 @@
     <description>
       Ensure the AutoSize property of the lblPrompt Control is True
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/AutoSize</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/AutoSize</help>
     <code>
       <header>
         &commonControls;
@@ -73,7 +73,7 @@
     <description>
       Set the BorderStyle property of the lblPrompt Control to a single thin line.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/BorderStyle</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/BorderStyle</help>
     <code>
       <header>
         &commonControls;
@@ -106,7 +106,7 @@
     <description>
       Create a function which sets the lblPrompt text alignment property set to the upper right hand corner of the control.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/TextAlign</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/TextAlign</help>
     <code entryPoint="SetAlignment">
       <header>
         &commonControls;
@@ -143,7 +143,7 @@
     <description>
       Fix this broken MessageBox function by changing as few characters as possible.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/MessageBox</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/MessageBox</help>
     <code entryPoint="ShowMessage">
       <header>
         Public Function ShowMessage() As DialogResult
@@ -173,7 +173,7 @@
     <description>
       Fix this broken MessageBox function and ensure you can press the 'Yes' button when done.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/MessageBox</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/MessageBox</help>
     <code entryPoint="ShowYesNoMessage">
       <header>
         Public Function ShowYesNoMessage() As DialogResult
@@ -206,7 +206,7 @@
     <description>
       Change the 'btnClose' button text from 'Close' to 'Exit'.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/Controls</help>
     <code>
       <header>
         &commonControls;
@@ -236,7 +236,7 @@
     <description>
       Give the lblPrompt Control a border with a '3D' look.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/BorderStyle</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/BorderStyle</help>
     <code>
       <header>
         &commonControls;
@@ -270,7 +270,7 @@
     <description>
       Sets the lblPrompt text alignment property set to the center of the control lblPrompt in the provided click event handler.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/TextAlign</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/TextAlign</help>
     <code entryPoint="SetAlignment">
       <header>
         &commonControls;
@@ -313,7 +313,7 @@
     <description>
       Set a property of the 'lblNew' control so that it is visible when the program runs.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/Visible</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/Visible</help>
     
     <code>
       <header>
@@ -388,7 +388,7 @@
     <description>
       Fix this broken MessageBox function by changing as few characters as possible.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/MessageBox</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/MessageBox</help>
     <code entryPoint="ShowMessage">
       <header>
         Public Function ShowMessage() As DialogResult
@@ -416,7 +416,7 @@
     <description>
       Assign $34.99 to the control lblPrompt
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/Controls</help>
     <code>
       <header>
         &commonControls;
@@ -448,7 +448,7 @@
     <description>
       Set tag property of a control named 'lblState' to 'VA'.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/Tag</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/Tag</help>
     <code>
       <header>
         Public Function Puzzle() As Label
@@ -474,7 +474,7 @@
     <description>
       Sets the lblPrompt text alignment property set to the left center of the control lblPrompt in the provided click event handler.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/TextAlign</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/TextAlign</help>
     <code entryPoint="SetAlignment">
       <header>
         &commonControls;

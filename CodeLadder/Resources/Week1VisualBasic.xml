@@ -39,7 +39,7 @@
     <description>
       Change the string literal assigned to the Text property of the Label control from 'Hello, world.' to 'Howdy!'.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/Controls</help>
     <code>
       <header>
         &commonControls;
@@ -69,9 +69,9 @@
   
   <puzzle>
     <description>
-      Assign the string literal 'Hello, World!' to the Label control text property.
+      Remove the comment character and assign the string literal 'Hello, World!' to the Label control text property.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/Comment</help>
     <code>
       <header>
         &commonControls;
@@ -105,7 +105,7 @@
     <description>
       Assign the string literal 'Close' to the Button control text property.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/Controls</help>
     <code>
       <header>
         &commonControls;
@@ -139,7 +139,7 @@
     <description>
       Assign the string literal 'Simple Greeting' to the Form control text property.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/Controls</help>
     <code>
       <header>
         &commonControls;
@@ -172,7 +172,7 @@
     <description>
       Assign the following string literal to the lblPrompt control: 'Most controls in Visual Basic have a Text property.'
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/Controls</help>
     <code>
       <header>
         &commonControls;
@@ -204,7 +204,7 @@
     <description>
       Assign the following string literal to the lblNew control: 'I am new'.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/Controls</help>
     <code>
       <header>
         &commonControls;
@@ -243,7 +243,7 @@
     <description>
       Assign the following string literal to the lblStart control: 'Get Going:'.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/Controls</help>
     <code>
       <header>
         &commonControls;
@@ -282,7 +282,7 @@
     <description>
       Finish the TextBox property assignment.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/Controls</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/Controls</help>
     <code>
       <header>
         &commonControls;

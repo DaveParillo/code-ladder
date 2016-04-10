@@ -38,7 +38,7 @@
   <puzzle>
     <description>Create a function that returns "It's chilly" if intTemp is less than 50
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/IfThen</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/IfThen</help>
     <code entryPoint="Example">
       <body>
         Public Function Example (ByVal intTemp As Integer) As String
@@ -70,7 +70,7 @@
       Create a function that returns "It's cold, no?" if intTemp is less than 52 
       and "Nice weather we're having!" otherwise.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/IfThenElse</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/IfThenElse</help>
     <code entryPoint="Example">
       <body>
         Public Function Example (ByVal intTemp As Integer) As String
@@ -108,7 +108,7 @@
 
   <puzzle>
     <description>Create a function that returns letter grades: A (90+), B(80+), C, D, F, given a numeric GPA upto and including 100 and "Not a valid grade." otherwise.</description>
-    <help>https://code.google.com/p/code-ladder/wiki/IfThenElse</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/IfThenElse</help>
     <code entryPoint="Example">
       <body>
         Public Function Example (ByVal GPA As Single) As String
@@ -159,7 +159,7 @@
       Create a function that computes gross pay given hours worked and pay rate.  Display numeric 
       results in curreny format.  Ensure your code includes input validation.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/TryParse</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/TryParse</help>
     <code entryPoint="Example">
       <body>
         Public Function Example (ByVal HoursWorked As String, ByVal PayRate As String) As String
@@ -212,7 +212,7 @@
 
   <puzzle>
     <description>Create a function that returns True if Savings are greater than or equal to Goal</description>
-    <help>https://code.google.com/p/code-ladder/wiki/IfThen</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/IfThen</help>
     <code>
       <body>
         Public Function Puzzle(ByVal Savings As Decimal, ByVal Goal As Decimal) As Boolean
@@ -241,7 +241,7 @@
       Create a function using TryParse that returns "X is a number." if X is a number 
       and "X is not a number." otherwise.  Use the value of 'X' in your return value.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/TryParse</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/TryParse</help>
     <code>
       <body>
         Public Function Puzzle(ByVal X As String) As String
@@ -267,7 +267,7 @@
       Create a function that compares two numeric strings and determines which is larger.  Ensure your 
       code includes input validation.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/TryParse</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/TryParse</help>
     <code>
       <body>
         ' Return one of the following 5 strings:
@@ -316,7 +316,7 @@
       
         Use the constants where appropriate.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/CheckBox</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/CheckBox</help>
     <code>
       <header>
         &commonControls;
@@ -412,7 +412,7 @@
 
   <puzzle>
     <description>Create a function that returns the length of a string</description>
-    <help>https://code.google.com/p/code-ladder/wiki/StringLength</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/StringLength</help>
     <code entryPoint="GetLength">
       <body>
         ' Return the length of the string 'theText'
@@ -439,7 +439,7 @@
       Create a function that replaces the occurences of a character in a string 
       with the character 'b' and returns the result.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/StringReplace</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/StringReplace</help>
     <code entryPoint="ReplaceCharWithEmpty">
       <body>
         ' Replace each occurrence of the character 'Ch' in the string 'Phrase' 
@@ -467,7 +467,7 @@
   
   <puzzle>
     <description>Create a function that counts the occurences of a character in a string</description>
-    <help>https://code.google.com/p/code-ladder/wiki/StringReplace</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/StringReplace</help>
     <code entryPoint="CountChars">
       <body>
         ' Count each occurrence of the character 'Ch' in the string 'Phrase'

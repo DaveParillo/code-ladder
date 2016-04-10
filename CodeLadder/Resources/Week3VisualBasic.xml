@@ -35,7 +35,7 @@
     <description>
       Set the TextBox 'txtCountry' Text property to 'Canada'.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/TextBox</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/TextBox</help>
     <code>
       <header>
         &commonControls;
@@ -69,7 +69,7 @@
     <description>
       Fix the variable declaration.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/Variable#Variable_Naming_Rules</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/Variable#Variable_Naming_Rules</help>
     <code>
       <header>
         Public Function Puzzle() As Integer
@@ -90,7 +90,7 @@
 
   <puzzle>
     <description>Fix the variable declaration.</description>
-    <help>https://code.google.com/p/code-ladder/wiki/Variables#Variable_Naming_Rules</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/Variables#Variable_Naming_Rules</help>
     <code>
       <header>
         Public Function Puzzle() As Decimal
@@ -130,7 +130,7 @@
 
   <puzzle>
     <description>Fix the statement by changing as few characters as possible.</description>
-    <help>https://code.google.com/p/code-ladder/wiki/Variables</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/Variables</help>
     <code>
       <header>
         Public Function Puzzle() As Double
@@ -153,7 +153,7 @@
     <description>
       Erase the contents of the control 'txtAddress' using code.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/TextBox</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/TextBox</help>
     <code>
       <header>
         &commonControls;
@@ -208,7 +208,7 @@
     <description>
       Make the letter 'C' a shortcut for the 'btnClose' button.
     </description>
-    <help>https://code.google.com/p/code-ladder/wiki/ShortcutKey</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ShortcutKey</help>
     <code>
       <header>
         &commonControls;
@@ -238,7 +238,7 @@
       Create a function which assigns the parameter 'value' to the text property 
       of a new TextBox Control and returns the control.
     </description>
-   <help>https://code.google.com/p/code-ladder/wiki/Variable</help>
+   <help>https://github.com/DaveParillo/code-ladder/wiki/Variable</help>
     <code>
       <header>
         Private txtFoo As New TextBox With {.Name = "txtFoo"}
@@ -269,7 +269,7 @@
 
   <puzzle>
     <description>Fix this broken function</description>
-    <help>https://code.google.com/p/code-ladder/wiki/Variable</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/Variable</help>
     <code entryPoint="GetTwentyFive">
       <body>
         Public Function GetTwentyFive() As Integer
@@ -286,7 +286,7 @@
   
   <puzzle>
     <description>Create a function that negates a provided value</description>
-    <help>https://code.google.com/p/code-ladder/wiki/ArithmeticOperation</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ArithmeticOperation</help>
     <code>
       <body>
         Public Function Puzzle(ByVal intValue As Integer) As Integer
@@ -314,7 +314,7 @@
   
   <puzzle>
     <description>Create a function that returns the sum of two values</description>
-    <help>https://code.google.com/p/code-ladder/wiki/ArithmeticOperation</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ArithmeticOperation</help>
     <code>
       <body>
         Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Integer
@@ -351,7 +351,7 @@
 
   <puzzle>
     <description>Create a function that returns the product of two values</description>
-    <help>https://code.google.com/p/code-ladder/wiki/ArithmeticOperation</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ArithmeticOperation</help>
     <code>
       <body>
         Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Long
@@ -389,7 +389,7 @@
 
   <puzzle>
     <description>Create a function that returns the quotient of two values</description>
-    <help>https://code.google.com/p/code-ladder/wiki/ArithmeticOperation</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ArithmeticOperation</help>
     <code>
       <body>
         Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Double
@@ -414,7 +414,7 @@
 
   <puzzle>
     <description>Create a function that returns the remainder of a division operation</description>
-    <help>https://code.google.com/p/code-ladder/wiki/ArithmeticOperation</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ArithmeticOperation</help>
     <code>
       <body>
         Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Integer
@@ -447,7 +447,7 @@
 
   <puzzle>
     <description>Create a function that returns the quotient of an integer division operation</description>
-    <help>https://code.google.com/p/code-ladder/wiki/ArithmeticOperation</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ArithmeticOperation</help>
     <code>
       <body>
         Public Function Puzzle(ByVal X As Integer, ByVal Y As Integer) As Integer
@@ -476,7 +476,7 @@
 
   <puzzle>
     <description>Create a function that returns the results of exponentiation operations</description>
-    <help>https://code.google.com/p/code-ladder/wiki/ArithmeticOperation</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ArithmeticOperation</help>
     <code>
       <body>
         Public Function Puzzle(ByVal Base As Integer, ByVal Exponent As Integer) As Double
@@ -509,7 +509,7 @@
 
   <puzzle>
     <description>Create a function that first adds 'X' and 'Base', then raises the sum to an exponent and returns the results</description>
-    <help>https://code.google.com/p/code-ladder/wiki/ArithmeticOperation#Parentheses</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ArithmeticOperation#Parentheses</help>
     <code>
       <body>
         Public Function Puzzle(ByVal X As Integer, ByVal Base As Integer, ByVal Exponent As Integer) As Double
@@ -547,7 +547,7 @@
 
   <puzzle>
     <description>This function should return the value of HelloName plus a mystery String</description>
-    <help>https://code.google.com/p/code-ladder/wiki/ArithmeticOperation#String_Concatenation_Operator</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ArithmeticOperation#String_Concatenation_Operator</help>
     <code entryPoint="ShowGreeting">
       <body>
         Public Function ShowGreeting (ByVal HelloName As String) As String
@@ -569,7 +569,7 @@
   
   <puzzle>
     <description>This function should return the value of 'HelloName' plus a mystery String</description>
-    <help>https://code.google.com/p/code-ladder/wiki/ArithmeticOperation#String_Concatenation_Operator</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ArithmeticOperation#String_Concatenation_Operator</help>
     <code entryPoint="HelloWorld">
       <body>
         Public Function HelloWorld(ByVal HelloName As String) As String
@@ -589,7 +589,7 @@
 
   <puzzle>
     <description>Create a function that converts a string 'X' to an Integer and returns the results</description>
-    <help>https://code.google.com/p/code-ladder/wiki/TypeConversion#Explicit_Type_Conversion</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/TypeConversion#Explicit_Type_Conversion</help>
     <code>
       <body>
         Public Function Puzzle(ByVal X As String) As Integer
@@ -611,7 +611,7 @@
 
   <puzzle>
     <description>Create a function that converts a string 'X' to a Decimal and returns the results</description>
-    <help>https://code.google.com/p/code-ladder/wiki/TypeConversion#Explicit_Type_Conversion</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/TypeConversion#Explicit_Type_Conversion</help>
     <code>
       <body>
         Public Function Puzzle(ByVal X As String) As Decimal
@@ -634,7 +634,7 @@
 
   <puzzle>
     <description>Create a function that converts a number to a string and returns the results</description>
-    <help>https://code.google.com/p/code-ladder/wiki/TypeConversion#Explicit_Type_Conversion</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/TypeConversion#Explicit_Type_Conversion</help>
     <code>
       <body>
         Public Function Puzzle(ByVal X As Double) As String
@@ -657,7 +657,7 @@
 
   <puzzle>
     <description>Create a function that converts a number to a string and returns results in currency format</description>
-    <help>https://code.google.com/p/code-ladder/wiki/ToString#Format_Strings</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ToString#Format_Strings</help>
     <code>
       <body>
         Public Function Puzzle(ByVal Cost As Decimal) As String
@@ -677,7 +677,7 @@
 
   <puzzle>
     <description>Create a function that converts a number to a string and returns results in percent format</description>
-    <help>https://code.google.com/p/code-ladder/wiki/ToString#Format_Strings</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ToString#Format_Strings</help>
     <code>
       <body>
         Public Function Puzzle(ByVal X As Single) As String
@@ -700,7 +700,7 @@
 
   <puzzle>
     <description>Create a function that converts a Date to a string and returns results as a Long Date.</description>
-    <help>https://code.google.com/p/code-ladder/wiki/ToString#Formatting_Dates_and_Times</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/ToString#Formatting_Dates_and_Times</help>
     <code>
       <body>
         Public Function Puzzle(ByVal MyDate As Date) As String
@@ -724,7 +724,7 @@
   <puzzle>
     <description>Create a function that sums the values in 2 Strings and returns an Integer.  
                  Ensure your code includes Exception Handling.</description>
-    <help>https://code.google.com/p/code-ladder/wiki/TryCatch</help>
+    <help>https://github.com/DaveParillo/code-ladder/wiki/TryCatch</help>
     <code entryPoint ="AddValues">
       <body>
         ' Attempt to convert two Strings, X and Y to numbers and add them.
